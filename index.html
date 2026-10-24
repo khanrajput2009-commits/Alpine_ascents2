@@ -1,0 +1,3357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ALPINE ASCENTS — Beyond the Ordinary. Into the Wild. Discover extraordinary peaks and the world's greatest mountain regions.">
+    <title>ALPINE ASCENTS — The World of Mountains</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+ /* ============ ROOT & RESET ============ */
+
+:root {
+    --glacier: #77C9F2;
+    --glacier-soft: #a8dffa;
+    --deep-blue: #102A43;
+    --navy: #071521;
+    --snow: #F7FAFC;
+    --ice: #DCE6ED;
+    --charcoal: #18232D;
+    --text-dark: #0d1a26;
+    --text-muted: #5a6b7a;
+    --gold: #f5c26b;
+
+    --font-head: 'Montserrat', 'Oswald', sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+    --radius: 10px;
+    --shadow-soft: 0 10px 30px rgba(16, 42, 67, 0.10);
+    --shadow-hard: 0 24px 60px rgba(7, 21, 33, 0.35);
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ============ RESET ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background: var(--snow);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+h1, h2, h3, h4 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    font-style: normal;
+}
+
+::selection { background: var(--glacier); color: var(--navy); }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--glacier); border-radius: 10px; }
+
+.container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* ============ HEADER ============ */
+.site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    background: linear-gradient(to bottom, rgba(7,21,33,0.75) 0%, rgba(7,21,33,0) 100%);
+    transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.scrolled {
+    background: rgba(7, 21, 33, 0.92);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(119, 201, 242, 0.18);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--snow);
+    flex-shrink: 0;
+}
+
+/* LOGO IMAGE KI STYLING */
+.brand-logo-img {
+    height: 80px; /* Aap apne logo ke hisaab se isko change kar sakte hain */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s var(--ease);
+}
+
+.brand:hover .brand-logo-img { transform: translateY(-3px) scale(1.05); }
+
+.brand-word {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.nav-link {
+    position: relative;
+    color: rgba(247, 250, 252, 0.9);
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 10px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: color 0.25s ease, background 0.25s ease;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: 4px;
+    transform: translateX(-50%);
+    width: 0; height: 2px;
+    background: var(--glacier);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-link.active { color: var(--glacier); }
+.nav-link:hover::after,
+.nav-link.active::after { width: 40%; }
+
+.btn-plan {
+    background: linear-gradient(135deg, var(--glacier), #4db3e6);
+    color: var(--navy);
+    padding: 13px 24px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    border-radius: 999px;
+    white-space: nowrap;
+    margin-left: 14px;
+    box-shadow: 0 8px 22px rgba(119, 201, 242, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-plan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(119, 201, 242, 0.6);
+}
+
+/* Mobile menu */
+.menu-toggle {
+    display: none;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 11px 10px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--snow);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(7, 21, 33, 0.98);
+    backdrop-filter: blur(18px);
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease, padding 0.3s ease;
+}
+
+.mobile-menu.open { max-height: 560px; padding: 20px 24px 30px; }
+
+.mobile-menu a {
+    color: var(--snow);
+    padding: 15px 0;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(119, 201, 242, 0.12);
+}
+
+.mobile-menu a.active { color: var(--glacier); }
+
+.btn-plan-mobile {
+    background: var(--glacier);
+    color: var(--navy) !important;
+    text-align: center;
+    margin-top: 18px;
+    padding: 14px !important;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    border: 0 !important;
+    border-radius: 999px;
+    font-size: 0.82rem !important;
+}
+
+/* ============ HERO ============ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--navy);
+}
+
+#bgVideo {
+    position: absolute;
+    top: 50%; left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto; height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(1.05) contrast(1.08) saturate(1.15);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 20% 55%, rgba(7,21,33,0.75) 0%, rgba(7,21,33,0) 60%),
+        linear-gradient(180deg, rgba(7,21,33,0.7) 0%, rgba(7,21,33,0.15) 35%, rgba(7,21,33,0.3) 65%, rgba(7,21,33,0.92) 100%);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 120px;
+    background: linear-gradient(to top, var(--snow), transparent);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: var(--snow);
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-top: 150px;
+    padding-bottom: 120px;
+    text-align: left;
+    animation: fadeUp 1.1s var(--ease) both;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    color: var(--glacier);
+    margin-bottom: 22px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+}
+
+.eyebrow::before {
+    content: '';
+    width: 42px; height: 2px;
+    background: var(--glacier);
+    display: inline-block;
+}
+
+.eyebrow-dark { color: var(--deep-blue); text-shadow: none; }
+.eyebrow-dark::before { background: var(--deep-blue); }
+
+.hero-title {
+    font-family: var(--font-head);
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.06;
+    margin-bottom: 26px;
+    color: var(--snow);
+    max-width: 900px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
+}
+
+.hero-sub {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 42px;
+    line-height: 1.75;
+    padding-left: 20px;
+    border-left: 3px solid var(--glacier);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+/* ============ BUTTONS ============ */
+.btn {
+    display: inline-block;
+    padding: 16px 32px;
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--glacier), #4db3e6);
+    color: var(--navy);
+    box-shadow: 0 10px 28px rgba(119, 201, 242, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(119, 201, 242, 0.6);
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--snow);
+    border: 1px solid rgba(247, 250, 252, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+    background: rgba(247, 250, 252, 0.2);
+    border-color: var(--snow);
+    transform: translateY(-3px);
+}
+
+.btn-dark { background: var(--deep-blue); color: var(--snow); align-self: flex-start; }
+
+.btn-dark:hover {
+    background: var(--navy);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(16, 42, 67, 0.35);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.66rem;
+    letter-spacing: 0.34em;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 46px;
+    background: linear-gradient(to bottom, transparent, var(--glacier));
+    animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(8px); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ SECTIONS ============ */
+.section { padding: 120px 0; position: relative; }
+
+.section-light { background: var(--snow); color: var(--text-dark); }
+.section-dark {
+    background:
+        radial-gradient(circle at 85% 0%, rgba(119,201,242,0.10), transparent 45%),
+        radial-gradient(circle at 0% 100%, rgba(119,201,242,0.07), transparent 40%),
+        var(--navy);
+    color: var(--snow);
+}
+.section-ice { background: linear-gradient(180deg, var(--ice), #cfdde7); color: var(--text-dark); }
+
+.section-head { max-width: 760px; margin-bottom: 70px; }
+
+.section-title {
+    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--deep-blue);
+    line-height: 1.12;
+    position: relative;
+}
+
+.section-title.light { color: var(--snow); }
+
+.section-sub {
+    font-size: 1.04rem;
+    color: var(--text-muted);
+    max-width: 620px;
+    line-height: 1.8;
+}
+
+.section-sub.light { color: rgba(247, 250, 252, 0.85); }
+
+.link-arrow {
+    display: inline-block;
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--deep-blue);
+    margin-top: 12px;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.link-arrow.light { color: var(--glacier); }
+.link-arrow:hover { transform: translateX(6px); color: #2a9ad6; }
+.link-arrow.light:hover { color: var(--snow); }
+
+/* ============ REGIONS ============ */
+.region-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+}
+
+.region-card {
+    position: relative;
+    grid-column: span 2;
+    height: 430px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--navy);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s ease;
+}
+
+.region-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hard); }
+
+.region-large { grid-column: span 4; }
+.region-tall { grid-column: span 2; grid-row: span 2; height: auto; min-height: 430px; }
+
+.region-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1s var(--ease);
+}
+
+.region-card:hover img { transform: scale(1.1); }
+
+.region-info {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 70px 28px 28px;
+    background: linear-gradient(to top, rgba(7,21,33,0.96) 0%, rgba(7,21,33,0.7) 55%, transparent 100%);
+    color: var(--snow);
+    transition: padding 0.4s ease;
+}
+
+.region-card:hover .region-info { padding-bottom: 34px; }
+
+.region-tag {
+    display: inline-block;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--navy);
+    background: var(--glacier);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.region-info h3 { font-size: 1.7rem; font-weight: 700; margin-bottom: 8px; }
+
+.region-info p {
+    font-size: 0.92rem;
+    color: rgba(247, 250, 252, 0.85);
+    max-width: 420px;
+    line-height: 1.6;
+}
+
+.region-info .link-arrow { color: var(--glacier); }
+.region-info .link-arrow:hover { color: var(--snow); }
+
+/* ============ EXPEDITIONS ============ */
+.exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+.exp-card {
+    background: linear-gradient(160deg, rgba(247,250,252,0.07), rgba(247,250,252,0.02));
+    border: 1px solid rgba(119, 201, 242, 0.16);
+    border-radius: var(--radius);
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+    transition: transform 0.45s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.exp-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(119, 201, 242, 0.55);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(119,201,242,0.12);
+}
+
+.exp-card img {
+    width: 100%; height: 230px;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.exp-card:hover img { transform: scale(1.08); }
+
+.exp-card { overflow: hidden; }
+.exp-body { padding: 26px 26px 30px; background: transparent; position: relative; }
+
+.exp-body h3 { font-size: 1.25rem; color: var(--snow); margin-bottom: 10px; }
+
+.exp-body p {
+    color: rgba(247, 250, 252, 0.75);
+    font-size: 0.94rem;
+    margin-bottom: 18px;
+    line-height: 1.65;
+}
+
+.exp-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--glacier);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 16px;
+    border-top: 1px solid rgba(119, 201, 242, 0.18);
+}
+
+.exp-meta span {
+    background: rgba(119,201,242,0.12);
+    padding: 5px 10px;
+    border-radius: 999px;
+}
+
+.fine-print {
+    margin-top: 36px;
+    font-size: 0.82rem;
+    color: rgba(247, 250, 252, 0.55);
+    font-style: italic;
+}
+
+/* ============ SPLIT ============ */
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 680px;
+    background: var(--snow);
+}
+
+.split-media { position: relative; overflow: hidden; }
+.split-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.split-section:hover .split-media img { transform: scale(1.05); }
+
+.split-media::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(7,21,33,0.25), transparent 60%);
+}
+
+.split-content {
+    padding: 90px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--snow);
+}
+
+.value-list { margin: 28px 0 34px; padding: 0; }
+
+.value-list li {
+    padding: 13px 0 13px 30px;
+    position: relative;
+    font-size: 0.98rem;
+    color: var(--text-dark);
+    border-bottom: 1px solid rgba(16, 42, 67, 0.08);
+    line-height: 1.55;
+    transition: padding-left 0.3s ease, color 0.3s ease;
+}
+
+.value-list li:hover { padding-left: 38px; }
+
+.value-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    width: 16px; height: 2px;
+    background: var(--glacier);
+    transition: width 0.3s ease;
+}
+
+.value-list li:hover::before { width: 26px; }
+.value-list strong { color: var(--deep-blue); font-weight: 600; }
+
+/* ============ KNOWLEDGE ============ */
+.knowledge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+
+.knowledge-card {
+    position: relative;
+    display: block;
+    background: #fff;
+    padding: 42px 34px;
+    border: 1px solid rgba(16, 42, 67, 0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s ease, border-color 0.4s ease;
+    cursor: pointer;
+}
+
+.knowledge-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--glacier), var(--deep-blue));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease);
+}
+
+.knowledge-card:hover::before { transform: scaleX(1); }
+
+.knowledge-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 26px 50px rgba(16, 42, 67, 0.14);
+    border-color: var(--glacier);
+}
+
+.k-icon {
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--deep-blue), #1d4468);
+    color: var(--glacier);
+    font-size: 1.4rem;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 22px rgba(16, 42, 67, 0.3);
+    transition: transform 0.4s var(--ease);
+}
+
+.knowledge-card:hover .k-icon { transform: rotate(-8deg) scale(1.1); }
+
+.knowledge-card h3 { font-size: 1.2rem; color: var(--deep-blue); margin-bottom: 10px; }
+
+.knowledge-card p {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+/* ============ SAFETY ============ */
+.safety-section {
+    position: relative;
+    padding: 140px 0;
+    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--snow);
+    overflow: hidden;
+}
+
+.safety-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(7,21,33,0.92) 0%, rgba(16,42,67,0.85) 100%);
+}
+
+.safety-inner { position: relative; z-index: 2; }
+
+.safety-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 54px 0 40px;
+}
+
+.safety-item {
+    background: rgba(247,250,252,0.05);
+    border: 1px solid rgba(119,201,242,0.16);
+    border-left: 3px solid var(--glacier);
+    border-radius: var(--radius);
+    padding: 24px 24px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.35s ease, background 0.35s ease;
+}
+
+.safety-item:hover { transform: translateY(-6px); background: rgba(119,201,242,0.12); }
+
+.safety-item h4 { font-size: 1.05rem; color: var(--snow); margin-bottom: 8px; }
+.safety-item p { font-size: 0.9rem; color: rgba(247, 250, 252, 0.8); line-height: 1.6; }
+
+.safety-warning {
+    background: rgba(245, 194, 107, 0.1);
+    border: 1px solid rgba(245, 194, 107, 0.4);
+    padding: 18px 24px;
+    font-size: 0.92rem;
+    color: rgba(247, 250, 252, 0.95);
+    margin-bottom: 34px;
+    border-radius: var(--radius);
+    line-height: 1.6;
+}
+
+/* ============ STORIES ============ */
+.stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+.story-card {
+    background: #fff;
+    border: 1px solid rgba(16, 42, 67, 0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.45s var(--ease), box-shadow 0.45s ease;
+}
+
+.story-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(16, 42, 67, 0.18); }
+
+.story-card img {
+    width: 100%; height: 270px;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.story-card:hover img { transform: scale(1.07); }
+.story-card { overflow: hidden; }
+
+.story-body { padding: 30px 28px 32px; background: #fff; position: relative; }
+
+.story-tag {
+    display: inline-block;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--glacier);
+    background: var(--deep-blue);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+.story-body h3 { font-size: 1.35rem; color: var(--deep-blue); margin-bottom: 10px; }
+.story-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ============ GALLERY ============ */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 210px;
+    gap: 16px;
+}
+
+.g-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    margin: 0;
+    cursor: pointer;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
+.g-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1s var(--ease), filter 0.6s ease;
+    filter: saturate(1.05);
+}
+
+.g-item:hover img { transform: scale(1.12); filter: saturate(1.3) brightness(0.85); }
+
+.g-item figcaption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px 20px 18px;
+    background: linear-gradient(to top, rgba(7,21,33,0.95), transparent);
+    color: var(--snow);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.g-item:hover figcaption { opacity: 1; transform: translateY(0); }
+
+.g-a { grid-column: span 2; grid-row: span 2; }
+.g-b { grid-column: span 2; }
+.g-c, .g-d, .g-f, .g-g { grid-column: span 1; }
+.g-e { grid-column: span 1; grid-row: span 2; }
+.g-h { grid-column: span 2; }
+
+.gallery-cta { text-align: center; margin-top: 54px; }
+
+/* ============ FACTS ============ */
+.facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+
+.fact {
+    position: relative;
+    padding: 38px 26px;
+    background: #fff;
+    border: 1px solid rgba(16, 42, 67, 0.08);
+    border-top: 4px solid var(--glacier);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+}
+
+.fact:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(16,42,67,0.16); }
+
+.fact-num {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 2.3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--deep-blue), #2a9ad6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--deep-blue);
+    margin-bottom: 12px;
+}
+
+.fact p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ============ RESPONSIBLE ============ */
+.responsible-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.responsible-media {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    height: 560px;
+    box-shadow: var(--shadow-hard);
+}
+
+.responsible-media::after {
+    content: '';
+    position: absolute; inset: 14px;
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+.responsible-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.responsible-media:hover img { transform: scale(1.06); }
+
+.responsible-content p { color: var(--text-muted); line-height: 1.8; }
+.responsible-content .btn { margin-top: 6px; }
+
+/* ============ NEWS ============ */
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+.news-card {
+    background: #fff;
+    border: 1px solid rgba(16, 42, 67, 0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.45s var(--ease), box-shadow 0.45s ease;
+}
+
+.news-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(16, 42, 67, 0.16); }
+
+.news-card img {
+    width: 100%; height: 230px;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.news-card:hover img { transform: scale(1.07); }
+
+.news-body { padding: 28px 26px 30px; background: #fff; position: relative; }
+
+.news-tag {
+    display: inline-block;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--deep-blue);
+    background: var(--ice);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+.news-body h3 { font-size: 1.2rem; color: var(--deep-blue); margin-bottom: 10px; }
+.news-body p { font-size: 0.94rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ============ FINAL CTA ============ */
+.final-cta {
+    position: relative;
+    padding: 150px 0;
+    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--snow);
+    text-align: center;
+    overflow: hidden;
+}
+
+.final-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,21,33,0.7) 0%, rgba(7,21,33,0.92) 100%);
+}
+
+.final-inner { position: relative; z-index: 2; max-width: 840px; margin: 0 auto; }
+.final-inner .section-title { color: var(--snow); margin-bottom: 22px; }
+.final-inner .section-sub { margin: 0 auto 42px; text-align: center; }
+.final-inner .hero-actions { justify-content: center; }
+
+/* ============ FOOTER ============ */
+.site-footer {
+    background:
+        radial-gradient(circle at 90% 0%, rgba(119,201,242,0.08), transparent 45%),
+        var(--navy);
+    color: var(--snow);
+    padding: 90px 0 0;
+    border-top: 3px solid var(--glacier);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 60px;
+}
+
+.footer-brand { color: var(--snow); margin-bottom: 20px; }
+
+.footer-desc {
+    font-size: 0.92rem;
+    color: rgba(247, 250, 252, 0.7);
+    line-height: 1.75;
+    max-width: 340px;
+}
+
+.site-footer h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--glacier);
+    margin-bottom: 22px;
+    text-transform: uppercase;
+}
+
+.mt-2 { margin-top: 30px; }
+
+.site-footer ul a {
+    display: inline-block;
+    font-size: 0.92rem;
+    color: rgba(247, 250, 252, 0.75);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.site-footer ul li { margin-bottom: 11px; }
+.site-footer ul a:hover { color: var(--glacier); transform: translateX(6px); }
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 28px 32px;
+    border-top: 1px solid rgba(119, 201, 242, 0.15);
+    font-size: 0.82rem;
+    color: rgba(247, 250, 252, 0.6);
+}
+
+.footer-bottom .fine-print { margin: 0; color: rgba(247, 250, 252, 0.5); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1100px) {
+    .nav-link { font-size: 0.8rem; padding: 10px 11px; }
+    .btn-plan { padding: 11px 18px; font-size: 0.68rem; }
+    .brand-word { font-size: 1.2rem; }
+    .brand-logo-img { height: 40px; }
+}
+
+@media (max-width: 1024px) {
+    .region-grid { grid-template-columns: repeat(4, 1fr); }
+    .region-large { grid-column: span 4; }
+    .region-tall { grid-column: span 2; grid-row: span 1; height: 430px; }
+
+    .exp-grid, .knowledge-grid, .stories-grid, .news-grid, .safety-grid { grid-template-columns: repeat(2, 1fr); }
+    .facts-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .split-section { grid-template-columns: 1fr; }
+    .split-media { height: 420px; }
+    .split-content { padding: 60px 40px; }
+
+    .responsible-grid { grid-template-columns: 1fr; gap: 40px; }
+    .responsible-media { height: 420px; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 880px) {
+    .nav-desktop { display: none; }
+    .menu-toggle { display: flex; }
+    .mobile-menu { display: flex; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 0 22px; }
+    .section { padding: 84px 0; }
+    .section-head { margin-bottom: 50px; }
+
+    .hero-content { padding-top: 130px; padding-bottom: 100px; }
+    .hero-sub { padding-left: 14px; }
+
+    .region-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .region-card, .region-large, .region-tall { grid-column: span 2; grid-row: span 1; height: 350px; }
+
+    .exp-grid, .knowledge-grid, .stories-grid, .news-grid, .safety-grid, .facts-grid { grid-template-columns: 1fr; }
+
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+    .g-a, .g-b, .g-e, .g-h { grid-column: span 2; grid-row: span 1; }
+    .g-c, .g-d, .g-f, .g-g { grid-column: span 1; }
+    .g-item figcaption { opacity: 1; transform: none; }
+
+    .split-content { padding: 50px 26px; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+
+    .safety-section, .final-cta { background-attachment: scroll; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 18px; }
+    .hero-title { font-size: 2rem; }
+    .section-title { font-size: 1.6rem; }
+    .btn { padding: 14px 24px; font-size: 0.72rem; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .btn { text-align: center; }
+    .brand-logo-img { height: 32px; }
+    .brand-word { font-size: 1rem; }
+}
+
+/* ============ ACCESSIBILITY ============ */
+:focus-visible { outline: 2px solid var(--glacier); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* =====================================================
+   HERO FIX — title chhota, header ke neeche, sab visible
+   ===================================================== */
+.site-header { z-index: 9999 !important; }
+
+.nav-link { color: #fff !important; opacity: 1 !important; }
+.nav-link.active { color: var(--glacier) !important; }
+
+.btn-plan {
+    background: linear-gradient(135deg, #77C9F2, #4db3e6) !important;
+    color: #071521 !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 0 !important;
+    font-weight: 700 !important;
+}
+
+.hero { align-items: flex-end !important; }
+
+.hero-content {
+    width: 100% !important;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 160px 32px 90px !important;
+    text-align: left !important;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: clamp(1.8rem, 3.6vw, 3.2rem) !important;
+    font-weight: 800 !important;
+    font-style: normal !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0.02em !important;
+    max-width: 720px !important;
+    margin-bottom: 18px !important;
+    color: #fff !important;
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: 0 3px 22px rgba(0,0,0,0.7) !important;
+}
+
+.hero-sub {
+    font-size: 1rem !important;
+    max-width: 520px !important;
+    margin-bottom: 28px !important;
+    line-height: 1.7 !important;
+}
+
+.hero .btn { padding: 14px 28px !important; }
+
+.scroll-indicator { bottom: 14px !important; }
+
+@media (max-height: 760px) {
+    .scroll-indicator { display: none !important; }
+    .hero-content { padding-top: 130px !important; padding-bottom: 60px !important; }
+}
+
+@media (max-width: 768px) {
+    .hero-content { padding: 120px 22px 80px !important; }
+    .hero-title { font-size: 1.9rem !important; }
+}
+
+
+/* =====================================================
+   VIDEO — original (roshan) colour wapas
+   ===================================================== */
+#bgVideo {
+    filter: brightness(1.15) contrast(1.05) saturate(1.1) !important;
+}
+
+.hero-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(7, 21, 33, 0.35) 0%,
+        rgba(7, 21, 33, 0) 30%,
+        rgba(7, 21, 33, 0.05) 65%,
+        rgba(7, 21, 33, 0.35) 100%
+    ) !important;
+}
+
+.hero-title,
+.hero-sub,
+.eyebrow {
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75), 0 0 4px rgba(0, 0, 0, 0.45) !important;
+}
+
+
+/* =====================================================
+   HERO TEXT VISIBILITY — left side scrim + glass subtitle
+   ===================================================== */
+.hero-overlay {
+    background:
+        linear-gradient(90deg,
+            rgba(7, 21, 33, 0.82) 0%,
+            rgba(7, 21, 33, 0.62) 28%,
+            rgba(7, 21, 33, 0.28) 50%,
+            rgba(7, 21, 33, 0) 72%),
+        linear-gradient(180deg,
+            rgba(7, 21, 33, 0.55) 0%,
+            rgba(7, 21, 33, 0) 22%,
+            rgba(7, 21, 33, 0) 70%,
+            rgba(7, 21, 33, 0.45) 100%) !important;
+}
+
+.eyebrow {
+    color: #9fdcf8 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9) !important;
+}
+.eyebrow::before { background: #9fdcf8 !important; }
+
+.hero-title {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 6px 28px rgba(0, 0, 0, 0.8) !important;
+}
+
+.hero-sub {
+    color: #ffffff !important;
+    background: rgba(7, 21, 33, 0.45) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    padding: 16px 22px !important;
+    border-left: 3px solid #77C9F2 !important;
+    border-radius: 0 10px 10px 0 !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+.btn-ghost {
+    background: rgba(7, 21, 33, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    color: #fff !important;
+}
+
+@media (max-width: 768px) {
+    .hero-overlay {
+        background:
+            linear-gradient(180deg,
+                rgba(7, 21, 33, 0.65) 0%,
+                rgba(7, 21, 33, 0.45) 50%,
+                rgba(7, 21, 33, 0.7) 100%) !important;
+    }
+}
+
+/* =====================================================
+   POPUP MODAL SYSTEM
+   ===================================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 21, 33, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    background: linear-gradient(145deg, rgba(16, 42, 67, 0.95), rgba(7, 21, 33, 0.98));
+    border: 1px solid rgba(119, 201, 242, 0.3);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(119,201,242,0.1);
+}
+
+.modal-overlay.active .modal-box {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.modal-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(119, 201, 242, 0.15);
+    border: 1px solid rgba(119, 201, 242, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #77C9F2;
+    font-size: 28px;
+}
+
+.modal-box h3 {
+    color: #fff;
+    font-size: 1.6rem;
+    font-family: var(--font-head);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.modal-box p {
+    color: rgba(247, 250, 252, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.btn-modal-book {
+    display: inline-block;
+    background: linear-gradient(135deg, #77C9F2, #4db3e6);
+    color: #071521;
+    padding: 16px 40px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 10px 28px rgba(119, 201, 242, 0.4);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-modal-book:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(119, 201, 242, 0.6);
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+ 
+    </style>
+</head>
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+            <!-- NAYA LOGO SECTION -->
+            <a href="index.html" class="brand" aria-label="Alpine Ascents Home">
+                <!-- YAHAN APNA LOGO LINK LAGAYEIN -->
+                <img src="link.png" alt="Alpine Ascents Logo" class="brand-logo-img">
+                <span class="brand-word">ALPINE ASCENTS</span>
+            </a>
+
+            <nav class="nav-desktop" aria-label="Main navigation">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="history.html" class="nav-link">History</a>
+                <a href="booking.html" class="nav-link">Expeditions</a>
+                <a href="galery.html" class="nav-link">Gallery</a>
+                <a href="plan.html" class="nav-link">Booking</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="booking.html" class="btn-plan">PLAN YOUR EXPEDITION</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="history.html">History</a>
+            <a href="booking.html">Expeditions</a>
+            <a href="galery.html">Gallery</a>
+            <a href="booking.html">Booking</a>
+            <a href="contact.html">Contact</a>
+            <a href="plan.html" class="btn-plan-mobile">PLAN YOUR EXPEDITION</a>
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="WhatsApp Video 2026-10-14 at 5.38.51 PM.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content container">
+            <p class="eyebrow">THE ART OF MOUNTAIN EXPLORATION</p>
+            <h1 class="hero-title">THE WORLD IS HIGHER<br>THAN YOU THINK.</h1>
+            <p class="hero-sub">
+                Discover extraordinary peaks, learn the craft of mountaineering,
+                and explore the world's most remarkable mountain landscapes.
+            </p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" id="openBookingPopup">BOOKING NOW</button>
+                <a href="booking.html" class="btn btn-ghost">PLAN YOUR EXPEDITION</a>
+            </div>
+        </div>
+
+        <a href="#regions" class="scroll-indicator" aria-label="Scroll down">
+            <span class="scroll-line"></span>
+            <span class="scroll-text">SCROLL</span>
+        </a>
+    </section>
+
+    <!-- ============ POPUP MODAL (NEW) ============ -->
+    <div class="modal-overlay" id="bookingPopup">
+        <div class="modal-box">
+            <button class="modal-close" id="closePopup">&times;</button>
+            <div class="modal-icon">⛰️</div>
+            <h3>Ready for the Adventure?</h3>
+            <p>Book your expedition now and secure your spot to explore the world's most incredible mountains. Your journey begins here.</p>
+            <a href="booking.html" class="btn-modal-book">BOOK NOW</a>
+        </div>
+    </div>
+
+    <!-- ============ WORLD REGIONS ============ -->
+    <section class="section section-light" id="regions">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow eyebrow-dark">WORLD MOUNTAIN DISCOVERY</p>
+                <h2 class="section-title">A WORLD ABOVE THE ORDINARY</h2>
+                <p class="section-sub">
+                    From legendary Himalayan giants to the dramatic peaks of the Alps,
+                    discover landscapes that challenge the body, inspire the mind,
+                    and reward careful preparation.
+                </p>
+            </div>
+
+            <div class="region-grid">
+                <article class="region-card region-large">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80" alt="Himalayan snow-capped peaks under a blue sky">
+                    <div class="region-info">
+                        <span class="region-tag">ASIA</span>
+                        <h3>Himalayas</h3>
+                        <p>Nepal · India · Bhutan · Tibet — Home to the highest mountains on Earth.</p>
+                        <a href="booking.html" class="link-arrow">Discover →</a>
+                    </div>
+                </article>
+
+                <article class="region-card">
+                    <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=900&q=80" alt="Karakoram mountain range with dramatic rocky peaks">
+                    <div class="region-info">
+                        <span class="region-tag">PAKISTAN · CHINA</span>
+                        <h3>Karakoram</h3>
+                        <p>Dense concentration of towering peaks and vast glaciers.</p>
+                        <a href="booking.html" class="link-arrow">Discover →</a>
+                    </div>
+                </article>
+
+                <article class="region-card">
+                    <img src="https://images.unsplash.com/photo-1531210483974-4f8c1f33fd35?w=900&q=80" alt="Alps mountain range with green valleys">
+                    <div class="region-info">
+                        <span class="region-tag">EUROPE</span>
+                        <h3>Alps</h3>
+                        <p>Iconic alpine terrain across France, Switzerland, Italy and Austria.</p>
+                        <a href="booking.html" class="link-arrow">Discover →</a>
+                    </div>
+                </article>
+
+                <article class="region-card region-tall">
+                    <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80" alt="Andes mountain range in South America">
+                    <div class="region-info">
+                        <span class="region-tag">SOUTH AMERICA</span>
+                        <h3>Andes</h3>
+                        <p>The longest continental mountain range, stretching along South America's spine.</p>
+                        <a href="booking.html" class="link-arrow">Discover →</a>
+                    </div>
+                </article>
+
+                <article class="region-card">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80" alt="Rocky Mountains with snow-covered peaks">
+                    <div class="region-info">
+                        <span class="region-tag">NORTH AMERICA</span>
+                        <h3>Rocky Mountains</h3>
+                        <p>Vast wilderness stretching from Canada to New Mexico.</p>
+                        <a href="booking.html" class="link-arrow">Discover →</a>
+                    </div>
+                </article>
+
+                <article class="region-card">
+                    <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&q=80" alt="Hindu Kush mountains with dramatic snowy summits">
+                    <div class="region-info">
+                        <span class="region-tag">AFGHANISTAN · PAKISTAN</span>
+                        <h3>Hindu Kush</h3>
+                        <p>A rugged range of remote valleys and high passes.</p>
+                        <a href="booking.html" class="link-arrow">Discover →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURED EXPEDITIONS ============ -->
+    <section class="section section-dark" id="expeditions">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow">FEATURED EXPEDITIONS</p>
+                <h2 class="section-title light">FIND YOUR NEXT HORIZON</h2>
+                <p class="section-sub light">
+                    Six disciplines of mountain exploration. Each journey begins with preparation.
+                </p>
+            </div>
+
+            <div class="exp-grid">
+                <article class="exp-card">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Himalayan expedition">
+                    <div class="exp-body">
+                        <h3>Himalayan Expeditions</h3>
+                        <p>High-altitude journeys among the world's greatest peaks.</p>
+                        <div class="exp-meta"><span>Difficulty: Advanced</span><span>~ 30–60 days</span></div>
+                        <a href="booking.html" class="link-arrow light">Explore →</a>
+                    </div>
+                </article>
+
+                <article class="exp-card">
+                    <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80" alt="Karakoram expedition">
+                    <div class="exp-body">
+                        <h3>Karakoram Adventures</h3>
+                        <p>Remote glaciers, granite towers and legendary routes.</p>
+                        <div class="exp-meta"><span>Difficulty: Advanced</span><span>~ 25–50 days</span></div>
+                        <a href="booking.html" class="link-arrow light">Explore →</a>
+                    </div>
+                </article>
+
+                <article class="exp-card">
+                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80" alt="Alpine mountaineering">
+                    <div class="exp-body">
+                        <h3>Alpine Mountaineering</h3>
+                        <p>Mixed terrain, snow slopes and classic alpine objectives.</p>
+                        <div class="exp-meta"><span>Difficulty: Intermediate</span><span>~ 5–14 days</span></div>
+                        <a href="booking.html" class="link-arrow light">Explore →</a>
+                    </div>
+                </article>
+
+                <article class="exp-card">
+                    <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=800&q=80" alt="Technical rock climbing">
+                    <div class="exp-body">
+                        <h3>Technical Rock Climbing</h3>
+                        <p>Multi-pitch and sport climbing in demanding terrain.</p>
+                        <div class="exp-meta"><span>Difficulty: Intermediate–Advanced</span><span>~ 1–7 days</span></div>
+                        <a href="booking.html" class="link-arrow light">Explore →</a>
+                    </div>
+                </article>
+
+                <article class="exp-card">
+                    <img src="https://images.unsplash.com/photo-1610296669228-602fa827fc1f?w=800&q=80" alt="Glacier exploration">
+                    <div class="exp-body">
+                        <h3>Glacier Exploration</h3>
+                        <p>Ice fields, crevasses and the study of glacial landscapes.</p>
+                        <div class="exp-meta"><span>Difficulty: Intermediate</span><span>~ 3–10 days</span></div>
+                        <a href="booking.html" class="link-arrow light">Explore →</a>
+                    </div>
+                </article>
+
+                <article class="exp-card">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&q=80" alt="Beginner guided mountain adventure">
+                    <div class="exp-body">
+                        <h3>Guided Beginner Adventures</h3>
+                        <p>Your first steps into the mountain world with qualified guidance.</p>
+                        <div class="exp-meta"><span>Difficulty: Beginner</span><span>~ 1–3 days</span></div>
+                        <a href="booking.html" class="link-arrow light">Explore →</a>
+                    </div>
+                </article>
+            </div>
+            <p class="fine-print">All durations are indicative and vary by route, season and conditions.</p>
+        </div>
+    </section>
+
+    <!-- ============ MORE THAN A SUMMIT ============ -->
+    <section class="split-section" id="why">
+        <div class="split-media">
+            <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1200&q=80" alt="Climber ascending a snowy ridge">
+        </div>
+        <div class="split-content">
+            <p class="eyebrow eyebrow-dark">WHY MOUNTAINS MATTER</p>
+            <h2 class="section-title">MORE THAN A SUMMIT</h2>
+            <p class="section-sub">
+                Mountains teach what no classroom can. They demand preparation,
+                reward patience, and reveal the quiet strength of those who
+                approach them with humility.
+            </p>
+            <ul class="value-list">
+                <li><strong>Physical endurance</strong> — long days, heavy packs, and steady effort.</li>
+                <li><strong>Mental resilience</strong> — decision-making under pressure and change.</li>
+                <li><strong>Preparation & discipline</strong> — the unseen work behind every safe climb.</li>
+                <li><strong>Teamwork & communication</strong> — trust built rope-length by rope-length.</li>
+                <li><strong>Respect for nature</strong> — understanding fragile alpine environments.</li>
+                <li><strong>Responsible exploration</strong> — leaving places better than we found them.</li>
+            </ul>
+            <a href="about.html" class="btn btn-dark">ABOUT ALPINE ASCENTS</a>
+        </div>
+    </section>
+
+    <!-- ============ KNOWLEDGE HUB ============ -->
+    <section class="section section-light" id="knowledge">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow eyebrow-dark">MOUNTAINEERING KNOWLEDGE HUB</p>
+                <h2 class="section-title">KNOW THE MOUNTAIN. RESPECT THE CLIMB.</h2>
+            </div>
+
+            <div class="knowledge-grid">
+                <a href="history.html" class="knowledge-card">
+                    <div class="k-icon">▲</div>
+                    <h3>History of Mountaineering</h3>
+                    <p>From the first alpine ascents to the golden age of Himalayan exploration.</p>
+                    <span class="link-arrow">Read history →</span>
+                </a>
+                <a href="about.html" class="knowledge-card">
+                    <div class="k-icon">◈</div>
+                    <h3>Types & Styles of Climbing</h3>
+                    <p>Alpine, sport, trad, ice and expedition — how each style differs.</p>
+                    <span class="link-arrow">Learn more →</span>
+                </a>
+                <a href="booking.html" class="knowledge-card">
+                    <div class="k-icon">⚙</div>
+                    <h3>Essential Equipment</h3>
+                    <p>Ropes, harnesses, layers, and the gear that keeps climbers safe.</p>
+                    <span class="link-arrow">View gear →</span>
+                </a>
+                <a href="booking.html" class="knowledge-card">
+                    <div class="k-icon">◇</div>
+                    <h3>Climbing Techniques</h3>
+                    <p>Movement, rope work, anchors and the fundamentals of technique.</p>
+                    <span class="link-arrow">Explore →</span>
+                </a>
+                <a href="booking.html" class="knowledge-card">
+                    <div class="k-icon">☁</div>
+                    <h3>Weather & Altitude Hazards</h3>
+                    <p>Reading forecasts, recognizing altitude sickness, and staying safe.</p>
+                    <span class="link-arrow">Read more →</span>
+                </a>
+                <a href="booking.html" class="knowledge-card">
+                    <div class="k-icon">⌂</div>
+                    <h3>Mountain Shelters & Camps</h3>
+                    <p>Huts, base camps, and how expeditions organize their stays.</p>
+                    <span class="link-arrow">Discover →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SAFETY ============ -->
+    <section class="safety-section" id="safety">
+        <div class="safety-overlay"></div>
+        <div class="container safety-inner">
+            <p class="eyebrow">MOUNTAIN SAFETY</p>
+            <h2 class="section-title light">EVERY GREAT CLIMB BEGINS WITH PREPARATION.</h2>
+            <p class="section-sub light">
+                Safety on the mountain is not a single decision — it is a series of them,
+                made carefully before and during every climb.
+            </p>
+            <div class="safety-grid">
+                <div class="safety-item"><h4>Weather Forecasting</h4><p>Reading mountain weather and knowing when to turn back.</p></div>
+                <div class="safety-item"><h4>Route Planning</h4><p>Maps, navigation, and understanding the terrain before you step on it.</p></div>
+                <div class="safety-item"><h4>Acclimatization</h4><p>Gradual ascent to reduce the risk of altitude illness.</p></div>
+                <div class="safety-item"><h4>Technical Equipment</h4><p>Using the right gear and knowing how to rely on it.</p></div>
+                <div class="safety-item"><h4>Emergency Communication</h4><p>Satellite messengers, beacons, and clear rescue plans.</p></div>
+                <div class="safety-item"><h4>Qualified Guidance</h4><p>Training and experience matter more than ambition.</p></div>
+            </div>
+            <p class="safety-warning">
+                ⚠ Mountaineering can involve serious hazards. Difficult technical routes
+                require suitable training, experience, and qualified guidance.
+            </p>
+            <a href="booking.html" class="btn btn-primary">LEARN SAFETY BASICS</a>
+        </div>
+    </section>
+
+    <!-- ============ STORIES ============ -->
+    <section class="section section-light" id="stories">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow eyebrow-dark">MOUNTAIN STORIES</p>
+                <h2 class="section-title">STORIES WRITTEN ABOVE THE CLOUDS</h2>
+                <p class="section-sub">Illustrative editorial stories — not customer testimonials.</p>
+            </div>
+
+            <div class="stories-grid">
+                <article class="story-card">
+                    <img src="https://images.unsplash.com/photo-1517825738774-7de9363ef735?w=900&q=80" alt="Climber on a snowy alpine ridge at sunrise">
+                    <div class="story-body">
+                        <span class="story-tag">ILLUSTRATIVE STORY</span>
+                        <h3>A First Alpine Ascent</h3>
+                        <p>What begins as a training goal becomes a quiet lesson in patience, fear and focus.</p>
+                        <a href="about.html" class="link-arrow">Read story →</a>
+                    </div>
+                </article>
+                <article class="story-card">
+                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=900&q=80" alt="Team preparing gear at mountain base camp">
+                    <div class="story-body">
+                        <span class="story-tag">ILLUSTRATIVE STORY</span>
+                        <h3>The Weight of Preparation</h3>
+                        <p>A team prepares for a challenging mountain journey — and discovers the value of routine.</p>
+                        <a href="about.html" class="link-arrow">Read story →</a>
+                    </div>
+                </article>
+                <article class="story-card">
+                    <img src="https://images.unsplash.com/photo-1610296669228-602fa827fc1f?w=900&q=80" alt="Glacier and high-altitude landscape">
+                    <div class="story-body">
+                        <span class="story-tag">ILLUSTRATIVE STORY</span>
+                        <h3>Lessons from Thin Air</h3>
+                        <p>What high altitude teaches about limits, humility, and responsible exploration.</p>
+                        <a href="about.html" class="link-arrow">Read story →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="section section-dark" id="gallery">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow">MOUNTAIN GALLERY</p>
+                <h2 class="section-title light">A PORTRAIT OF THE HIGH PLACES</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <figure class="g-item g-a"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="Snow-covered mountain peaks"><figcaption>Snow Peaks</figcaption></figure>
+                <figure class="g-item g-b"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=900&q=80" alt="Sunrise above the clouds"><figcaption>Sunrise Above Clouds</figcaption></figure>
+                <figure class="g-item g-c"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&q=80" alt="Climbers on alpine ridge"><figcaption>Alpine Ridge</figcaption></figure>
+                <figure class="g-item g-d"><img src="https://images.unsplash.com/photo-1610296669228-602fa827fc1f?w=900&q=80" alt="Glacier ice formation"><figcaption>Glacier Ice</figcaption></figure>
+                <figure class="g-item g-e"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=900&q=80" alt="Mountain base camp"><figcaption>Base Camp</figcaption></figure>
+                <figure class="g-item g-f"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=900&q=80" alt="Dramatic rocky summit"><figcaption>Rocky Summit</figcaption></figure>
+                <figure class="g-item g-g"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80" alt="Mountain valley"><figcaption>Mountain Valley</figcaption></figure>
+                <figure class="g-item g-h"><img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=900&q=80" alt="Night sky above mountain range"><figcaption>Night Sky</figcaption></figure>
+            </div>
+
+            <div class="gallery-cta">
+                <a href="galery.html" class="btn btn-primary">VIEW FULL GALLERY</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FACTS ============ -->
+    <section class="section section-light" id="facts">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow eyebrow-dark">MOUNTAIN FACTS</p>
+                <h2 class="section-title">THE GEOGRAPHY OF HEIGHT</h2>
+                <p class="section-sub">Verified geographical facts — not climbing records.</p>
+            </div>
+
+            <div class="facts-grid">
+                <div class="fact"><span class="fact-num">8,848.86 m</span><p>Mount Everest's elevation above sea level (2020 survey).</p></div>
+                <div class="fact"><span class="fact-num">8,611 m</span><p>K2 — the world's second-highest mountain, in the Karakoram.</p></div>
+                <div class="fact"><span class="fact-num">2,400 km</span><p>Approximate length of the Himalayan range.</p></div>
+                <div class="fact"><span class="fact-num">7,000+ m</span><p>Height of more than 100 peaks in the Karakoram range alone.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RESPONSIBLE ============ -->
+    <section class="section section-ice" id="responsible">
+        <div class="container responsible-grid">
+            <div class="responsible-media">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80" alt="Pristine alpine valley">
+            </div>
+            <div class="responsible-content">
+                <p class="eyebrow eyebrow-dark">RESPONSIBLE EXPLORATION</p>
+                <h2 class="section-title">LEAVE NOTHING BUT FOOTPRINTS.</h2>
+                <p>Mountains are fragile. The trails, glaciers and alpine meadows we
+                love deserve protection — and so do the communities who live
+                alongside them.</p>
+                <ul class="value-list">
+                    <li>Minimize waste and carry out what you carry in.</li>
+                    <li>Respect local cultures, trails and wildlife.</li>
+                    <li>Support conservation and sustainable travel practices.</li>
+                    <li>Choose qualified local guides and operators.</li>
+                </ul>
+                <a href="about.html" class="btn btn-dark">OUR RESPONSIBILITY</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NEWS ============ -->
+    <section class="section section-light" id="news">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow eyebrow-dark">LATEST DEVELOPMENTS</p>
+                <h2 class="section-title">WHAT'S HAPPENING IN THE MOUNTAINS</h2>
+                <p class="section-sub">Sample editorial previews — not live news.</p>
+            </div>
+
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=900&q=80" alt="Safety preparation in mountains">
+                    <div class="news-body">
+                        <span class="news-tag">SAMPLE PREVIEW</span>
+                        <h3>Preparation as the First Line of Safety</h3>
+                        <p>Why planning, forecasting and training shape every successful climb.</p>
+                        <a href="booking.html" class="link-arrow">Read preview →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=900&q=80" alt="Modern climbing gear">
+                    <div class="news-body">
+                        <span class="news-tag">SAMPLE PREVIEW</span>
+                        <h3>Modern Gear and Climbing Technology</h3>
+                        <p>How lighter materials and better design continue to shape mountaineering.</p>
+                        <a href="booking.html" class="link-arrow">Read preview →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1610296669228-602fa827fc1f?w=900&q=80" alt="Glacier and conservation">
+                    <div class="news-body">
+                        <span class="news-tag">SAMPLE PREVIEW</span>
+                        <h3>Conservation and a Changing Alpine World</h3>
+                        <p>The fragile ecosystems of high mountains and why they matter.</p>
+                        <a href="about.html" class="link-arrow">Read preview →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="final-cta">
+        <div class="final-overlay"></div>
+        <div class="container final-inner">
+            <h2 class="section-title light">YOUR NEXT CHAPTER BEGINS AT THE SUMMIT.</h2>
+            <p class="section-sub light">
+                Explore the world's great mountain regions, deepen your knowledge,
+                and approach every adventure with purpose and preparation.
+            </p>
+            <div class="hero-actions">
+                <a href="#regions" class="btn btn-primary">EXPLORE OUR WORLD</a>
+                <a href="contact.html" class="btn btn-ghost">CONTACT US</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="brand footer-brand">
+                    <!-- YAHAN BHI APNA LOGO LINK LAGAYEIN -->
+                    <img src="YOUR_LOGO_LINK_HERE.png" alt="Alpine Ascents Logo" class="brand-logo-img">
+                    <span class="brand-word">ALPINE ASCENTS</span>
+                </a>
+                <p class="footer-desc">Beyond the Ordinary. Into the Wild. A world of mountain exploration, education, and respect for the high places.</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="booking.html">Expeditions</a></li>
+                    <li><a href="galery.html">Gallery</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Destinations</h4>
+                <ul>
+                    <li><a href="#regions">Himalayas</a></li>
+                    <li><a href="#regions">Karakoram</a></li>
+                    <li><a href="#regions">Alps</a></li>
+                    <li><a href="#regions">Andes</a></li>
+                    <li><a href="#regions">Rocky Mountains</a></li>
+                    <li><a href="#regions">Hindu Kush</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="history.html">Mountaineering History</a></li>
+                    <li><a href="#knowledge">Knowledge Hub</a></li>
+                    <li><a href="#safety">Mountain Safety</a></li>
+                    <li><a href="#facts">Mountain Facts</a></li>
+                </ul>
+                <h4 class="mt-2">Follow</h4>
+                <ul class="social-list">
+                    <li><a href="#" aria-label="Instagram">Instagram</a></li>
+                    <li><a href="#" aria-label="YouTube">YouTube</a></li>
+                    <li><a href="#" aria-label="Facebook">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>© 2026 ALPINE ASCENTS. All rights reserved. Educational mountaineering project.</p>
+            <p class="fine-print">Mountains involve serious risks. Always climb with training, preparation and qualified guidance.</p>
+        </div>
+    </footer>
+
+    <!-- ============ SCRIPT (Popup Logic) ============ -->
+    <script>
+        // Popup Elements
+        const openBtn = document.getElementById('openBookingPopup');
+        const closeBtn = document.getElementById('closePopup');
+        const popupModal = document.getElementById('bookingPopup');
+
+        // Open popup
+        if (openBtn) {
+            openBtn.addEventListener('click', () => {
+                popupModal.classList.add('active');
+                document.body.classList.add('modal-open');
+            });
+        }
+
+        // Close popup on X button
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                popupModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            });
+        }
+
+        // Close popup when clicking outside the box
+        if (popupModal) {
+            popupModal.addEventListener('click', (e) => {
+                if (e.target === popupModal) {
+                    popupModal.classList.remove('active');
+                    document.body.classList.remove('modal-open');
+                }
+            });
+        }
+
+        // Close popup on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && popupModal && popupModal.classList.contains('active')) {
+                popupModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            }
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('siteHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if(menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+            });
+        }
+        /* =====================================================
+   ALPINE ASCENTS — ADVANCED JAVASCRIPT SYSTEM v3.0
+   Pure JavaScript — No HTML/CSS mixing
+   Features: LocalStorage, Cart, Toast, Search,
+             Wishlist, Dashboard, Forms, Export/Import,
+             Analytics, Session, Animations, Auth
+   ===================================================== */
+
+'use strict';
+
+/* =====================================================
+   1. STORAGE MANAGER — LocalStorage Wrapper
+   ===================================================== */
+
+const Storage = {
+    prefix: 'alpineAscents_',
+
+    set(key, value) {
+        try {
+            localStorage.setItem(this.prefix + key, JSON.stringify({
+                value: value,
+                timestamp: Date.now()
+            }));
+            return true;
+        } catch (e) {
+            console.error('[Storage] Set error:', e);
+            return false;
+        }
+    },
+
+    get(key, defaultValue = null) {
+        try {
+            const item = localStorage.getItem(this.prefix + key);
+            if (!item) return defaultValue;
+            const parsed = JSON.parse(item);
+            return parsed.value !== undefined ? parsed.value : defaultValue;
+        } catch (e) {
+            console.error('[Storage] Get error:', e);
+            return defaultValue;
+        }
+    },
+
+    remove(key) {
+        localStorage.removeItem(this.prefix + key);
+    },
+
+    clearAll() {
+        Object.keys(localStorage).forEach(k => {
+            if (k.startsWith(this.prefix)) localStorage.removeItem(k);
+        });
+    },
+
+    getAll() {
+        const data = {};
+        Object.keys(localStorage).forEach(k => {
+            if (k.startsWith(this.prefix)) {
+                try {
+                    data[k.replace(this.prefix, '')] = JSON.parse(localStorage.getItem(k)).value;
+                } catch (e) {}
+            }
+        });
+        return data;
+    },
+
+    getSize() {
+        let total = 0;
+        Object.keys(localStorage).forEach(k => {
+            if (k.startsWith(this.prefix)) {
+                total += (localStorage.getItem(k) || '').length;
+            }
+        });
+        return (total / 1024).toFixed(2) + ' KB';
+    },
+
+    exists(key) {
+        return localStorage.getItem(this.prefix + key) !== null;
+    }
+};
+
+/* =====================================================
+   2. TOAST NOTIFICATION SYSTEM
+   ===================================================== */
+
+const Toast = {
+    container: null,
+
+    init() {
+        if (!this.container) {
+            this.container = document.createElement('div');
+            this.container.id = 'toast-container';
+            this.container.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                z-index: 99999;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                pointer-events: none;
+                max-width: 380px;
+            `;
+            document.body.appendChild(this.container);
+        }
+    },
+
+    show(message, type = 'info', duration = 3500) {
+        this.init();
+
+        const config = {
+            success: { bg: '#10b981', icon: '✓' },
+            error: { bg: '#ef4444', icon: '✕' },
+            warning: { bg: '#f59e0b', icon: '⚠' },
+            info: { bg: '#77C9F2', icon: 'ℹ' }
+        };
+        const c = config[type] || config.info;
+
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            background: ${c.bg};
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: auto;
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
+            opacity: 0;
+            cursor: pointer;
+        `;
+        toast.innerHTML = `<span style="font-size:1.2rem;">${c.icon}</span><span>${message}</span>`;
+
+        this.container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            toast.style.transform = 'translateX(0)';
+            toast.style.opacity = '1';
+        });
+
+        const remove = () => {
+            toast.style.transform = 'translateX(400px)';
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 400);
+        };
+
+        toast.addEventListener('click', remove);
+        setTimeout(remove, duration);
+    },
+
+    success(m, d) { this.show(m, 'success', d); },
+    error(m, d) { this.show(m, 'error', d); },
+    warning(m, d) { this.show(m, 'warning', d); },
+    info(m, d) { this.show(m, 'info', d); }
+};
+
+/* =====================================================
+   3. BOOKING CART SYSTEM
+   ===================================================== */
+
+const Cart = {
+    getItems() {
+        return Storage.get('cart', []);
+    },
+
+    add(item) {
+        const items = this.getItems();
+        const exists = items.find(i => i.id === item.id);
+        if (exists) {
+            Toast.warning('Already in your cart!');
+            return false;
+        }
+        item.addedAt = new Date().toISOString();
+        item.id = item.id || 'exp_' + Date.now();
+        items.push(item);
+        Storage.set('cart', items);
+        this.updateBadge();
+        Toast.success(`"${item.name}" added to cart! 🎒`);
+        Analytics.track('cart_add', { name: item.name });
+        return true;
+    },
+
+    remove(id) {
+        let items = this.getItems();
+        const removed = items.find(i => i.id === id);
+        items = items.filter(i => i.id !== id);
+        Storage.set('cart', items);
+        this.updateBadge();
+        if (removed) Toast.info(`"${removed.name}" removed`);
+        return true;
+    },
+
+    clear() {
+        Storage.set('cart', []);
+        this.updateBadge();
+        Toast.info('Cart cleared');
+    },
+
+    count() {
+        return this.getItems().length;
+    },
+
+    total() {
+        return this.getItems().reduce((sum, i) => sum + (parseFloat(i.price) || 0), 0);
+    },
+
+    updateBadge() {
+        const badge = document.getElementById('cart-badge');
+        const count = this.count();
+        if (badge) {
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'flex' : 'none';
+        }
+    },
+
+    injectBadge() {
+        if (document.getElementById('cart-btn')) return;
+        const header = document.querySelector('.header-inner');
+        if (!header) return;
+
+        const cartBtn = document.createElement('button');
+        cartBtn.id = 'cart-btn';
+        cartBtn.setAttribute('aria-label', 'View cart');
+        cartBtn.style.cssText = `
+            position: relative;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        `;
+        cartBtn.innerHTML = '🛒<span id="cart-badge" style="position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;border-radius:50%;min-width:18px;height:18px;font-size:0.65rem;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 4px;">0</span>';
+
+        cartBtn.addEventListener('click', () => Cart.showModal());
+
+        const nav = header.querySelector('.nav-desktop');
+        if (nav) nav.appendChild(cartBtn);
+        else header.appendChild(cartBtn);
+
+        this.updateBadge();
+    },
+
+    showModal() {
+        const items = this.getItems();
+        const total = this.total();
+        const existing = document.getElementById('cart-modal');
+        if (existing) existing.remove();
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay active';
+        modal.id = 'cart-modal';
+        modal.style.zIndex = '10001';
+        modal.innerHTML = `
+            <div class="modal-box" style="max-width:600px;text-align:left;">
+                <button class="modal-close" onclick="document.getElementById('cart-modal').remove()">&times;</button>
+                <div class="modal-icon" style="margin:0 0 15px 0;">🛒</div>
+                <h3 style="text-align:left;">Your Bookings (${items.length})</h3>
+                ${items.length === 0 ? '<p style="text-align:center;padding:30px 0;">Your cart is empty. Browse expeditions to add!</p>' : `
+                    <div style="max-height:320px;overflow-y:auto;margin:20px 0;">
+                        ${items.map(i => `
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid rgba(119,201,242,0.2);">
+                                <div>
+                                    <strong style="color:#fff;">${i.name}</strong>
+                                    <div style="font-size:0.8rem;color:rgba(255,255,255,0.6);">${i.type || 'Expedition'} · ${i.price ? '$' + i.price : 'TBD'}</div>
+                                </div>
+                                <button onclick="Cart.remove('${i.id}');document.getElementById('cart-modal').remove();Cart.showModal();" style="background:#ef4444;color:#fff;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:0.8rem;">Remove</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div style="display:flex;justify-content:space-between;padding:16px 0;border-top:2px solid rgba(119,201,242,0.4);margin-bottom:20px;">
+                        <strong style="color:#77C9F2;font-size:1.1rem;">Total:</strong>
+                        <strong style="color:#77C9F2;font-size:1.1rem;">$${total}</strong>
+                    </div>
+                    <button onclick="Cart.checkout()" class="btn-modal-book" style="width:100%;">PROCEED TO CHECKOUT</button>
+                    <button onclick="Cart.clear();document.getElementById('cart-modal').remove();" style="width:100%;margin-top:10px;background:transparent;border:1px solid #ef4444;color:#ef4444;padding:12px;border-radius:999px;cursor:pointer;font-weight:600;">Clear Cart</button>
+                `}
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    },
+
+    checkout() {
+        const items = this.getItems();
+        if (items.length === 0) return;
+
+        const bookings = Storage.get('bookings', []);
+        const order = {
+            id: 'ORD-' + Date.now(),
+            items: items,
+            total: this.total(),
+            date: new Date().toISOString(),
+            status: 'confirmed'
+        };
+        bookings.push(order);
+        Storage.set('bookings', bookings);
+        this.clear();
+        document.getElementById('cart-modal')?.remove();
+        Toast.success('Booking confirmed! Check your dashboard. 🎉', 5000);
+        Analytics.track('booking_completed', { total: order.total, items: items.length });
+    }
+};
+
+/* =====================================================
+   4. WISHLIST / FAVORITES
+   ===================================================== */
+
+const Wishlist = {
+    get() { return Storage.get('wishlist', []); },
+
+    toggle(item) {
+        let list = this.get();
+        const idx = list.findIndex(i => i.id === item.id);
+        if (idx > -1) {
+            list.splice(idx, 1);
+            Toast.info('Removed from wishlist');
+        } else {
+            item.addedAt = new Date().toISOString();
+            list.push(item);
+            Toast.success('Added to wishlist ❤️');
+        }
+        Storage.set('wishlist', list);
+        return idx === -1;
+    },
+
+    has(id) { return this.get().some(i => i.id === id); },
+
+    remove(id) {
+        const list = this.get().filter(i => i.id !== id);
+        Storage.set('wishlist', list);
+    },
+
+    count() { return this.get().length; }
+};
+
+/* =====================================================
+   5. ANALYTICS / SESSION TRACKING
+   ===================================================== */
+
+const Analytics = {
+    startTime: Date.now(),
+
+    init() {
+        const visits = Storage.get('visit_count', 0) + 1;
+        Storage.set('visit_count', visits);
+        Storage.set('last_visit', new Date().toISOString());
+        Storage.set('first_visit', Storage.get('first_visit', new Date().toISOString()));
+
+        this.track('page_view', { page: location.pathname });
+
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (pct > maxScroll) maxScroll = pct;
+        });
+
+        window.addEventListener('beforeunload', () => {
+            Storage.set('scroll_depth', maxScroll);
+            Storage.set('session_duration', Math.round((Date.now() - this.startTime) / 1000));
+        });
+
+        console.log(`📊 Visit #${visits} | Storage: ${Storage.getSize()}`);
+    },
+
+    track(event, data = {}) {
+        const events = Storage.get('analytics_events', []);
+        events.push({
+            event,
+            data,
+            timestamp: new Date().toISOString(),
+            page: location.pathname
+        });
+        if (events.length > 100) events.shift();
+        Storage.set('analytics_events', events);
+    },
+
+    getStats() {
+        return {
+            visits: Storage.get('visit_count', 0),
+            firstVisit: Storage.get('first_visit'),
+            lastVisit: Storage.get('last_visit'),
+            sessionDuration: Math.round((Date.now() - this.startTime) / 1000),
+            scrollDepth: Storage.get('scroll_depth', 0),
+            bookings: (Storage.get('bookings', []) || []).length,
+            wishlist: Wishlist.count(),
+            cartItems: Cart.count(),
+            storageSize: Storage.getSize(),
+            messages: (Storage.get('messages', []) || []).length
+        };
+    }
+};
+
+/* =====================================================
+   6. SEARCH SYSTEM
+   ===================================================== */
+
+const Search = {
+    data: [],
+
+    init() {
+        this.collectData();
+        this.injectSearchUI();
+        this.bindShortcut();
+    },
+
+    collectData() {
+        this.data = [];
+
+        document.querySelectorAll('.region-card').forEach(card => {
+            const title = card.querySelector('h3')?.textContent || '';
+            const desc = card.querySelector('p')?.textContent || '';
+            const tag = card.querySelector('.region-tag')?.textContent || '';
+            this.data.push({ type: 'region', title, desc, tag, element: card });
+        });
+
+        document.querySelectorAll('.exp-card').forEach(card => {
+            const title = card.querySelector('h3')?.textContent || '';
+            const desc = card.querySelector('p')?.textContent || '';
+            this.data.push({ type: 'expedition', title, desc, element: card });
+        });
+
+        document.querySelectorAll('.knowledge-card').forEach(card => {
+            const title = card.querySelector('h3')?.textContent || '';
+            const desc = card.querySelector('p')?.textContent || '';
+            this.data.push({ type: 'knowledge', title, desc, element: card });
+        });
+
+        console.log(`[Search] Indexed ${this.data.length} items`);
+    },
+
+    injectSearchUI() {
+        const header = document.querySelector('.header-inner');
+        if (!header || document.getElementById('search-btn')) return;
+
+        const searchBtn = document.createElement('button');
+        searchBtn.id = 'search-btn';
+        searchBtn.setAttribute('aria-label', 'Search');
+        searchBtn.style.cssText = `
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-left: 10px;
+            color: #fff;
+        `;
+        searchBtn.innerHTML = '🔍';
+        searchBtn.addEventListener('click', () => Search.showModal());
+
+        const nav = header.querySelector('.nav-desktop');
+        if (nav) nav.appendChild(searchBtn);
+    },
+
+    bindShortcut() {
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                Search.showModal();
+            }
+        });
+    },
+
+    showModal() {
+        const existing = document.getElementById('search-modal');
+        if (existing) { existing.remove(); return; }
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay active';
+        modal.id = 'search-modal';
+        modal.style.zIndex = '10001';
+        modal.style.alignItems = 'flex-start';
+        modal.style.paddingTop = '100px';
+        modal.innerHTML = `
+            <div class="modal-box" style="max-width:640px;padding:0;overflow:hidden;">
+                <div style="display:flex;align-items:center;padding:20px;border-bottom:1px solid rgba(119,201,242,0.2);">
+                    <span style="font-size:1.3rem;margin-right:12px;">🔍</span>
+                    <input id="search-input" type="text" placeholder="Search regions, expeditions, knowledge..."
+                        style="flex:1;background:transparent;border:none;color:#fff;font-size:1rem;outline:none;font-family:'Inter',sans-serif;">
+                    <button onclick="document.getElementById('search-modal').remove()"
+                        style="background:transparent;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:1.4rem;">×</button>
+                </div>
+                <div id="search-results" style="max-height:400px;overflow-y:auto;padding:12px;">
+                    <div style="color:rgba(255,255,255,0.5);text-align:center;padding:30px;font-size:0.9rem;">Type to search... (Ctrl+K to toggle)</div>
+                </div>
+                <div style="padding:12px 20px;border-top:1px solid rgba(119,201,242,0.15);font-size:0.75rem;color:rgba(255,255,255,0.5);">
+                    <span>💡 Press <kbd style="background:rgba(119,201,242,0.2);padding:2px 6px;border-radius:4px;">Esc</kbd> to close</span>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const input = document.getElementById('search-input');
+        const results = document.getElementById('search-results');
+        input.focus();
+
+        input.addEventListener('input', e => {
+            const q = e.target.value.toLowerCase().trim();
+            if (!q) {
+                results.innerHTML = '<div style="color:rgba(255,255,255,0.5);text-align:center;padding:30px;font-size:0.9rem;">Type to search...</div>';
+                return;
+            }
+            const matches = this.data.filter(item =>
+                item.title.toLowerCase().includes(q) ||
+                item.desc.toLowerCase().includes(q) ||
+                (item.tag || '').toLowerCase().includes(q)
+            );
+            if (matches.length === 0) {
+                results.innerHTML = '<div style="color:rgba(255,255,255,0.5);text-align:center;padding:30px;font-size:0.9rem;">No results found</div>';
+                return;
+            }
+            results.innerHTML = matches.map((m, i) => `
+                <div data-idx="${i}" style="padding:14px 16px;border-radius:8px;cursor:pointer;margin-bottom:4px;transition:background 0.2s;"
+                     onmouseover="this.style.background='rgba(119,201,242,0.15)'"
+                     onmouseout="this.style.background='transparent'">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <strong style="color:#77C9F2;">${m.title}</strong>
+                        <span style="font-size:0.65rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">${m.type}</span>
+                    </div>
+                    <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-top:4px;">${m.desc.substring(0,80)}...</div>
+                </div>
+            `).join('');
+            results.querySelectorAll('[data-idx]').forEach(el => {
+                el.addEventListener('click', () => {
+                    const item = matches[parseInt(el.dataset.idx)];
+                    if (item.element) {
+                        modal.remove();
+                        item.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        item.element.style.outline = '3px solid #77C9F2';
+                        setTimeout(() => item.element.style.outline = '', 2000);
+                    }
+                });
+            });
+        });
+
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
+    }
+};
+
+/* =====================================================
+   7. FORM MANAGER
+   ===================================================== */
+
+const FormManager = {
+    validate(form) {
+        const errors = [];
+        form.querySelectorAll('[required]').forEach(field => {
+            if (!field.value.trim()) {
+                errors.push(`${field.name || field.placeholder || 'Field'} is required`);
+                field.style.borderColor = '#ef4444';
+            } else {
+                field.style.borderColor = '';
+            }
+            if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                errors.push('Invalid email format');
+                field.style.borderColor = '#ef4444';
+            }
+        });
+        return errors;
+    },
+
+    saveMessage(data) {
+        const messages = Storage.get('messages', []);
+        data.id = 'MSG-' + Date.now();
+        data.timestamp = new Date().toISOString();
+        data.read = false;
+        messages.push(data);
+        Storage.set('messages', messages);
+        Toast.success('Message saved! We\'ll get back to you. 📩');
+        Analytics.track('contact_submitted', data);
+    },
+
+    saveBooking(data) {
+        const bookings = Storage.get('bookings', []);
+        data.id = 'BK-' + Date.now();
+        data.timestamp = new Date().toISOString();
+        data.status = 'pending';
+        bookings.push(data);
+        Storage.set('bookings', bookings);
+        Toast.success('Booking submitted! Check dashboard. 🎉');
+        Analytics.track('booking_submitted', data);
+    }
+};
+
+/* =====================================================
+   8. DASHBOARD
+   ===================================================== */
+
+const Dashboard = {
+    injectButton() {
+        if (document.getElementById('dashboard-btn')) return;
+        const header = document.querySelector('.header-inner');
+        if (!header) return;
+
+        const btn = document.createElement('button');
+        btn.id = 'dashboard-btn';
+        btn.setAttribute('aria-label', 'Dashboard');
+        btn.style.cssText = `
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-left: 10px;
+            color: #fff;
+        `;
+        btn.innerHTML = '👤';
+        btn.addEventListener('click', () => Dashboard.show());
+        const nav = header.querySelector('.nav-desktop');
+        if (nav) nav.appendChild(btn);
+    },
+
+    show() {
+        const stats = Analytics.getStats();
+        const bookings = Storage.get('bookings', []);
+        const wishlist = Wishlist.get();
+        const cart = Cart.getItems();
+        const existing = document.getElementById('dashboard-modal');
+        if (existing) existing.remove();
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay active';
+        modal.id = 'dashboard-modal';
+        modal.style.zIndex = '10001';
+        modal.innerHTML = `
+            <div class="modal-box" style="max-width:720px;text-align:left;max-height:85vh;overflow-y:auto;">
+                <button class="modal-close" onclick="document.getElementById('dashboard-modal').remove()">&times;</button>
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+                    <div class="modal-icon" style="margin:0;width:60px;height:60px;">👤</div>
+                    <div>
+                        <h3 style="margin:0;font-size:1.4rem;">Your Dashboard</h3>
+                        <p style="margin:4px 0 0 0;font-size:0.85rem;color:rgba(255,255,255,0.6);">Member since ${stats.firstVisit ? new Date(stats.firstVisit).toLocaleDateString() : 'today'}</p>
+                    </div>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:24px;">
+                    <div style="background:rgba(119,201,242,0.1);border:1px solid rgba(119,201,242,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#77C9F2;font-weight:700;">${stats.visits}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Visits</div>
+                    </div>
+                    <div style="background:rgba(119,201,242,0.1);border:1px solid rgba(119,201,242,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#77C9F2;font-weight:700;">${bookings.length}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Bookings</div>
+                    </div>
+                    <div style="background:rgba(119,201,242,0.1);border:1px solid rgba(119,201,242,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#77C9F2;font-weight:700;">${wishlist.length}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Wishlist</div>
+                    </div>
+                    <div style="background:rgba(119,201,242,0.1);border:1px solid rgba(119,201,242,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#77C9F2;font-weight:700;">${cart.length}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">In Cart</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#77C9F2;font-size:0.8rem;letter-spacing:0.15em;margin-bottom:12px;">📋 MY BOOKINGS</h4>
+                    ${bookings.length === 0 ? '<p style="color:rgba(255,255,255,0.5);font-size:0.9rem;">No bookings yet. Start exploring!</p>' : `
+                        <div style="max-height:200px;overflow-y:auto;">
+                            ${bookings.slice().reverse().map(b => `
+                                <div style="padding:10px;border-bottom:1px solid rgba(119,201,242,0.15);display:flex;justify-content:space-between;align-items:center;">
+                                    <div>
+                                        <div style="color:#fff;font-size:0.9rem;font-weight:600;">${b.id}</div>
+                                        <div style="color:rgba(255,255,255,0.5);font-size:0.75rem;">${new Date(b.timestamp || b.date).toLocaleString()} · ${b.status || 'pending'}</div>
+                                    </div>
+                                    <div style="color:#77C9F2;font-weight:700;">${b.total ? '$'+b.total : ''}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `}
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#77C9F2;font-size:0.8rem;letter-spacing:0.15em;margin-bottom:12px;">❤️ WISHLIST</h4>
+                    ${wishlist.length === 0 ? '<p style="color:rgba(255,255,255,0.5);font-size:0.9rem;">No favorites yet.</p>' : `
+                        <div style="max-height:180px;overflow-y:auto;">
+                            ${wishlist.map(w => `
+                                <div style="padding:8px;border-bottom:1px solid rgba(119,201,242,0.15);display:flex;justify-content:space-between;">
+                                    <span style="color:#fff;font-size:0.85rem;">${w.name || w.title}</span>
+                                    <button onclick="Wishlist.remove('${w.id}');document.getElementById('dashboard-modal').remove();Dashboard.show();"
+                                        style="background:transparent;border:none;color:#ef4444;cursor:pointer;font-size:0.8rem;">Remove</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `}
+                </div>
+
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;padding-top:20px;border-top:1px solid rgba(119,201,242,0.2);">
+                    <button onclick="DataManager.exportData()" style="flex:1;background:rgba(119,201,242,0.15);border:1px solid #77C9F2;color:#77C9F2;padding:10px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:600;">📤 Export Data</button>
+                    <button onclick="DataManager.importData()" style="flex:1;background:rgba(119,201,242,0.15);border:1px solid #77C9F2;color:#77C9F2;padding:10px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:600;">📥 Import Data</button>
+                    <button onclick="if(confirm('Clear ALL data? This cannot be undone.')){Storage.clearAll();localStorage.clear();location.reload();}" style="flex:1;background:rgba(239,68,68,0.15);border:1px solid #ef4444;color:#ef4444;padding:10px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:600;">🗑️ Clear All</button>
+                </div>
+
+                <div style="margin-top:16px;font-size:0.75rem;color:rgba(255,255,255,0.4);text-align:center;">
+                    💾 Storage: ${stats.storageSize} · Session: ${stats.sessionDuration}s · Scroll: ${stats.scrollDepth}%
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    }
+};
+
+/* =====================================================
+   9. DATA EXPORT / IMPORT
+   ===================================================== */
+
+const DataManager = {
+    exportData() {
+        const data = {
+            exported: new Date().toISOString(),
+            version: '3.0',
+            data: Storage.getAll()
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `alpineAscents_backup_${Date.now()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        Toast.success('Data exported! 📤');
+    },
+
+    importData() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        input.onchange = e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = ev => {
+                try {
+                    const parsed = JSON.parse(ev.target.result);
+                    if (parsed.data) {
+                        Object.entries(parsed.data).forEach(([k, v]) => Storage.set(k, v));
+                        Toast.success('Data imported! Refreshing...');
+                        setTimeout(() => location.reload(), 1500);
+                    }
+                } catch (err) {
+                    Toast.error('Invalid file!');
+                }
+            };
+            reader.readAsText(file);
+        };
+        input.click();
+    }
+};
+
+/* =====================================================
+   10. SCROLL ANIMATIONS
+   ===================================================== */
+
+const ScrollAnimator = {
+    init() {
+        if (!('IntersectionObserver' in window)) return;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .scroll-reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+            .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        `;
+        document.head.appendChild(style);
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.section-head, .region-card, .exp-card, .knowledge-card, .story-card, .news-card, .fact, .safety-item, .g-item, .responsible-media, .responsible-content').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+    }
+};
+
+/* =====================================================
+   11. ENHANCED POPUP SYSTEM
+   ===================================================== */
+
+const PopupSystem = {
+    init() {
+        const openBtn = document.getElementById('openBookingPopup');
+        const closeBtn = document.getElementById('closePopup');
+        const modal = document.getElementById('bookingPopup');
+
+        if (openBtn && modal) {
+            openBtn.addEventListener('click', () => this.showBookingForm(modal));
+        }
+        if (closeBtn && modal) {
+            closeBtn.addEventListener('click', () => this.close(modal));
+        }
+        if (modal) {
+            modal.addEventListener('click', e => { if (e.target === modal) this.close(modal); });
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(m => this.close(m));
+            }
+        });
+    },
+
+    showBookingForm(modal) {
+        const box = modal.querySelector('.modal-box');
+        if (box && !box.dataset.enhanced) {
+            box.dataset.enhanced = 'true';
+            box.innerHTML = `
+                <button class="modal-close" id="closePopup">&times;</button>
+                <div class="modal-icon">⛰️</div>
+                <h3>Book Your Expedition</h3>
+                <p style="margin-bottom:20px;">Fill out the quick form and we'll reach out within 24 hours.</p>
+                <form id="quick-booking-form" style="text-align:left;">
+                    <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:12px 16px;margin-bottom:12px;border-radius:8px;border:1px solid rgba(119,201,242,0.3);background:rgba(255,255,255,0.05);color:#fff;font-size:0.9rem;outline:none;">
+                    <input type="email" name="email" placeholder="Your Email" required style="width:100%;padding:12px 16px;margin-bottom:12px;border-radius:8px;border:1px solid rgba(119,201,242,0.3);background:rgba(255,255,255,0.05);color:#fff;font-size:0.9rem;outline:none;">
+                    <select name="expedition" required style="width:100%;padding:12px 16px;margin-bottom:12px;border-radius:8px;border:1px solid rgba(119,201,242,0.3);background:rgba(7,21,33,0.9);color:#fff;font-size:0.9rem;outline:none;">
+                        <option value="">Select Expedition</option>
+                        <option>Himalayan Expeditions</option>
+                        <option>Karakoram Adventures</option>
+                        <option>Alpine Mountaineering</option>
+                        <option>Technical Rock Climbing</option>
+                        <option>Glacier Exploration</option>
+                        <option>Guided Beginner Adventures</option>
+                    </select>
+                    <input type="date" name="date" required style="width:100%;padding:12px 16px;margin-bottom:12px;border-radius:8px;border:1px solid rgba(119,201,242,0.3);background:rgba(255,255,255,0.05);color:#fff;font-size:0.9rem;outline:none;">
+                    <input type="number" name="people" placeholder="Number of People" min="1" required style="width:100%;padding:12px 16px;margin-bottom:16px;border-radius:8px;border:1px solid rgba(119,201,242,0.3);background:rgba(255,255,255,0.05);color:#fff;font-size:0.9rem;outline:none;">
+                    <button type="submit" class="btn-modal-book">SUBMIT BOOKING</button>
+                    <button type="button" onclick="document.getElementById('bookingPopup').classList.remove('active');document.body.classList.remove('modal-open');" style="width:100%;margin-top:10px;background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:12px;border-radius:999px;cursor:pointer;font-size:0.85rem;">Cancel</button>
+                </form>
+            `;
+
+            const form = box.querySelector('#quick-booking-form');
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                const errors = FormManager.validate(form);
+                if (errors.length > 0) {
+                    Toast.error(errors[0]);
+                    return;
+                }
+                const fd = new FormData(form);
+                FormManager.saveBooking({
+                    name: fd.get('name'),
+                    email: fd.get('email'),
+                    expedition: fd.get('expedition'),
+                    date: fd.get('date'),
+                    people: fd.get('people')
+                });
+                form.reset();
+                this.close(modal);
+            });
+
+            box.querySelector('#closePopup').addEventListener('click', () => this.close(modal));
+        }
+        modal.classList.add('active');
+        document.body.classList.add('modal-open');
+    },
+
+    close(modal) {
+        modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+    }
+};
+
+/* =====================================================
+   12. WISHLIST BUTTONS — Auto Inject to Cards
+   ===================================================== */
+
+const WishlistButtons = {
+    init() {
+        document.querySelectorAll('.exp-card, .region-card').forEach(card => {
+            if (card.querySelector('.wishlist-btn')) return;
+
+            const title = card.querySelector('h3')?.textContent || 'Unknown';
+            const tag = card.querySelector('.region-tag')?.textContent || '';
+            const img = card.querySelector('img')?.src || '';
+            const id = 'item_' + title.replace(/\s+/g, '_').toLowerCase();
+
+            const btn = document.createElement('button');
+            btn.className = 'wishlist-btn';
+            btn.setAttribute('aria-label', 'Add to wishlist');
+            btn.style.cssText = `
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: rgba(7,21,33,0.7);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255,255,255,0.2);
+                color: #fff;
+                font-size: 1rem;
+                cursor: pointer;
+                z-index: 5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s;
+            `;
+            const updateIcon = () => {
+                btn.innerHTML = Wishlist.has(id) ? '❤️' : '🤍';
+                btn.style.transform = Wishlist.has(id) ? 'scale(1.1)' : 'scale(1)';
+            };
+            updateIcon();
+
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                Wishlist.toggle({ id, name: title, tag, img });
+                updateIcon();
+            });
+
+            card.style.position = 'relative';
+            card.appendChild(btn);
+        });
+    }
+};
+
+/* =====================================================
+   13. BOOKING BUTTONS — Auto Inject to Exp Cards
+   ===================================================== */
+
+const BookingButtons = {
+    init() {
+        document.querySelectorAll('.exp-card').forEach(card => {
+            if (card.querySelector('.book-now-btn')) return;
+
+            const title = card.querySelector('h3')?.textContent || 'Expedition';
+            const type = card.querySelector('.exp-meta span')?.textContent || 'Expedition';
+            const prices = [1500, 2500, 3200, 4500, 5500];
+            const price = prices[Math.floor(Math.random() * prices.length)];
+
+            const btn = document.createElement('button');
+            btn.className = 'book-now-btn';
+            // YAHAN TEXT CHANGE KAR DIYA HAI
+            btn.textContent = 'BOOKING NOW';
+            btn.style.cssText = `
+                width: calc(100% - 52px);
+                margin: 0 26px 20px;
+                padding: 10px;
+                border-radius: 8px;
+                background: linear-gradient(135deg, #77C9F2, #4db3e6);
+                color: #071521;
+                border: none;
+                font-weight: 700;
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+            `;
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-2px)';
+                btn.style.boxShadow = '0 8px 20px rgba(119,201,242,0.5)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0)';
+                btn.style.boxShadow = 'none';
+            });
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                Cart.add({
+                    id: 'exp_' + title.replace(/\s+/g, '_').toLowerCase(),
+                    name: title,
+                    type,
+                    price
+                });
+            });
+
+            const body = card.querySelector('.exp-body');
+            if (body) body.appendChild(btn);
+        });
+    }
+};
+
+/* =====================================================
+   14. SIMPLE AUTH SIMULATION
+   ===================================================== */
+
+const Auth = {
+    getUser() {
+        return Storage.get('user', null);
+    },
+
+    login(name, email) {
+        const user = {
+            name,
+            email,
+            loginAt: new Date().toISOString()
+        };
+        Storage.set('user', user);
+        Toast.success(`Welcome, ${name}! 👋`);
+        return user;
+    },
+
+    logout() {
+        Storage.remove('user');
+        Toast.info('Logged out');
+    },
+
+    isLoggedIn() {
+        return !!this.getUser();
+    }
+};
+
+/* =====================================================
+   15. INITIALIZE EVERYTHING
+   ===================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('%c🏔️ ALPINE ASCENTS Advanced System v3.0', 'color:#77C9F2;font-size:16px;font-weight:bold;');
+
+    Analytics.init();
+    Cart.injectBadge();
+    Dashboard.injectButton();
+    Search.init();
+    PopupSystem.init();
+    ScrollAnimator.init();
+
+    setTimeout(() => {
+        WishlistButtons.init();
+        BookingButtons.init();
+    }, 100);
+
+    if (!sessionStorage.getItem('welcomeShown')) {
+        setTimeout(() => {
+            Toast.success('Welcome to ALPINE ASCENTS! 🏔️ Press Ctrl+K to search', 5000);
+            sessionStorage.setItem('welcomeShown', '1');
+        }, 1500);
+    }
+
+    setTimeout(() => {
+        console.log('📊 Your Stats:', Analytics.getStats());
+        console.log('💾 Storage Size:', Storage.getSize());
+    }, 2000);
+});
+
+/* =====================================================
+   16. GLOBAL EXPOSURE (for console debugging)
+   ===================================================== */
+
+window.ALPINE_ASCENTS = {
+    Storage,
+    Toast,
+    Cart,
+    Wishlist,
+    Analytics,
+    Search,
+    Dashboard,
+    DataManager,
+    FormManager,
+    Auth
+};
+    </script>
+    <script>
+        /* =====================================================
+   ALPINE ASCENTS — GLOBAL BACKGROUND MUSIC SYSTEM
+   Saare pages mein automatically chalega
+   ===================================================== */
+
+(function() {
+    'use strict';
+
+    // ====== CONFIGURATION ======
+    const CONFIG = {
+        musicFile: 'epic_musictracks-mountain-path-125573.mp3', // 🎵 Apna music file yahan
+        defaultVolume: 0.15,  // 15% volume (halka)
+        storagePrefix: 'alpineAscents_music_',
+        buttonPosition: { bottom: '24px', right: '24px' }
+    };
+
+    // ====== STORAGE ======
+    const Store = {
+        set(k, v) {
+            try { localStorage.setItem(CONFIG.storagePrefix + k, JSON.stringify(v)); } catch(e) {}
+        },
+        get(k, d = null) {
+            try {
+                const i = localStorage.getItem(CONFIG.storagePrefix + k);
+                return i ? JSON.parse(i) : d;
+            } catch(e) { return d; }
+        }
+    };
+
+    // ====== MUSIC MANAGER ======
+    const MusicManager = {
+        audio: null,
+        button: null,
+        initialized: false,
+
+        init() {
+            if (this.initialized) return;
+            if (document.getElementById('alpineascents-music-btn')) return;
+
+            // Create audio element
+            this.audio = document.createElement('audio');
+            this.audio.id = 'alpineascents-bg-music';
+            this.audio.loop = true;
+            this.audio.preload = 'auto';
+            this.audio.volume = parseFloat(Store.get('volume', CONFIG.defaultVolume));
+
+            const source = document.createElement('source');
+            source.src = CONFIG.musicFile;
+            source.type = 'audio/mpeg';
+            this.audio.appendChild(source);
+            document.body.appendChild(this.audio);
+
+            // Restore saved state
+            const savedTime = Store.get('time', 0);
+            const musicOff = Store.get('off', false);
+
+            if (savedTime > 0) {
+                this.audio.addEventListener('loadedmetadata', () => {
+                    if (savedTime < this.audio.duration) {
+                        this.audio.currentTime = savedTime;
+                    }
+                }, { once: true });
+            }
+
+            // Create button
+            this.createButton();
+
+            // Try autoplay
+            if (!musicOff) {
+                this.attemptAutoplay();
+            }
+
+            // First click fallback (browser autoplay block)
+            if (musicOff) {
+                this.button.classList.remove('playing');
+            }
+
+            // Save time periodically
+            this.audio.addEventListener('timeupdate', () => {
+                Store.set('time', this.audio.currentTime);
+                Store.set('volume', this.audio.volume);
+            });
+
+            // Save on leave
+            window.addEventListener('beforeunload', () => {
+                Store.set('time', this.audio.currentTime);
+            });
+
+            // Bind button
+            this.button.addEventListener('click', () => this.toggle());
+
+            // Keyboard M
+            document.addEventListener('keydown', (e) => {
+                if ((e.key === 'm' || e.key === 'M') && !e.target.matches('input, textarea, select')) {
+                    this.toggle();
+                }
+            });
+
+            // Volume slider on long-press
+            this.button.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                this.showVolumeControl();
+            });
+
+            this.initialized = true;
+            console.log('%c🎵 ALPINE ASCENTS Music Ready', 'color:#77C9F2;font-weight:bold;');
+        },
+
+        createButton() {
+            const btn = document.createElement('button');
+            btn.id = 'alpineascents-music-btn';
+            btn.setAttribute('aria-label', 'Toggle music');
+            btn.title = 'Music On/Off (M key) | Right-click for volume';
+            btn.style.cssText = `
+                position: fixed;
+                bottom: ${CONFIG.buttonPosition.bottom};
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99998;
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                border: 2px solid #77C9F2;
+                background: rgba(7, 21, 33, 0.88);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                color: #77C9F2;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2);
+                transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+                user-select: none;
+                -webkit-user-select: none;
+            `;
+            btn.innerHTML = '🔇';
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'scale(1.1)';
+                btn.style.boxShadow = '0 12px 32px rgba(0,0,0,0.6), 0 0 30px rgba(119,201,242,0.5)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+                btn.style.boxShadow = '0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2)';
+            });
+
+            // Pulse animation style
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes alpineascentsPulse {
+                    0% { box-shadow: 0 0 0 0 rgba(119,201,242,0.6), 0 8px 24px rgba(0,0,0,0.5); }
+                    70% { box-shadow: 0 0 0 16px rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                    100% { box-shadow: 0 0 0 0 rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                }
+                #alpineascents-music-btn.playing {
+                    animation: alpineascentsPulse 2.2s infinite;
+                    background: rgba(119,201,242,0.15);
+                }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(btn);
+            this.button = btn;
+        },
+
+        attemptAutoplay() {
+            const playPromise = this.audio.play();
+            if (playPromise) {
+                playPromise
+                    .then(() => {
+                        this.button.innerHTML = '🎵';
+                        this.button.classList.add('playing');
+                        console.log('🎵 Music autoplay started');
+                    })
+                    .catch(() => {
+                        // Autoplay blocked - wait for user click
+                        console.log('🎵 Autoplay blocked, waiting for user click');
+                        const startOnClick = () => {
+                            if (this.audio.paused && !Store.get('off', false)) {
+                                this.audio.play().then(() => {
+                                    this.button.innerHTML = '🎵';
+                                    this.button.classList.add('playing');
+                                }).catch(() => {});
+                            }
+                            document.removeEventListener('click', startOnClick);
+                        };
+                        document.addEventListener('click', startOnClick, { once: true });
+                    });
+            }
+        },
+
+        toggle() {
+            if (!this.audio) return;
+            if (this.audio.paused) {
+                this.audio.play().then(() => {
+                    this.button.innerHTML = '🎵';
+                    this.button.classList.add('playing');
+                    Store.set('off', false);
+                }).catch(err => console.warn('Play failed:', err));
+            } else {
+                this.audio.pause();
+                this.button.innerHTML = '🔇';
+                this.button.classList.remove('playing');
+                Store.set('off', true);
+            }
+        },
+
+        showVolumeControl() {
+            const existing = document.getElementById('alpineascents-volume-popup');
+            if (existing) { existing.remove(); return; }
+
+            const popup = document.createElement('div');
+            popup.id = 'alpineascents-volume-popup';
+            const btnRect = this.button.getBoundingClientRect();
+            popup.style.cssText = `
+                position: fixed;
+                bottom: ${window.innerHeight - btnRect.top + 10}px;
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99999;
+                background: rgba(7, 21, 33, 0.95);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(119,201,242,0.3);
+                border-radius: 12px;
+                padding: 16px 20px;
+                color: #fff;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.85rem;
+                width: 200px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            `;
+            popup.innerHTML = `
+                <div style="margin-bottom:10px;color:#77C9F2;font-weight:700;">🔊 Volume</div>
+                <input type="range" id="alpineascents-vol-slider" min="0" max="100" value="${Math.round(this.audio.volume * 100)}"
+                    style="width:100%;accent-color:#77C9F2;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.7rem;color:rgba(255,255,255,0.6);">
+                    <span>0%</span>
+                    <span id="alpineascents-vol-value">${Math.round(this.audio.volume * 100)}%</span>
+                    <span>100%</span>
+                </div>
+            `;
+            document.body.appendChild(popup);
+
+            const slider = popup.querySelector('#alpineascents-vol-slider');
+            const valueEl = popup.querySelector('#alpineascents-vol-value');
+            slider.addEventListener('input', () => {
+                const vol = slider.value / 100;
+                this.audio.volume = vol;
+                valueEl.textContent = slider.value + '%';
+                Store.set('volume', vol);
+            });
+
+            // Close on outside click
+            setTimeout(() => {
+                const closeHandler = (e) => {
+                    if (!popup.contains(e.target) && e.target !== this.button) {
+                        popup.remove();
+                        document.removeEventListener('click', closeHandler);
+                    }
+                };
+                document.addEventListener('click', closeHandler);
+            }, 100);
+        }
+    };
+
+    // ====== INIT ON DOM READY ======
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => MusicManager.init());
+    } else {
+        MusicManager.init();
+    }
+
+    // Global access
+    window.ALPINE_ASCENTS_MUSIC = MusicManager;
+})();
+    </script>
+    <script src="music.js"></script>
+</body>
+</html>

@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History of Mountaineering | ALPINE ASCENTS</title>
+<meta name="description" content="From ancient mountain journeys to the Himalayas: the history of mountaineering, told by Alpine Ascents.">
+<link rel="stylesheet" href="history.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    :root{
+  --blue:#163A59;--glacier:#7CC8ED;--snow:#F7FAFC;--navy:#0B1825;--ice:#E5EDF2;--char:#263442;
+  --serif:Georgia,"Times New Roman",serif;--sans:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --hh:76px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh) + 10px)}
+body{font-family:var(--sans);color:var(--char);background:var(--snow);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1180px,92%);margin:auto}
+
+/* ===== NAYA HEADER (Alpine Ascents Home Style) ===== */
+.site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    height: var(--hh);
+    display: flex;
+    align-items: center;
+    padding: 0 4%;
+    background: linear-gradient(to bottom, rgba(7,21,33,0.75) 0%, rgba(7,21,33,0) 100%);
+    transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.site-header.scrolled {
+    background: rgba(7, 21, 33, 0.92);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(119, 201, 242, 0.18);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #F7FAFC;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* LOGO IMAGE KI STYLING */
+.brand-logo-img {
+    height: 50px; /* Apne logo ke hisaab se change karein */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.brand:hover .brand-logo-img { transform: translateY(-3px) scale(1.05); }
+
+.brand-word {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.nav-link {
+    position: relative;
+    color: rgba(247, 250, 252, 0.9);
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 10px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color 0.25s ease, background 0.25s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: 4px;
+    transform: translateX(-50%);
+    width: 0; height: 2px;
+    background: #77C9F2;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-link.active { color: #77C9F2; }
+.nav-link:hover::after,
+.nav-link.active::after { width: 40%; }
+
+.btn-plan {
+    background: linear-gradient(135deg, #77C9F2, #4db3e6);
+    color: #071521;
+    padding: 13px 24px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    border-radius: 999px;
+    white-space: nowrap;
+    margin-left: 14px;
+    text-decoration: none;
+    box-shadow: 0 8px 22px rgba(119, 201, 242, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-plan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(119, 201, 242, 0.6);
+}
+
+/* Mobile menu */
+.menu-toggle {
+    display: none;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 11px 10px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #F7FAFC;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(7, 21, 33, 0.98);
+    backdrop-filter: blur(18px);
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease, padding 0.3s ease;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.mobile-menu.open { max-height: 560px; padding: 20px 24px 30px; }
+
+.mobile-menu a {
+    color: #F7FAFC;
+    padding: 15px 0;
+    font-size: 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(119, 201, 242, 0.12);
+}
+
+.mobile-menu a.active { color: #77C9F2; }
+
+.btn-plan-mobile {
+    background: #77C9F2;
+    color: #071521 !important;
+    text-align: center;
+    margin-top: 18px;
+    padding: 14px !important;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    border: 0 !important;
+    border-radius: 999px;
+    font-size: 0.82rem !important;
+}
+
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:3px;font-weight:600;font-size:.95rem;text-decoration:none;letter-spacing:.03em;transition:.3s;border:2px solid var(--glacier)}
+.btn-solid{background:var(--glacier);color:var(--navy)}
+.btn-solid:hover{background:var(--snow);border-color:var(--snow);transform:translateY(-2px)}
+.btn-ghost{color:var(--snow);background:transparent}
+.btn-ghost:hover{background:var(--glacier);color:var(--navy);transform:translateY(-2px)}
+
+/* ===== MUSIC BUTTON ===== */
+.music-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:2000;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  border:2px solid var(--glacier);
+  background:rgba(11,24,37,.85);
+  color:var(--glacier);
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:transform .3s, background .3s;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+.music-btn:hover{transform:scale(1.1);background:var(--glacier);color:var(--navy)}
+.music-btn svg{width:24px;height:24px;fill:currentColor}
+.music-btn.playing{animation:pulse 2s infinite}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(124,200,237,.6)}
+  70%{box-shadow:0 0 0 16px rgba(124,200,237,0)}
+  100%{box-shadow:0 0 0 0 rgba(124,200,237,0)}
+}
+.music-btn .icon-pause{display:none}
+.music-btn.playing .icon-play{display:none}
+.music-btn.playing .icon-pause{display:block}
+
+/* ===== HERO - SIRF BREADCRUMB ===== */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:var(--navy);
+  padding-top: calc(var(--hh) + 60px);
+  padding-bottom: 60px;
+}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;left:0;right:0;top:0;height:170px;background:linear-gradient(rgba(11,24,37,.6),transparent);pointer-events:none}
+.scroll-cue{position:absolute;z-index:2;bottom:24px;left:50%;width:24px;height:38px;margin-left:-12px;border:2px solid var(--snow);border-radius:14px;opacity:.85}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;background:var(--snow);border-radius:3px;animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
+
+/* intro */
+.eyebrow{font-size:.78rem;letter-spacing:.32em;font-weight:700;color:var(--blue);margin-bottom:14px;text-transform:uppercase;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:38px;height:2px;background:currentColor}
+.eyebrow.dark{color:var(--blue)}
+.dark .eyebrow,.eyebrow.glacier{color:var(--glacier)}
+.crumbs{display:flex;gap:10px;font-size:.85rem;margin-bottom:26px;color:var(--char)}
+.crumbs a{text-decoration:none;color:var(--blue);font-weight:600}
+.lead{max-width:60ch;font-size:1.12rem;margin:0 auto 32px}
+.intro{padding:clamp(70px,9vw,120px) 0;background:var(--snow);text-align:center}
+.intro .crumbs,.intro .eyebrow{justify-content:center}
+.intro h1{font:700 clamp(2.2rem,5vw,4rem)/1.1 var(--serif);color:var(--blue);max-width:18ch;margin:0 auto 22px}
+
+/* sections */
+.section{padding:clamp(64px,9vw,120px) 0}
+.light{background:var(--snow)}.ice{background:var(--ice)}.dark{background:var(--navy);color:var(--ice)}
+h2{font:700 clamp(1.8rem,3.6vw,2.9rem)/1.15 var(--serif);color:var(--blue);margin-bottom:22px}
+.dark h2{color:var(--snow)}
+h3{font:700 1.2rem/1.3 var(--serif);color:var(--blue);margin-bottom:8px}
+.dark h3{color:var(--glacier)}
+.sec-head{margin-bottom:48px;max-width:760px}
+.sec-head.center{text-align:center;margin-inline:auto}
+.sec-head.center .eyebrow{justify-content:center}
+.text p{margin-bottom:16px}
+.dropcap::first-letter{float:left;font:700 4rem/.8 var(--serif);color:var(--blue);padding:8px 12px 0 0}
+.note{margin-top:36px;text-align:center;font-style:italic;max-width:70ch;margin-inline:auto}
+.note a{color:var(--glacier);text-underline-offset:3px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px);align-items:center}
+.split.reverse .text{order:2}
+.photo{position:relative;overflow:hidden;border-radius:4px;background:linear-gradient(135deg,var(--blue),var(--char));min-height:280px;box-shadow:0 18px 40px rgba(11,24,37,.18)}
+.photo::before{content:"";position:absolute;inset:14px;border:1px solid rgba(247,250,252,.55);z-index:2;pointer-events:none}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.photo:hover img{transform:scale(1.05)}
+.photo.tall{aspect-ratio:4/5}.photo.wide{aspect-ratio:16/10}
+.photo figcaption{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:30px 24px 18px;font-size:.82rem;color:var(--snow);background:linear-gradient(transparent,rgba(11,24,37,.75))}
+
+/* ticks */
+.ticks{list-style:none}
+.ticks li{position:relative;padding:10px 0 10px 32px;border-bottom:1px solid rgba(124,200,237,.2)}
+.ticks li::before{content:"";position:absolute;left:4px;top:19px;width:10px;height:10px;border:2px solid var(--glacier);transform:rotate(45deg)}
+.ticks.light li{border-color:rgba(22,58,89,.15)}
+.ticks b{color:var(--glacier)}
+
+/* timeline */
+.timeline{list-style:none;position:relative;padding:10px 0}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--glacier),var(--blue));transform:translateX(-50%)}
+.timeline li{position:relative;width:50%;padding:0 54px 44px 0;text-align:right}
+.timeline li:nth-child(even){margin-left:50%;padding:0 0 44px 54px;text-align:left}
+.timeline li::after{content:"";position:absolute;top:22px;right:-9px;width:18px;height:18px;border-radius:50%;background:var(--snow);border:4px solid var(--blue);box-shadow:0 0 0 5px rgba(124,200,237,.35)}
+.timeline li:nth-child(even)::after{right:auto;left:-9px}
+.year{display:block;font:700 clamp(2.4rem,5vw,3.8rem)/1 var(--serif);color:var(--glacier);-webkit-text-stroke:1px var(--blue);margin-bottom:8px}
+.card{background:var(--snow);border:1px solid rgba(22,58,89,.15);border-top:3px solid var(--blue);padding:22px 24px;border-radius:3px;transition:.3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(22,58,89,.15)}
+
+/* himalaya */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:44px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.cols article{padding-top:18px;border-top:2px solid var(--glacier)}
+
+/* gear */
+.gear-grid{display:grid;grid-template-columns:5fr 7fr;gap:40px;align-items:start}
+.gear-grid .photo{aspect-ratio:3/4;position:sticky;top:calc(var(--hh) + 20px)}
+.gear-list{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gear-list div{background:var(--snow);padding:22px;border-left:4px solid var(--glacier);transition:.3s}
+.gear-list div:hover{border-left-color:var(--blue);transform:translateX(4px)}
+
+/* techniques */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(124,200,237,.25);border:1px solid rgba(124,200,237,.25)}
+.tech-grid article{background:var(--navy);padding:32px 28px;transition:background .3s}
+.tech-grid article:hover{background:var(--blue)}
+.tech-grid span{font:700 2.4rem/1 var(--serif);color:var(--glacier);opacity:.5;display:block;margin-bottom:10px}
+.dark .note{color:var(--ice)}
+
+/* women */
+.women{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.women article{background:var(--ice);padding:0 0 26px;border-radius:4px;overflow:hidden;transition:.3s}
+.women article:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(22,58,89,.18)}
+.women figure{aspect-ratio:4/3;background:linear-gradient(135deg,var(--blue),var(--char));margin-bottom:20px}
+.women img{width:100%;height:100%;object-fit:cover}
+.women h3,.women p{padding:0 24px}
+.tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:8px}
+
+/* destinations */
+.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dest{position:relative;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(135deg,var(--blue),var(--char));border-radius:4px}
+.dest img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.dest:hover img{transform:scale(1.07)}
+.dest figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 22px;color:var(--snow);background:linear-gradient(transparent,rgba(11,24,37,.88))}
+.dest h3{color:var(--glacier);margin-bottom:4px}
+.dest p{font-size:.88rem;line-height:1.5}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.facts article{border:1px solid rgba(124,200,237,.3);padding:28px 22px;text-align:center;transition:.3s}
+.facts article:hover{border-color:var(--glacier);background:rgba(124,200,237,.07)}
+.facts b{display:block;font:700 2.4rem/1.1 var(--serif);color:var(--glacier)}
+.kind{display:inline-block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin:8px 0 12px;padding:3px 10px;border:1px solid var(--glacier);border-radius:20px;color:var(--snow)}
+
+/* lessons */
+blockquote{margin-top:26px;padding:22px 26px;border-left:4px solid var(--glacier);background:var(--ice);font:italic 1.35rem/1.5 var(--serif);color:var(--blue)}
+
+/* cta */
+.cta{position:relative;padding:clamp(90px,14vw,170px) 4%;text-align:center;color:var(--snow);background:var(--blue) url("images/cta.jpg") center/cover no-repeat}
+.cta::before{content:"";position:absolute;inset:0;background:rgba(11,24,37,.45)}
+.cta-inner{position:relative;max-width:820px;margin:auto}
+.cta h2{color:var(--snow)}
+.cta p{font-size:1.1rem;margin-bottom:32px}
+.btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+
+/* footer */
+.site-footer{background:var(--navy);color:var(--ice);padding-top:64px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px}
+.foot-grid p{margin-top:16px;font-size:.92rem;max-width:36ch}
+.foot-grid h4{color:var(--glacier);font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:16px}
+.foot-grid nav a{display:block;text-decoration:none;padding:4px 0;font-size:.92rem;transition:.25s}
+.foot-grid nav a:hover{color:var(--glacier);padding-left:6px}
+.social{display:flex;gap:10px}
+.social a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--glacier);border-radius:50%;text-decoration:none;font-weight:700;font-size:.8rem;text-transform:uppercase;transition:.3s}
+.social a:hover{background:var(--glacier);color:var(--navy)}
+.copy{text-align:center;padding:20px;border-top:1px solid rgba(124,200,237,.2);font-size:.85rem}
+
+/* responsive */
+@media(max-width:1000px){
+  .burger{display:flex}
+  .main-nav{position:absolute;top:var(--hh);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--navy);padding:0 4%;max-height:0;overflow:hidden;transition:max-height .4s}
+  .nav-toggle:checked ~ .main-nav{max-height:480px;padding:12px 4% 24px}
+  .main-nav a{padding:13px 8px;border-bottom:1px solid rgba(124,200,237,.15)}
+  .main-nav a:not(.btn)::after{display:none}
+  .nav-cta{margin:14px 0 0;justify-content:center}
+  .nav-toggle:checked ~ .burger span{background:transparent}
+  .nav-toggle:checked ~ .burger span::before{top:0;transform:rotate(45deg)}
+  .nav-toggle:checked ~ .burger span::after{top:0;transform:rotate(-45deg)}
+  .split,.gear-grid,.grid-2{grid-template-columns:1fr}
+  .split.reverse .text{order:0}
+  .gear-grid .photo{position:relative;top:0;aspect-ratio:16/10}
+  .dest-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  
+  /* Header Mobile */
+  .nav-desktop { display: none; }
+  .menu-toggle { display: flex; }
+  .mobile-menu { display: flex; }
+}
+@media(max-width:700px){
+  .timeline::before{left:12px}
+  .timeline li,.timeline li:nth-child(even){width:100%;margin-left:0;padding:0 0 36px 44px;text-align:left}
+  .timeline li::after,.timeline li:nth-child(even)::after{left:3px;right:auto}
+  .gear-list,.dest-grid,.foot-grid{grid-template-columns:1fr}
+  .photo.tall{aspect-ratio:4/3}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ===================================================
+   POORE PAGE PAR VIDEO BACKGROUND
+   =================================================== */
+body{background:var(--navy);color:var(--ice)}
+.bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.bg-shade{position:fixed;inset:0;z-index:-1;background:rgba(11,24,37,.28)}
+
+/* ===== HERO - SIRF BREADCRUMB ===== */
+.hero{
+  background:transparent;
+  color:var(--snow);
+  padding-top: calc(var(--hh) + 60px);
+  padding-bottom: 60px;
+}
+.hero::after{display:none}
+.hero-inner{position:relative;z-index:2;width:min(1180px,92%);margin:0 auto;padding:0;text-align:left}
+.hero .crumbs,.hero .crumbs span{color:var(--ice)}
+.hero .crumbs a{color:var(--glacier)}
+.eyebrow,.section .eyebrow.dark{color:var(--glacier)}
+
+/* sections: video ke upar glass panels */
+.section{color:var(--ice);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.light{background:rgba(11,24,37,.50)}
+.ice{background:rgba(11,24,37,.62)}
+.dark{background:rgba(11,24,37,.76)}
+.section h2{color:var(--snow)}
+.section h3{color:var(--glacier)}
+.dropcap::first-letter{color:var(--glacier)}
+.ticks.light li{border-color:rgba(124,200,237,.2)}
+.note{color:var(--ice)}
+
+/* cards / boxes */
+.card,.gear-list div,.women article{background:rgba(11,24,37,.62);border-color:rgba(124,200,237,.35);color:var(--ice)}
+.card{border-top-color:var(--glacier)}
+.card:hover{box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.year{color:var(--glacier);-webkit-text-stroke:0;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.timeline::before{background:linear-gradient(var(--glacier),rgba(124,200,237,.2))}
+.timeline li::after{background:var(--navy);border-color:var(--glacier)}
+.gear-list div:hover{border-left-color:var(--snow)}
+.women article:hover{box-shadow:0 18px 36px rgba(0,0,0,.45)}
+.tag{color:var(--glacier)}
+.tech-grid article{background:rgba(11,24,37,.7)}
+.tech-grid article:hover{background:rgba(22,58,89,.85)}
+.photo{box-shadow:0 18px 40px rgba(0,0,0,.35)}
+blockquote{background:rgba(11,24,37,.6);color:var(--snow)}
+
+/* cta + footer */
+.cta{background:rgba(11,24,37,.30);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.cta::before{display:none}
+.cta h2,.cta p{text-shadow:0 2px 16px rgba(0,0,0,.55)}
+.site-footer{background:rgba(11,24,37,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+@media(prefers-reduced-motion:reduce){
+  .bg-video{display:none}
+  body{background:linear-gradient(160deg,var(--blue),var(--navy)) fixed}
+}
+</style>
+</head>
+<body>
+<a href="images/fakhir1.jpg"></a>
+<!-- POORE PAGE KA VIDEO BACKGROUND -->
+<video class="bg-video" autoplay muted loop playsinline aria-hidden="true">
+  <source src="222631_medium.mp4" type="video/mp4">
+</video>
+<div class="bg-shade" aria-hidden="true"></div>
+
+<!-- ===== BACKGROUND MUSIC ===== -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="epic_musictracks-mountain-path-125573.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ===== MUSIC BUTTON (floating) ===== -->
+<button class="music-btn" id="musicBtn" aria-label="Toggle music" title="Music On/Off">
+  <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+</button>
+
+<!-- NAYA HEADER YAHAN HAI -->
+<header class="site-header" id="siteHeader">
+  <div class="header-container">
+    <!-- APNA LOGO LAGAYEIN YAHAN -->
+    <a href="index.html" class="brand" aria-label="Alpine Ascents Home">
+      <img src="link.png" alt="Alpine Ascents Logo" class="brand-logo-img">
+      <span class="brand-word">ALPINE ASCENTS</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="history.html" class="nav-link active">History</a>
+      <a href="booking.html" class="nav-link">Expeditions</a>
+      <a href="galery.html" class="nav-link">Gallery</a>
+      <a href="booking.html" class="nav-link">Booking</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="booking.html" class="btn-plan">PLAN YOUR EXPEDITION</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="history.html" class="active">History</a>
+    <a href="booking.html">Expeditions</a>
+    <a href="galery.html">Gallery</a>
+    <a href="booking.html">Booking</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking.html" class="btn-plan-mobile">PLAN YOUR EXPEDITION</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO (SIRF BREADCRUMB) -->
+<section class="hero">
+  <div class="hero-inner">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span aria-current="page">History</span></nav>
+  </div>
+</section>
+
+<!-- ORIGINS -->
+<section class="section light" id="origins">
+  <div class="wrap split">
+    <div class="text">
+      <p class="eyebrow dark">Chapter One</p>
+      <h2>Where the Journey Began</h2>
+      <p class="dropcap">People have crossed and climbed mountains for thousands of years. Pilgrims sought sacred summits, herders and traders followed high passes, hunters and surveyors pushed into the heights, and naturalists climbed to study glaciers, plants and weather.</p>
+      <p>Ancient mountain travel was mostly a means to an end. <strong>Modern mountaineering</strong> is different: the climb itself, with its planning, skill and risk, becomes the purpose. That shift happened gradually, mainly in the Alps during the 18th and 19th centuries, as scientific curiosity and a growing taste for adventure came together.</p>
+      <p>There is no single date on which recreational climbing began. Earlier ascents, such as Mont Aiguille in 1492, show that people climbed for their own reasons long before clubs and guidebooks existed.</p>
+    </div>
+    <figure class="photo tall"><img src="fakhir1.jpg" alt="Historic view of an alpine glacier valley with early mountain travelers" loading="lazy"><figcaption>Alpine valleys shaped centuries of mountain travel.</figcaption></figure>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section ice" id="timeline">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Timeline</p><h2>Milestones That Changed Mountaineering</h2></header>
+    <ol class="timeline">
+      <li><span class="year">1786</span><div class="card"><h3>First Recorded Ascent of Mont Blanc</h3><p>Michel-Gabriel Paccard and Jacques Balmat reached the summit of Mont Blanc, a key milestone in the rise of modern European mountaineering.</p></div></li>
+      <li><span class="year">1854</span><div class="card"><h3>Wetterhorn Ascent</h3><p>Alfred Wills' ascent of the Wetterhorn helped popularize climbing in Britain and is linked with the start of the Victorian mountaineering era.</p></div></li>
+      <li><span class="year">1857</span><div class="card"><h3>The Alpine Club</h3><p>Founded in London, the Alpine Club is widely regarded as the world's first mountaineering club, helping establish climbing as an organized activity.</p></div></li>
+      <li><span class="year">1865</span><div class="card"><h3>The Matterhorn</h3><p>Edward Whymper's party reached the summit. Four members died on the descent, a tragedy that became a defining moment in climbing history.</p></div></li>
+      <li><span class="year">1953</span><div class="card"><h3>Mount Everest</h3><p>Edmund Hillary and Tenzing Norgay made the first confirmed ascent of Everest, as part of a large British expedition.</p></div></li>
+      <li><span class="year">1978</span><div class="card"><h3>Everest Without Supplemental Oxygen</h3><p>Reinhold Messner and Peter Habeler made the first confirmed ascent of Everest without supplemental oxygen.</p></div></li>
+      <li><span class="year">1980</span><div class="card"><h3>Winter Everest Ascent</h3><p>Leszek Cichy and Krzysztof Wielicki completed the first successful winter ascent of Everest.</p></div></li>
+      <li><span class="year">Today</span><div class="card"><h3>The Modern Era</h3><p>Better forecasting, equipment, communications, expedition medicine and environmental awareness continue to shape how people climb.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- GOLDEN AGE -->
+<section class="section dark" id="alpinism">
+  <div class="wrap split reverse">
+    <figure class="photo"><img src="fakhir2.jpg" alt="Snow-covered Alpine peaks at dawn" loading="lazy"><figcaption>The Alps drew climbers from across Europe.</figcaption></figure>
+    <div class="text">
+      <p class="eyebrow">1850s – 1860s</p>
+      <h2>The Golden Age of Alpinism</h2>
+      <p>The mid-19th century is generally called the Golden Age of Alpinism. In little over a decade, climbers made first ascents of many of the Alps' great summits, including the Wetterhorn, the Eiger's neighbours and the Matterhorn.</p>
+      <ul class="ticks">
+        <li><b>Organized climbing:</b> guided parties and planned routes replaced improvised attempts.</li>
+        <li><b>Clubs:</b> the Alpine Club (1857) was followed by clubs across Europe.</li>
+        <li><b>Literature:</b> climbing books and journals spread the appeal of the mountains.</li>
+        <li><b>Local guides:</b> Alpine guides were central to many first ascents.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HIMALAYAS -->
+<section class="section light" id="himalaya">
+  <div class="wrap">
+    <header class="sec-head"><p class="eyebrow dark">Chapter Three</p><h2>Beyond the Alps: The Himalayas and Karakoram</h2></header>
+    <div class="grid-2">
+      <figure class="photo wide"><img src="fakhir3.jpg" alt="Mount Everest and surrounding Himalayan peaks" loading="lazy"><figcaption>The Himalayas, home to the world's highest summits.</figcaption></figure>
+      <figure class="photo wide"><img src="fakhir6.jpg"alt="Jagged granite peaks of the Karakoram range" loading="lazy"><figcaption>The Karakoram, known for steep, remote peaks and long glaciers.</figcaption></figure>
+    </div>
+    <div class="cols">
+      <article><h3>Early Exploration</h3><p>Surveys and exploratory journeys in the 19th and early 20th centuries mapped the great ranges long before serious climbing attempts.</p></article>
+      <article><h3>Everest in the 20th Century</h3><p>Reconnaissance and attempts through the 1920s–1950s built the knowledge that made the 1953 success possible. Hillary and Tenzing's ascent was a team achievement, supported by many climbers and Sherpa colleagues.</p></article>
+      <article><h3>Local Knowledge &amp; High-Altitude Porters</h3><p>Sherpa, Balti, Hunza and other mountain communities carried loads, fixed routes and shared deep knowledge of terrain and weather. Their skill and risk were fundamental to Himalayan mountaineering, and many were climbers in their own right.</p></article>
+      <article><h3>The Karakoram</h3><p>Home to K2 (first climbed in 1954 by an Italian expedition) and other 8,000-metre peaks, the Karakoram is known for harsh weather, technical terrain and remote approaches.</p></article>
+      <article><h3>Modern Expedition Planning</h3><p>Logistics, acclimatization schedules, weather windows and medical planning now shape high-altitude expeditions.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- GEAR -->
+<section class="section ice" id="gear">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Equipment</p><h2>From Traditional Gear to Modern Technology</h2></header>
+    <div class="gear-grid">
+      <figure class="photo"><img src="fakhir 5.jpg" alt="Vintage ice axe, rope and leather boots" loading="lazy"><figcaption>Early kit: wool, leather, hemp rope and long wooden-shafted axes.</figcaption></figure>
+      <div class="gear-list">
+        <div><h3>Early Boots &amp; Clothing</h3><p>Nailed leather boots, wool and canvas gave limited warmth and weather protection.</p></div>
+        <div><h3>Ropes, Pitons &amp; Carabiners</h3><p>Natural-fibre ropes gave way to nylon, while pitons and carabiners made protected climbing possible.</p></div>
+        <div><h3>Ice Axes &amp; Crampons</h3><p>Axes and crampons evolved steadily, enabling steeper snow and ice terrain.</p></div>
+        <div><h3>Helmets &amp; Technical Protection</h3><p>Helmets, harnesses and removable protection improved safety on rock and ice.</p></div>
+        <div><h3>Tents &amp; Expedition Clothing</h3><p>Lightweight fabrics, insulation and sturdy tents made higher camps more survivable.</p></div>
+        <div><h3>GPS, Satellite &amp; Forecasting</h3><p>Navigation devices, satellite communication and detailed forecasts support decisions on the mountain.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNIQUES -->
+<section class="section dark" id="techniques">
+  <div class="wrap">
+    <header class="sec-head"><p class="eyebrow">Skills</p><h2>The Evolution of Climbing Techniques</h2></header>
+    <div class="tech-grid">
+      <article><span>01</span><h3>Alpine Routes</h3><p>Traditional routes combining glacier travel, snow slopes and rock ridges.</p></article>
+      <article><span>02</span><h3>Rock Climbing</h3><p>Technical protection and movement skills developed into a discipline of its own.</p></article>
+      <article><span>03</span><h3>Ice &amp; Mixed</h3><p>Better tools and technique opened frozen waterfalls and mixed rock-and-ice faces.</p></article>
+      <article><span>04</span><h3>Expedition Strategy</h3><p>Staged camps, load carrying and careful timing for high-altitude objectives.</p></article>
+      <article><span>05</span><h3>Altitude Medicine</h3><p>Gradual acclimatization and medical knowledge help reduce altitude-related risk.</p></article>
+      <article><span>06</span><h3>Safety &amp; Stewardship</h3><p>Risk planning and "leave no trace" practices are now central to responsible climbing.</p></article>
+    </div>
+    <p class="note">Techniques vary with terrain, weather, route difficulty and the experience of the team.</p>
+  </div>
+</section>
+
+<!-- WOMEN -->
+<section class="section light" id="women">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Pioneers</p><h2>Women Who Expanded the World of Climbing</h2></header>
+    <div class="women">
+      <article><figure><img src="fakhir3.jpg" alt="Historic portrait style illustration of Lucy Walker" loading="lazy"></figure><h3>Lucy Walker</h3><p class="tag">Victorian pioneer</p><p>A leading woman climber of the 1860s–1870s, Walker made many Alpine ascents and in 1871 became the first woman to climb the Matterhorn.</p></article>
+      <article><figure><img src="fakhir1.jpg" alt="Junko Tabei in the mountains" loading="lazy"></figure><h3>Junko Tabei</h3><p class="tag">Everest, 1975</p><p>In 1975 Tabei of Japan became the first woman to reach the summit of Mount Everest, and later completed the Seven Summits.</p></article>
+      <article><figure><img src="fakhir7.jpg" alt="Wanda Rutkiewicz in the mountains" loading="lazy"></figure><h3>Wanda Rutkiewicz</h3><p class="tag">Himalayan leader</p><p>Rutkiewicz of Poland was the first European woman to climb Everest (1978) and the first woman to summit K2 (1986).</p></article>
+    </div>
+    <p class="note">Women have shaped exploration, technical climbing, high-altitude expeditions and mountain culture throughout this history.</p>
+  </div>
+</section>
+
+<!-- MODERN -->
+<section class="section ice" id="modern">
+  <div class="wrap split">
+    <div class="text">
+      <p class="eyebrow dark">Today</p>
+      <h2>A New Chapter in Mountain Exploration</h2>
+      <p>Lessons from the past have shaped safer, more informed mountaineering. Every advance below traces back to a problem earlier climbers faced.</p>
+      <ul class="ticks light">
+        <li>Technical clothing and improved equipment</li>
+        <li>More reliable weather forecasting</li>
+        <li>Digital navigation and satellite communication</li>
+        <li>Expedition medicine and acclimatization knowledge</li>
+        <li>Professional guiding standards</li>
+        <li>Environmental conservation</li>
+        <li>Responsible tourism and respect for local communities</li>
+      </ul>
+    </div>
+    <figure class="photo tall"><img src="ali 3.jpg" alt="Modern climbers with technical gear on a snowy ridge" loading="lazy"><figcaption>Modern kit and planning, built on generations of experience.</figcaption></figure>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="section light" id="destinations">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Gallery</p><h2>Historic Mountain Destinations</h2></header>
+    <div class="dest-grid">
+      <figure class="dest"><img src="ali 6.jpg" alt="Mont Blanc massif" loading="lazy"><figcaption><h3>Mont Blanc</h3><p>France / Italy. Western Europe's highest summit and the site of the first recorded ascent in 1786.</p></figcaption></figure>
+      <figure class="dest"><img src="fakhir 5.jpg" alt="The Matterhorn pyramid peak" loading="lazy"><figcaption><h3>The Matterhorn</h3><p>Switzerland / Italy. First climbed in 1865; its ascent marked the end of the Golden Age.</p></figcaption></figure>
+      <figure class="dest"><img src="ali 4.jpg" alt="Mount Everest at sunrise" loading="lazy"><figcaption><h3>Mount Everest</h3><p>Nepal / China. Earth's highest mountain above sea level, first confirmed climbed in 1953.</p></figcaption></figure>
+      <figure class="dest"><img src="ali 3.jpg" alt="K2 rising above the Baltoro Glacier" loading="lazy"><figcaption><h3>K2</h3><p>Pakistan / China. The world's second-highest peak, first climbed in 1954 and known for its difficulty.</p></figcaption></figure>
+      <figure class="dest"><img src="ali 2.jpg" alt="Panorama of the Himalayan range" loading="lazy"><figcaption><h3>The Himalayas</h3><p>A vast range across several countries containing most of the world's 8,000-metre peaks.</p></figcaption></figure>
+      <figure class="dest"><img src="ali 1.jpg" alt="Karakoram range peaks and glacier" loading="lazy"><figcaption><h3>The Karakoram</h3><p>Home to K2 and some of the longest glaciers outside the polar regions.</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="section dark" id="facts">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow">Verified</p><h2>Historical Facts and Records</h2></header>
+    <div class="facts">
+      <article><b>1953</b><span class="kind">Climbing record</span><p>First confirmed ascent of Everest, 29 May.</p></article>
+      <article><b>1978</b><span class="kind">Climbing record</span><p>First confirmed ascent of Everest without supplemental oxygen.</p></article>
+      <article><b>1857</b><span class="kind">Historical milestone</span><p>The Alpine Club was founded in London.</p></article>
+      <article><b>1980</b><span class="kind">Climbing record</span><p>First winter ascent of Everest, on 17 February.</p></article>
+      <article><b>8,849 m</b><span class="kind">Geographical fact</span><p>Everest's officially recognized height after the 2020 Nepal–China survey.</p></article>
+    </div>
+    <p class="note">Further reading: <a href="https://www.alpine-club.org.uk" target="_blank" rel="noopener">The Alpine Club</a> · <a href="https://www.britannica.com/topic/mountaineering" target="_blank" rel="noopener">Encyclopaedia Britannica</a> · <a href="https://www.nationalgeographic.com" target="_blank" rel="noopener">National Geographic</a></p>
+  </div>
+</section>
+
+<!-- LESSONS -->
+<section class="section light lessons" id="lessons">
+  <div class="wrap split reverse">
+    <figure class="photo"><img src="fakhir7.jpg" alt="Calm mountain landscape at golden hour" loading="lazy"></figure>
+    <div class="text">
+      <p class="eyebrow dark">Reflection</p>
+      <h2>The Past Teaches Us How to Climb Tomorrow</h2>
+      <p>Mountaineering history shows that summits are reached through <strong>preparation</strong>, <strong>teamwork</strong>, and <strong>humility</strong>. Accidents like the Matterhorn tragedy remind us to respect risk, never to chase it. Protecting fragile environments and honoring the communities who live in the mountains are part of that responsibility.</p>
+      <blockquote>The mountain does not ask to be conquered. It asks to be understood.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2>The Next Chapter of Exploration Is Yours to Discover.</h2>
+    <p>Learn from the pioneers, understand the mountains, and prepare responsibly for your own journey into the alpine world.</p>
+    <div class="btns">
+      <a href="index.html" class="btn btn-ghost">Explore Our World</a>
+      <a href="booking.html" class="btn btn-solid">Plan Your Expedition</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand" href="index.html">
+        <!-- YAHAN BHI APNA LOGO LAGAYEIN -->
+        <img src="YOUR_LOGO_LINK_HERE.png" alt="Alpine Ascents Logo" class="brand-logo-img">
+        <span class="brand-word">ALPINE ASCENTS</span>
+      </a>
+      <p>Mountain exploration built on knowledge, preparation and respect for the mountains and their people.</p>
+    </div>
+    <nav aria-label="Footer"><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="booking.html">Expeditions</a><a href="galery.html">Gallery</a><a href="contact.html">Contact</a></nav>
+    <nav aria-label="Learn"><h4>Learn</h4><a href="#lessons">Mountain Safety</a><a href="#techniques">Climbing Education</a><a href="#facts">Facts &amp; Records</a></nav>
+    <div><h4>Follow</h4><div class="social"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="YouTube">yt</a><a href="#" aria-label="X">x</a></div></div>
+  </div>
+  <p class="copy">© 2026 ALPINE ASCENTS. All rights reserved.</p>
+</footer>
+
+<!-- ===== MUSIC SCRIPT (SIRF EK - HALKA VOLUME) ===== -->
+<script>
+(function() {
+  const music = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  
+  if (!music || !btn) return;
+
+  // Pichli setting yaad rakhein (page change par)
+  const savedTime = sessionStorage.getItem('musicTime');
+  const savedVolume = sessionStorage.getItem('musicVolume');
+  const musicOff = sessionStorage.getItem('musicOff') === 'true';
+
+  // ✅ VOLUME HALKA - 0.1 = 10% (sirf halki awaz)
+  music.volume = savedVolume ? parseFloat(savedVolume) : 0.1;
+
+  // Agar pehle sun chuka tha toh wahi se shuru karein
+  if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+  }
+
+  // Autoplay try karein (agar user ne off nahi kiya)
+  if (!musicOff) {
+    window.addEventListener('load', () => {
+      music.play().then(() => {
+        btn.classList.add('playing');
+      }).catch(() => {
+        // Autoplay block ho gaya - user click ka intezar
+      });
+    });
+  }
+
+  // Button click par toggle
+  btn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      btn.classList.add('playing');
+      sessionStorage.setItem('musicOff', 'false');
+    } else {
+      music.pause();
+      btn.classList.remove('playing');
+      sessionStorage.setItem('musicOff', 'true');
+    }
+  });
+
+  // Pehli click par bhi chalu (agar autoplay block tha)
+  document.addEventListener('click', function startMusic() {
+    if (music.paused && sessionStorage.getItem('musicOff') !== 'true') {
+      music.play().then(() => {
+        btn.classList.add('playing');
+      }).catch(() => {});
+    }
+    document.removeEventListener('click', startMusic);
+  }, { once: true });
+
+  // Time aur volume save karein (page change se pehle)
+  music.addEventListener('timeupdate', () => {
+    sessionStorage.setItem('musicTime', music.currentTime);
+    sessionStorage.setItem('musicVolume', music.volume);
+  });
+
+  window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('musicTime', music.currentTime);
+  });
+})();
+/* =====================================================
+   Alpine Ascents — HISTORY PAGE ADVANCED SYSTEM v5.0
+   Features: Music, Toast, Storage, Analytics, Search,
+             Timeline Filter, Image Lightbox, Reading Progress,
+             Bookmarks, Share, Export/Import, Theme, Keyboard,
+             Card Interactions, FAQ, Back-to-Top, Scroll Reveal
+   ===================================================== */
+
+'use strict';
+
+/* =====================================================
+   1. STORAGE MANAGER
+   ===================================================== */
+
+const Storage = {
+    prefix: 'alpineAscents_history_',
+
+    set(key, value) {
+        try {
+            localStorage.setItem(this.prefix + key, JSON.stringify({
+                value: value,
+                timestamp: Date.now()
+            }));
+            return true;
+        } catch (e) {
+            console.error('[Storage]', e);
+            return false;
+        }
+    },
+
+    get(key, defaultValue = null) {
+        try {
+            const item = localStorage.getItem(this.prefix + key);
+            if (!item) return defaultValue;
+            return JSON.parse(item).value ?? defaultValue;
+        } catch (e) {
+            return defaultValue;
+        }
+    },
+
+    remove(key) {
+        localStorage.removeItem(this.prefix + key);
+    },
+
+    clearAll() {
+        Object.keys(localStorage).forEach(k => {
+            if (k.startsWith(this.prefix)) localStorage.removeItem(k);
+        });
+    },
+
+    getAll() {
+        const data = {};
+        Object.keys(localStorage).forEach(k => {
+            if (k.startsWith(this.prefix)) {
+                try {
+                    data[k.replace(this.prefix, '')] = JSON.parse(localStorage.getItem(k)).value;
+                } catch (e) {}
+            }
+        });
+        return data;
+    },
+
+    getSize() {
+        let total = 0;
+        Object.keys(localStorage).forEach(k => {
+            if (k.startsWith(this.prefix)) {
+                total += (localStorage.getItem(k) || '').length;
+            }
+        });
+        return (total / 1024).toFixed(2) + ' KB';
+    }
+};
+
+/* =====================================================
+   2. TOAST NOTIFICATIONS
+   ===================================================== */
+
+const Toast = {
+    container: null,
+
+    init() {
+        if (!this.container) {
+            this.container = document.createElement('div');
+            this.container.id = 'toast-container';
+            this.container.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                z-index: 99999;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                pointer-events: none;
+                max-width: 380px;
+            `;
+            document.body.appendChild(this.container);
+        }
+    },
+
+    show(message, type = 'info', duration = 3500) {
+        this.init();
+        const config = {
+            success: { bg: '#10b981', icon: '✓' },
+            error: { bg: '#ef4444', icon: '✕' },
+            warning: { bg: '#f59e0b', icon: '⚠' },
+            info: { bg: '#7CC8ED', color: '#0B1825', icon: 'ℹ' }
+        };
+        const c = config[type] || config.info;
+
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            background: ${c.bg};
+            color: ${c.color || '#fff'};
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: auto;
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
+            opacity: 0;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        `;
+        toast.innerHTML = `<span style="font-size:1.2rem;">${c.icon}</span><span>${message}</span>`;
+        this.container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            toast.style.transform = 'translateX(0)';
+            toast.style.opacity = '1';
+        });
+
+        const remove = () => {
+            toast.style.transform = 'translateX(400px)';
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 400);
+        };
+        toast.addEventListener('click', remove);
+        setTimeout(remove, duration);
+    },
+
+    success(m, d) { this.show(m, 'success', d); },
+    error(m, d) { this.show(m, 'error', d); },
+    warning(m, d) { this.show(m, 'warning', d); },
+    info(m, d) { this.show(m, 'info', d); }
+};
+
+/* =====================================================
+   3. MUSIC MANAGER
+   ===================================================== */
+
+const MusicManager = {
+    music: null,
+    btn: null,
+
+    init() {
+        this.music = document.getElementById('bgMusic');
+        this.btn = document.getElementById('musicBtn');
+        if (!this.music || !this.btn) return;
+
+        const savedTime = Storage.get('musicTime', 0);
+        const savedVolume = Storage.get('musicVolume', 0.1);
+        const musicOff = Storage.get('musicOff', false);
+
+        this.music.volume = parseFloat(savedVolume);
+        if (savedTime) this.music.currentTime = parseFloat(savedTime);
+
+        if (!musicOff) {
+            window.addEventListener('load', () => {
+                this.music.play().then(() => {
+                    this.btn.classList.add('playing');
+                }).catch(() => {});
+            });
+        }
+
+        this.btn.addEventListener('click', () => this.toggle());
+
+        document.addEventListener('click', function startMusic() {
+            if (MusicManager.music.paused && !Storage.get('musicOff', false)) {
+                MusicManager.music.play().then(() => {
+                    MusicManager.btn.classList.add('playing');
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', startMusic);
+        }, { once: true });
+
+        this.music.addEventListener('timeupdate', () => {
+            Storage.set('musicTime', this.music.currentTime);
+            Storage.set('musicVolume', this.music.volume);
+        });
+
+        window.addEventListener('beforeunload', () => {
+            Storage.set('musicTime', this.music.currentTime);
+        });
+
+        document.addEventListener('keydown', e => {
+            if ((e.key === 'm' || e.key === 'M') && !e.target.matches('input, textarea')) {
+                this.toggle();
+            }
+        });
+
+        console.log('[Music] Ready | Volume: ' + this.music.volume);
+    },
+
+    toggle() {
+        if (!this.music) return;
+        if (this.music.paused) {
+            this.music.play();
+            this.btn.classList.add('playing');
+            Storage.set('musicOff', false);
+            Toast.info('Music ON 🎵');
+        } else {
+            this.music.pause();
+            this.btn.classList.remove('playing');
+            Storage.set('musicOff', true);
+            Toast.info('Music OFF 🔇');
+        }
+    }
+};
+
+/* =====================================================
+   4. ANALYTICS
+   ===================================================== */
+
+const Analytics = {
+    startTime: Date.now(),
+
+    init() {
+        const visits = Storage.get('visit_count', 0) + 1;
+        Storage.set('visit_count', visits);
+        Storage.set('last_visit', new Date().toISOString());
+        Storage.set('first_visit', Storage.get('first_visit', new Date().toISOString()));
+
+        this.track('page_view', { page: 'history' });
+
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (pct > maxScroll) maxScroll = pct;
+        });
+
+        window.addEventListener('beforeunload', () => {
+            Storage.set('scroll_depth', maxScroll);
+            Storage.set('session_duration', Math.round((Date.now() - this.startTime) / 1000));
+        });
+
+        console.log(`📊 Visit #${visits} | Storage: ${Storage.getSize()}`);
+    },
+
+    track(event, data = {}) {
+        const events = Storage.get('analytics_events', []);
+        events.push({
+            event,
+            data,
+            timestamp: new Date().toISOString()
+        });
+        if (events.length > 100) events.shift();
+        Storage.set('analytics_events', events);
+    },
+
+    getStats() {
+        return {
+            visits: Storage.get('visit_count', 0),
+            firstVisit: Storage.get('first_visit'),
+            sessionDuration: Math.round((Date.now() - this.startTime) / 1000),
+            scrollDepth: Storage.get('scroll_depth', 0),
+            bookmarks: Bookmarks.count(),
+            storageSize: Storage.getSize()
+        };
+    }
+};
+
+/* =====================================================
+   5. READING PROGRESS BAR
+   ===================================================== */
+
+const ProgressBar = {
+    el: null,
+
+    init() {
+        this.el = document.createElement('div');
+        this.el.id = 'reading-progress';
+        this.el.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7CC8ED, #163A59);
+            z-index: 99999;
+            width: 0%;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(124,200,237,0.6);
+        `;
+        document.body.appendChild(this.el);
+
+        window.addEventListener('scroll', () => {
+            const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            this.el.style.width = Math.min(100, Math.max(0, pct)) + '%';
+        });
+    }
+};
+
+/* =====================================================
+   6. BACK TO TOP
+   ===================================================== */
+
+const BackToTop = {
+    init() {
+        const btn = document.createElement('button');
+        btn.id = 'back-to-top';
+        btn.setAttribute('aria-label', 'Back to top');
+        btn.style.cssText = `
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            z-index: 2000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #7CC8ED;
+            background: rgba(11,24,37,0.85);
+            color: #7CC8ED;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 1.2rem;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        `;
+        btn.innerHTML = '↑';
+        document.body.appendChild(btn);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                btn.style.opacity = '1';
+                btn.style.visibility = 'visible';
+                btn.style.transform = 'translateY(0)';
+            } else {
+                btn.style.opacity = '0';
+                btn.style.visibility = 'hidden';
+                btn.style.transform = 'translateY(20px)';
+            }
+        });
+
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            Toast.info('Back to top ↑');
+        });
+    }
+};
+
+/* =====================================================
+   7. SCROLL REVEAL ANIMATIONS
+   ===================================================== */
+
+const ScrollAnimator = {
+    init() {
+        if (!('IntersectionObserver' in window)) return;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .scroll-reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s ease, transform 0.9s ease; }
+            .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+            .scroll-reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s ease, transform 0.9s ease; }
+            .scroll-reveal-left.visible { opacity: 1; transform: translateX(0); }
+            .scroll-reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s ease, transform 0.9s ease; }
+            .scroll-reveal-right.visible { opacity: 1; transform: translateX(0); }
+            .scroll-reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.9s ease, transform 0.9s ease; }
+            .scroll-reveal-scale.visible { opacity: 1; transform: scale(1); }
+        `;
+        document.head.appendChild(style);
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.sec-head, .note, blockquote').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.photo, .text').forEach(el => {
+            el.classList.add(el.classList.contains('text') ? 'scroll-reveal-right' : 'scroll-reveal-left');
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.card, .ticks li, .cols article, .gear-list div, .tech-grid article, .women article, .dest, .facts article').forEach(el => {
+            el.classList.add('scroll-reveal-scale');
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.timeline li').forEach((el, i) => {
+            el.classList.add('scroll-reveal');
+            el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+            observer.observe(el);
+        });
+
+        // Stagger for grids
+        document.querySelectorAll('.tech-grid, .women, .dest-grid, .facts').forEach(grid => {
+            Array.from(grid.children).forEach((child, i) => {
+                child.style.transitionDelay = `${i * 0.08}s`;
+            });
+        });
+    }
+};
+
+/* =====================================================
+   8. TIMELINE FILTER SYSTEM
+   ===================================================== */
+
+const TimelineFilter = {
+    init() {
+        const timelineSection = document.getElementById('timeline');
+        if (!timelineSection) return;
+
+        const header = timelineSection.querySelector('.sec-head');
+        if (!header || document.getElementById('timeline-filters')) return;
+
+        // Create filter bar
+        const filters = document.createElement('div');
+        filters.id = 'timeline-filters';
+        filters.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 24px 0 32px;
+        `;
+        filters.innerHTML = `
+            <button class="tl-filter-btn active" data-filter="all">All Events</button>
+            <button class="tl-filter-btn" data-filter="1800s">1800s</button>
+            <button class="tl-filter-btn" data-filter="1900s">1900s</button>
+            <button class="tl-filter-btn" data-filter="modern">Modern</button>
+            <button class="tl-filter-btn" data-filter="record">Records</button>
+        `;
+        header.appendChild(filters);
+
+        // Filter button styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .tl-filter-btn {
+                padding: 8px 20px;
+                border-radius: 999px;
+                border: 1.5px solid #7CC8ED;
+                background: rgba(11,24,37,0.6);
+                color: #7CC8ED;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.85rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s;
+                backdrop-filter: blur(8px);
+            }
+            .tl-filter-btn:hover {
+                background: rgba(124,200,237,0.2);
+                transform: translateY(-2px);
+            }
+            .tl-filter-btn.active {
+                background: #7CC8ED;
+                color: #0B1825;
+            }
+        `;
+        document.head.appendChild(style);
+
+        const timelineItems = timelineSection.querySelectorAll('.timeline li');
+
+        filters.querySelectorAll('.tl-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                filters.querySelectorAll('.tl-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                let visibleCount = 0;
+
+                timelineItems.forEach(item => {
+                    const yearText = item.querySelector('.year')?.textContent || '';
+                    const year = parseInt(yearText);
+                    let show = false;
+
+                    if (filter === 'all') show = true;
+                    else if (filter === '1800s' && year >= 1800 && year < 1900) show = true;
+                    else if (filter === '1900s' && year >= 1900 && year < 2000) show = true;
+                    else if (filter === 'modern' && (year >= 2000 || yearText.toLowerCase().includes('today'))) show = true;
+                    else if (filter === 'record' && /everest|oxygen|winter/i.test(item.textContent)) show = true;
+
+                    if (show) {
+                        item.style.display = '';
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                Toast.info(`Showing ${visibleCount} events (${filter})`);
+                Analytics.track('timeline_filter', { filter, count: visibleCount });
+            });
+        });
+    }
+};
+
+/* =====================================================
+   9. IMAGE LIGHTBOX
+   ===================================================== */
+
+const Lightbox = {
+    init() {
+        const images = document.querySelectorAll('.photo img, .women img, .dest img');
+        images.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.show(img.src, img.alt);
+            });
+        });
+    },
+
+    show(src, alt) {
+        const existing = document.getElementById('lightbox');
+        if (existing) existing.remove();
+
+        const lb = document.createElement('div');
+        lb.id = 'lightbox';
+        lb.style.cssText = `
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 24, 37, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 99998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: zoom-out;
+        `;
+        lb.innerHTML = `
+            <button style="position:absolute;top:24px;right:24px;background:transparent;border:2px solid #7CC8ED;color:#7CC8ED;width:48px;height:48px;border-radius:50%;font-size:1.5rem;cursor:pointer;display:grid;place-items:center;transition:all 0.3s;">×</button>
+            <img src="${src}" alt="${alt}" style="max-width:95%;max-height:85%;object-fit:contain;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,0.6);transform:scale(0.9);transition:transform 0.4s cubic-bezier(0.2,0.8,0.2,1);">
+            <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;color:#F7FAFC;font-family:'Segoe UI',sans-serif;font-size:0.95rem;padding:0 20px;">${alt || ''}</div>
+        `;
+        document.body.appendChild(lb);
+
+        const img = lb.querySelector('img');
+        const close = lb.querySelector('button');
+
+        requestAnimationFrame(() => {
+            lb.style.opacity = '1';
+            img.style.transform = 'scale(1)';
+        });
+
+        const closeLb = () => {
+            lb.style.opacity = '0';
+            img.style.transform = 'scale(0.9)';
+            setTimeout(() => lb.remove(), 300);
+        };
+
+        close.addEventListener('click', e => { e.stopPropagation(); closeLb(); });
+        lb.addEventListener('click', closeLb);
+        document.addEventListener('keydown', function esc(e) {
+            if (e.key === 'Escape') {
+                closeLb();
+                document.removeEventListener('keydown', esc);
+            }
+        }, { once: true });
+
+        Analytics.track('lightbox_open', { src: src.split('/').pop() });
+    }
+};
+
+/* =====================================================
+   10. SEARCH SYSTEM (Ctrl+K)
+   ===================================================== */
+
+const Search = {
+    data: [],
+
+    init() {
+        this.collectData();
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                this.showModal();
+            }
+        });
+    },
+
+    collectData() {
+        this.data = [];
+        document.querySelectorAll('h2, h3, h4').forEach(el => {
+            const text = el.textContent.trim();
+            if (text && text.length > 3 && text.length < 120) {
+                this.data.push({ title: text, type: el.tagName.toLowerCase(), element: el });
+            }
+        });
+        document.querySelectorAll('.card, .dest, .women article, .facts article').forEach(card => {
+            const title = card.querySelector('h3, b')?.textContent || '';
+            const desc = card.querySelector('p')?.textContent || '';
+            if (title) this.data.push({ title, desc, type: 'card', element: card });
+        });
+        console.log(`[Search] Indexed ${this.data.length} items`);
+    },
+
+    showModal() {
+        const existing = document.getElementById('search-modal');
+        if (existing) { existing.remove(); return; }
+
+        const modal = document.createElement('div');
+        modal.id = 'search-modal';
+        modal.style.cssText = `
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 24, 37, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 100px 20px 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        `;
+        modal.innerHTML = `
+            <div style="background: linear-gradient(145deg, rgba(22,58,89,0.98), rgba(11,24,37,0.98)); border: 1px solid rgba(124,200,237,0.35); border-radius: 16px; max-width: 640px; width: 100%; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.7);">
+                <div style="display:flex;align-items:center;padding:20px;border-bottom:1px solid rgba(124,200,237,0.2);">
+                    <span style="font-size:1.3rem;margin-right:12px;">🔍</span>
+                    <input id="search-input" type="text" placeholder="Search history, events, records... (Ctrl+K)"
+                        style="flex:1;background:transparent;border:none;color:#fff;font-size:1rem;outline:none;font-family:'Segoe UI',sans-serif;">
+                    <button onclick="document.getElementById('search-modal').remove()"
+                        style="background:transparent;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:1.4rem;">×</button>
+                </div>
+                <div id="search-results" style="max-height:400px;overflow-y:auto;padding:12px;">
+                    <div style="color:rgba(255,255,255,0.5);text-align:center;padding:30px;font-size:0.9rem;">Type to search...</div>
+                </div>
+                <div style="padding:12px 20px;border-top:1px solid rgba(124,200,237,0.15);font-size:0.75rem;color:rgba(255,255,255,0.5);">
+                    💡 <kbd style="background:rgba(124,200,237,0.2);padding:2px 6px;border-radius:4px;">Esc</kbd> close · <kbd style="background:rgba(124,200,237,0.2);padding:2px 6px;border-radius:4px;">M</kbd> music
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        requestAnimationFrame(() => modal.style.opacity = '1');
+
+        const input = document.getElementById('search-input');
+        const results = document.getElementById('search-results');
+        input.focus();
+
+        input.addEventListener('input', e => {
+            const q = e.target.value.toLowerCase().trim();
+            if (!q) {
+                results.innerHTML = '<div style="color:rgba(255,255,255,0.5);text-align:center;padding:30px;font-size:0.9rem;">Type to search...</div>';
+                return;
+            }
+            const matches = this.data.filter(item =>
+                item.title.toLowerCase().includes(q) ||
+                (item.desc || '').toLowerCase().includes(q)
+            );
+            if (matches.length === 0) {
+                results.innerHTML = '<div style="color:rgba(255,255,255,0.5);text-align:center;padding:30px;font-size:0.9rem;">No results</div>';
+                return;
+            }
+            results.innerHTML = matches.map((m, i) => `
+                <div data-idx="${i}" style="padding:14px 16px;border-radius:8px;cursor:pointer;margin-bottom:4px;transition:background 0.2s;"
+                     onmouseover="this.style.background='rgba(124,200,237,0.15)'"
+                     onmouseout="this.style.background='transparent'">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <strong style="color:#7CC8ED;">${m.title}</strong>
+                        <span style="font-size:0.65rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">${m.type}</span>
+                    </div>
+                    ${m.desc ? `<div style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-top:4px;">${m.desc.substring(0,80)}...</div>` : ''}
+                </div>
+            `).join('');
+            results.querySelectorAll('[data-idx]').forEach(el => {
+                el.addEventListener('click', () => {
+                    const item = matches[parseInt(el.dataset.idx)];
+                    if (item.element) {
+                        modal.remove();
+                        item.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        item.element.style.outline = '3px solid #7CC8ED';
+                        setTimeout(() => item.element.style.outline = '', 2000);
+                        Toast.success(`Jumped to: ${item.title}`);
+                    }
+                });
+            });
+        });
+
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
+    }
+};
+
+/* =====================================================
+   11. BOOKMARKS SYSTEM
+   ===================================================== */
+
+const Bookmarks = {
+    get() { return Storage.get('bookmarks', []); },
+
+    toggle(id, title, section) {
+        let list = this.get();
+        const idx = list.findIndex(b => b.id === id);
+        if (idx > -1) {
+            list.splice(idx, 1);
+            Toast.info(`Bookmark removed: ${title}`);
+        } else {
+            list.push({
+                id,
+                title,
+                section,
+                savedAt: new Date().toISOString()
+            });
+            Toast.success(`Bookmarked: ${title} 🔖`);
+        }
+        Storage.set('bookmarks', list);
+        Analytics.track('bookmark_toggle', { id, title });
+        return idx === -1;
+    },
+
+    has(id) { return this.get().some(b => b.id === id); },
+
+    count() { return this.get().length; },
+
+    showAll() {
+        const list = this.get();
+        const existing = document.getElementById('bookmarks-modal');
+        if (existing) existing.remove();
+
+        const modal = document.createElement('div');
+        modal.id = 'bookmarks-modal';
+        modal.style.cssText = `
+            position: fixed;
+            inset: 0;
+            background: rgba(11,24,37,0.88);
+            backdrop-filter: blur(10px);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        `;
+        modal.innerHTML = `
+            <div style="background: linear-gradient(145deg, rgba(22,58,89,0.98), rgba(11,24,37,0.98)); border: 1px solid rgba(124,200,237,0.35); border-radius: 16px; max-width: 560px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 32px; color: #fff;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                    <h3 style="font-family:Georgia,serif;font-size:1.5rem;color:#7CC8ED;">🔖 Your Bookmarks (${list.length})</h3>
+                    <button onclick="document.getElementById('bookmarks-modal').remove()" style="background:transparent;border:none;color:#7CC8ED;font-size:1.5rem;cursor:pointer;">×</button>
+                </div>
+                ${list.length === 0 ? '<p style="text-align:center;color:rgba(255,255,255,0.5);padding:30px 0;">No bookmarks yet. Click the 🔖 icon on any card to save it.</p>' : `
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        ${list.map(b => `
+                            <div style="padding:14px 16px;background:rgba(11,24,37,0.5);border:1px solid rgba(124,200,237,0.2);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+                                <div>
+                                    <div style="color:#7CC8ED;font-weight:600;font-size:0.95rem;">${b.title}</div>
+                                    <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);">${b.section || 'Saved'}</div>
+                                </div>
+                                <button onclick="Bookmarks.toggle('${b.id}', '${b.title}', '${b.section || ''}'); document.getElementById('bookmarks-modal').remove(); Bookmarks.showAll();" style="background:transparent;border:none;color:#ef4444;cursor:pointer;font-size:0.85rem;font-weight:600;">Remove</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `}
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    }
+};
+
+/* =====================================================
+   12. ADD BOOKMARK BUTTONS TO CARDS
+   ===================================================== */
+
+const BookmarkButtons = {
+    init() {
+        document.querySelectorAll('.card, .dest, .women article, .facts article, .tech-grid article').forEach(card => {
+            if (card.querySelector('.bookmark-btn')) return;
+
+            const title = (card.querySelector('h3')?.textContent || card.querySelector('b')?.textContent || 'Item').trim();
+            const section = card.closest('section')?.id || '';
+            const id = section + '_' + title.replace(/\s+/g, '_').toLowerCase();
+
+            const btn = document.createElement('button');
+            btn.className = 'bookmark-btn';
+            btn.setAttribute('aria-label', 'Bookmark');
+            btn.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                background: rgba(11,24,37,0.8);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(124,200,237,0.3);
+                color: #7CC8ED;
+                font-size: 0.9rem;
+                cursor: pointer;
+                z-index: 5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s;
+            `;
+
+            const updateIcon = () => {
+                btn.innerHTML = Bookmarks.has(id) ? '🔖' : '📑';
+                btn.style.transform = Bookmarks.has(id) ? 'scale(1.1)' : 'scale(1)';
+            };
+            updateIcon();
+
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                Bookmarks.toggle(id, title, section);
+                updateIcon();
+            });
+
+            if (getComputedStyle(card).position === 'static') {
+                card.style.position = 'relative';
+            }
+            card.appendChild(btn);
+        });
+    }
+};
+
+/* =====================================================
+   13. CARD INTERACTIONS
+   ===================================================== */
+
+const CardInteractions = {
+    init() {
+        // Timeline cards
+        document.querySelectorAll('.timeline .card').forEach(card => {
+            const year = card.parentElement.querySelector('.year')?.textContent || '';
+            const title = card.querySelector('h3')?.textContent || '';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                Toast.info(`📜 ${year} — ${title}`);
+                Analytics.track('timeline_click', { year, title });
+            });
+        });
+
+        // Tech grid articles
+        document.querySelectorAll('.tech-grid article').forEach(card => {
+            const title = card.querySelector('h3')?.textContent || '';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                Toast.success(`🛠️ ${title}: Learn more about this technique`);
+            });
+        });
+
+        // Gear list items
+        document.querySelectorAll('.gear-list div').forEach(card => {
+            const title = card.querySelector('h3')?.textContent || '';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                Toast.info(`🎒 ${title}`);
+            });
+        });
+
+        // Facts articles
+        document.querySelectorAll('.facts article').forEach(card => {
+            const b = card.querySelector('b')?.textContent || '';
+            const kind = card.querySelector('.kind')?.textContent || '';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                Toast.success(`⭐ ${kind}: ${b}`);
+            });
+        });
+
+        // Women articles
+        document.querySelectorAll('.women article').forEach(card => {
+            const name = card.querySelector('h3')?.textContent || '';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                Toast.info(`👩 ${name} — Read her story`);
+                Analytics.track('women_click', { name });
+            });
+        });
+
+        // Destination cards
+        document.querySelectorAll('.dest').forEach(card => {
+            const name = card.querySelector('h3')?.textContent || '';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                Toast.success(`📍 Explore ${name}`);
+                Analytics.track('dest_click', { name });
+            });
+        });
+
+        // Cols articles
+        document.querySelectorAll('.cols article').forEach(card => {
+            const title = card.querySelector('h3')?.textContent || '';
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                Toast.info(`📖 ${title}`);
+            });
+        });
+    }
+};
+
+/* =====================================================
+   14. NAVBAR EFFECT & MOBILE MENU
+   ===================================================== */
+
+const NavbarEffect = {
+    init() {
+        const navbar = document.querySelector('.site-header');
+        if (!navbar) return;
+        
+        // Scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+            });
+        }
+
+        navbar.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                Analytics.track('nav_click', { href: link.getAttribute('href'), text: link.textContent.trim() });
+            });
+        });
+    }
+};
+
+/* =====================================================
+   15. BUTTON RIPPLE EFFECT
+   ===================================================== */
+
+const ButtonEnhancements = {
+    init() {
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255,255,255,0.5);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                if (!btn.style.position || btn.style.position === 'static') {
+                    btn.style.position = 'relative';
+                }
+                btn.style.overflow = 'hidden';
+                btn.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+
+                Analytics.track('button_click', { text: btn.textContent.trim() });
+            });
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `@keyframes ripple { to { transform: scale(4); opacity: 0; } }`;
+        document.head.appendChild(style);
+    }
+};
+
+/* =====================================================
+   16. SHARE BUTTON
+   ===================================================== */
+
+const ShareButton = {
+    init() {
+        const btn = document.createElement('button');
+        btn.id = 'share-btn';
+        btn.setAttribute('aria-label', 'Share');
+        btn.style.cssText = `
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 2000;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid #7CC8ED;
+            background: rgba(11,24,37,0.85);
+            color: #7CC8ED;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+        `;
+        btn.innerHTML = '📤';
+        document.body.appendChild(btn);
+
+        btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
+        btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+        btn.addEventListener('click', async () => {
+            const data = {
+                title: document.title,
+                text: 'Alpine Ascents — History of Mountaineering',
+                url: location.href
+            };
+            try {
+                if (navigator.share) {
+                    await navigator.share(data);
+                    Toast.success('Shared! 🎉');
+                } else {
+                    await navigator.clipboard.writeText(location.href);
+                    Toast.success('Link copied! 📋');
+                }
+                Analytics.track('share', { url: location.href });
+            } catch (err) {
+                Toast.error('Could not share');
+            }
+        });
+    }
+};
+
+/* =====================================================
+   17. BOOKMARKS FLOATING BUTTON
+   ===================================================== */
+
+const BookmarksButton = {
+    init() {
+        const btn = document.createElement('button');
+        btn.id = 'bookmarks-btn';
+        btn.setAttribute('aria-label', 'View bookmarks');
+        btn.style.cssText = `
+            position: fixed;
+            bottom: 90px;
+            left: 24px;
+            z-index: 2000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #7CC8ED;
+            background: rgba(11,24,37,0.85);
+            color: #7CC8ED;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+            position: fixed;
+        `;
+        btn.innerHTML = '🔖';
+        document.body.appendChild(btn);
+
+        btn.addEventListener('click', () => Bookmarks.showAll());
+        btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
+        btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+    }
+};
+
+/* =====================================================
+   18. KEYBOARD SHORTCUTS
+   ===================================================== */
+
+const KeyboardShortcuts = {
+    init() {
+        document.addEventListener('keydown', e => {
+            if (e.target.matches('input, textarea')) return;
+
+            switch(e.key.toLowerCase()) {
+                case 't':
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    break;
+                case 'b':
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    break;
+                case '?':
+                    this.showHelp();
+                    break;
+                case 'l':
+                    // Toggle lightbox on first visible image
+                    const img = document.querySelector('.photo img');
+                    if (img) img.click();
+                    break;
+            }
+        });
+    },
+
+    showHelp() {
+        const existing = document.getElementById('help-modal');
+        if (existing) { existing.remove(); return; }
+
+        const modal = document.createElement('div');
+        modal.id = 'help-modal';
+        modal.style.cssText = `
+            position: fixed;inset:0;background:rgba(11,24,37,0.88);backdrop-filter:blur(10px);
+            z-index: 10000;display: flex;align-items: center;justify-content: center;padding: 20px;
+        `;
+        modal.innerHTML = `
+            <div style="background: linear-gradient(145deg, rgba(22,58,89,0.98), rgba(11,24,37,0.98)); border: 1px solid rgba(124,200,237,0.35); border-radius: 16px; padding: 40px; max-width: 480px; color: #fff; font-family: 'Segoe UI', sans-serif;">
+                <h3 style="font-family:Georgia,serif;font-size:1.6rem;margin-bottom:20px;color:#7CC8ED;">⌨️ Keyboard Shortcuts</h3>
+                <div style="font-size:0.95rem;line-height:2.2;">
+                    <div><kbd style="background:rgba(124,200,237,0.2);padding:3px 10px;border-radius:5px;font-family:monospace;">Ctrl+K</kbd> — Search</div>
+                    <div><kbd style="background:rgba(124,200,237,0.2);padding:3px 10px;border-radius:5px;font-family:monospace;">M</kbd> — Toggle Music</div>
+                    <div><kbd style="background:rgba(124,200,237,0.2);padding:3px 10px;border-radius:5px;font-family:monospace;">T</kbd> — Go to Top</div>
+                    <div><kbd style="background:rgba(124,200,237,0.2);padding:3px 10px;border-radius:5px;font-family:monospace;">B</kbd> — Go to Bottom</div>
+                    <div><kbd style="background:rgba(124,200,237,0.2);padding:3px 10px;border-radius:5px;font-family:monospace;">L</kbd> — Open Lightbox</div>
+                    <div><kbd style="background:rgba(124,200,237,0.2);padding:3px 10px;border-radius:5px;font-family:monospace;">?</kbd> — Show Help</div>
+                    <div><kbd style="background:rgba(124,200,237,0.2);padding:3px 10px;border-radius:5px;font-family:monospace;">Esc</kbd> — Close Modal</div>
+                </div>
+                <button onclick="this.closest('#help-modal').remove()" style="margin-top:24px;width:100%;padding:12px;border-radius:999px;background:#7CC8ED;color:#0B1825;border:none;font-weight:700;cursor:pointer;">Got it</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    }
+};
+
+/* =====================================================
+   19. DATA EXPORT/IMPORT
+   ===================================================== */
+
+const DataManager = {
+    export() {
+        const data = {
+            exported: new Date().toISOString(),
+            version: '5.0',
+            page: 'history',
+            data: Storage.getAll()
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `alpineAscents_history_backup_${Date.now()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        Toast.success('Data exported! 📤');
+    }
+};
+
+/* =====================================================
+   20. READING TIME
+   ===================================================== */
+
+const ReadingTime = {
+    init() {
+        const text = document.body.innerText || '';
+        const words = text.split(/\s+/).length;
+        const minutes = Math.max(1, Math.round(words / 200));
+        Storage.set('reading_time', minutes);
+
+        const crumbs = document.querySelector('.hero .crumbs');
+        if (crumbs && !document.getElementById('reading-badge')) {
+            const badge = document.createElement('div');
+            badge.id = 'reading-badge';
+            badge.style.cssText = `
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 11px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #7CC8ED;
+                padding: 6px 16px;
+                background: rgba(11,24,37,0.4);
+                border: 1px solid rgba(124,200,237,0.3);
+                border-radius: 50px;
+                backdrop-filter: blur(8px);
+                cursor: pointer;
+                margin-top: 16px;
+            `;
+            badge.innerHTML = `📖 ${minutes} min read`;
+            badge.addEventListener('click', () => Toast.info(`Estimated reading time: ${minutes} minutes`));
+            crumbs.parentElement.appendChild(badge);
+        }
+    }
+};
+
+/* =====================================================
+   21. FLOATING DASHBOARD BUTTON
+   ===================================================== */
+
+const Dashboard = {
+    init() {
+        const btn = document.createElement('button');
+        btn.id = 'dashboard-btn';
+        btn.setAttribute('aria-label', 'Dashboard');
+        btn.style.cssText = `
+            position: fixed;
+            bottom: 24px;
+            right: 90px;
+            z-index: 2000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #7CC8ED;
+            background: rgba(11,24,37,0.85);
+            color: #7CC8ED;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+        `;
+        btn.innerHTML = '📊';
+        document.body.appendChild(btn);
+
+        btn.addEventListener('click', () => this.show());
+        btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
+        btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+    },
+
+    show() {
+        const stats = Analytics.getStats();
+        const bookmarks = Bookmarks.get();
+        const existing = document.getElementById('dashboard-modal');
+        if (existing) existing.remove();
+
+        const modal = document.createElement('div');
+        modal.id = 'dashboard-modal';
+        modal.style.cssText = `
+            position: fixed;inset:0;background:rgba(11,24,37,0.88);backdrop-filter:blur(10px);
+            z-index: 10001;display: flex;align-items: center;justify-content: center;padding: 20px;
+        `;
+        modal.innerHTML = `
+            <div style="background: linear-gradient(145deg, rgba(22,58,89,0.98), rgba(11,24,37,0.98)); border: 1px solid rgba(124,200,237,0.35); border-radius: 16px; max-width: 600px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; color: #fff; font-family: 'Segoe UI', sans-serif;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+                    <h3 style="font-family:Georgia,serif;font-size:1.6rem;color:#7CC8ED;">📊 Your Dashboard</h3>
+                    <button onclick="document.getElementById('dashboard-modal').remove()" style="background:transparent;border:none;color:#7CC8ED;font-size:1.5rem;cursor:pointer;">×</button>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:24px;">
+                    <div style="background:rgba(124,200,237,0.1);border:1px solid rgba(124,200,237,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#7CC8ED;font-weight:700;">${stats.visits}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Visits</div>
+                    </div>
+                    <div style="background:rgba(124,200,237,0.1);border:1px solid rgba(124,200,237,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#7CC8ED;font-weight:700;">${stats.bookmarks}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Bookmarks</div>
+                    </div>
+                    <div style="background:rgba(124,200,237,0.1);border:1px solid rgba(124,200,237,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#7CC8ED;font-weight:700;">${stats.sessionDuration}s</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Time</div>
+                    </div>
+                    <div style="background:rgba(124,200,237,0.1);border:1px solid rgba(124,200,237,0.3);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;color:#7CC8ED;font-weight:700;">${stats.scrollDepth}%</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">Scrolled</div>
+                    </div>
+                </div>
+
+                ${bookmarks.length > 0 ? `
+                    <div style="margin-bottom:20px;">
+                        <h4 style="color:#7CC8ED;font-size:0.85rem;letter-spacing:0.15em;margin-bottom:12px;">🔖 SAVED</h4>
+                        ${bookmarks.map(b => `<div style="padding:8px;font-size:0.85rem;color:rgba(255,255,255,0.8);">• ${b.title}</div>`).join('')}
+                    </div>
+                ` : ''}
+
+                <div style="display:flex;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(124,200,237,0.2);">
+                    <button onclick="DataManager.export()" style="flex:1;background:rgba(124,200,237,0.15);border:1px solid #7CC8ED;color:#7CC8ED;padding:10px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:600;">📤 Export</button>
+                    <button onclick="if(confirm('Clear all data?')){Storage.clearAll();location.reload();}" style="flex:1;background:rgba(239,68,68,0.15);border:1px solid #ef4444;color:#ef4444;padding:10px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:600;">🗑️ Clear</button>
+                </div>
+
+                <div style="margin-top:16px;font-size:0.75rem;color:rgba(255,255,255,0.4);text-align:center;">
+                    💾 Storage: ${stats.storageSize}
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    }
+};
+
+/* =====================================================
+   22. CONSOLE HELP
+   ===================================================== */
+
+const ConsoleHelp = {
+    init() {
+        console.log('%c🏔️ Alpine Ascents History v5.0', 'color:#7CC8ED;font-size:18px;font-weight:bold;');
+        console.log('%cCommands:', 'color:#7CC8ED;font-weight:bold;');
+        console.log('  ALPINE_ASCENTS_HISTORY.Storage.getAll()');
+        console.log('  ALPINE_ASCENTS_HISTORY.Analytics.getStats()');
+        console.log('  ALPINE_ASCENTS_HISTORY.Bookmarks.showAll()');
+        console.log('  ALPINE_ASCENTS_HISTORY.MusicManager.toggle()');
+        console.log('  ALPINE_ASCENTS_HISTORY.Toast.success("Hi")');
+        console.log('%cPress ? for keyboard shortcuts', 'color:#7CC8ED;');
+    }
+};
+
+/* =====================================================
+   23. INITIALIZE EVERYTHING
+   ===================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('%c🏔️ Alpine Ascents History v5.0 Initialized', 'color:#7CC8ED;font-size:16px;font-weight:bold;');
+
+    Analytics.init();
+    Toast.init();
+    MusicManager.init();
+    ScrollAnimator.init();
+    ProgressBar.init();
+    BackToTop.init();
+    NavbarEffect.init();
+    TimelineFilter.init();
+    Lightbox.init();
+    Search.init();
+    BookmarkButtons.init();
+    CardInteractions.init();
+    ButtonEnhancements.init();
+    ShareButton.init();
+    BookmarksButton.init();
+    KeyboardShortcuts.init();
+    ReadingTime.init();
+    Dashboard.init();
+    ConsoleHelp.init();
+
+    // Welcome message
+    if (!sessionStorage.getItem('historyWelcomeShown')) {
+        setTimeout(() => {
+            Toast.success('Welcome to History! 🏔️ Press ? for shortcuts', 5000);
+            sessionStorage.setItem('historyWelcomeShown', '1');
+        }, 1200);
+    }
+
+    setTimeout(() => {
+        console.log('📊 Stats:', Analytics.getStats());
+    }, 2000);
+});
+
+/* =====================================================
+   24. GLOBAL EXPOSURE
+   ===================================================== */
+
+window.ALPINE_ASCENTS_HISTORY = {
+    Storage,
+    Toast,
+    MusicManager,
+    Analytics,
+    Search,
+    Bookmarks,
+    DataManager,
+    ScrollAnimator
+};
+</script>
+<script src="music.js"></script>
+</body>
+</html>

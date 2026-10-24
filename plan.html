@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine Ascents — Swiss Expeditions</title>
+    <link rel="stylesheet" href="booking.css">
+    <!-- Google Maps API (Yahan apni API key dalein) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap" async defer></script>
+</head>
+<body>
+  <style>
+    /* ============ RESET & BASE ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg: #060a12;
+    --icy: #7dd3fc;
+    --icy-2: #38bdf8;
+    --white: #f7fafc;
+    --muted: #a0b0c4;
+    --glass: rgba(10, 18, 30, 0.75);
+    --glass-border: rgba(125, 211, 252, 0.2);
+    --radius: 16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============ FIXED BACKGROUND VIDEO ============ */
+.bg-video {
+    position: fixed; inset: 0; width: 100vw; height: 100vh;
+    object-fit: cover; z-index: -2; pointer-events: none;
+}
+.bg-overlay {
+    position: fixed; inset: 0; background: rgba(6, 10, 18, 0.65);
+    z-index: -1; pointer-events: none;
+}
+.container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+
+/* ============ HEADER ============ */
+.site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 18px 0; background: rgba(6, 10, 18, 0.85);
+    backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; font-weight: 800; font-size: 18px; letter-spacing: 2px; }
+.brand-mark { width: 32px; height: 32px; color: var(--icy); }
+.nav-desktop { display: flex; align-items: center; gap: 18px; }
+.nav-link { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.25s; }
+.nav-link:hover, .nav-link.active { color: var(--white); }
+.nav-link.active { border-bottom: 2px solid var(--icy); padding-bottom: 4px; }
+.btn-plan { padding: 10px 20px; background: linear-gradient(135deg, var(--icy), var(--icy-2)); color: #060a12; text-decoration: none; font-weight: 700; font-size: 12px; border-radius: 100px; transition: transform 0.25s; }
+.btn-plan:hover { transform: translateY(-2px); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.nav-toggle span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+/* ============ MAIN LAYOUT ============ */
+.booking-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 30px;
+    padding-top: 120px;
+    padding-bottom: 40px;
+}
+
+.glass-panel {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: var(--radius); backdrop-filter: blur(16px);
+    padding: 24px;
+}
+
+/* ============ SIDEBAR (MAP & FILTERS) ============ */
+.sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 100px; height: fit-content; }
+
+.map-card { padding: 10px; }
+.map-box { width: 100%; height: 300px; border-radius: 10px; position: relative; overflow: hidden; background: #1a2638; }
+.map-fallback { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background: rgba(10, 18, 30, 0.9); }
+.map-fallback h3 { color: var(--icy); margin-bottom: 10px; }
+.map-fallback p { font-size: 13px; color: var(--muted); }
+.btn-show-map {
+    width: 100%; margin-top: 10px; padding: 10px;
+    background: transparent; border: 1px solid var(--icy); color: var(--icy);
+    border-radius: 100px; font-weight: 600; cursor: pointer; transition: all 0.3s;
+}
+.btn-show-map:hover { background: var(--icy); color: #000; }
+
+.filter-card h3 { font-size: 16px; margin-bottom: 15px; color: var(--white); }
+.filter-card label { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 14px; color: var(--muted); cursor: pointer; }
+.filter-card input[type="checkbox"] { accent-color: var(--icy); width: 16px; height: 16px; }
+
+/* ============ CONTENT AREA ============ */
+.content-area { min-width: 0; }
+.page-header { margin-bottom: 24px; }
+.page-title { font-size: 32px; font-weight: 800; margin-bottom: 5px; }
+.page-subtitle { color: var(--muted); font-size: 15px; }
+
+.sort-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; margin-bottom: 24px; }
+.results-count { font-size: 14px; color: var(--muted); }
+.sort-select { padding: 8px 16px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: var(--white); border-radius: 8px; outline: none; cursor: pointer; }
+
+/* ============ EXPEDITION CARDS ============ */
+.expedition-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.exp-card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: var(--radius); overflow: hidden; backdrop-filter: blur(16px);
+    transition: all 0.3s; display: flex; flex-direction: column;
+}
+.exp-card:hover { transform: translateY(-5px); border-color: var(--icy); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+.exp-card img { width: 100%; height: 180px; object-fit: cover; }
+.exp-details { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.exp-badge { display: inline-block; font-size: 11px; font-weight: bold; color: var(--icy); background: rgba(125, 211, 252, 0.1); border: 1px solid var(--icy); padding: 4px 10px; border-radius: 100px; width: fit-content; margin-bottom: 10px; }
+.exp-details h3 { font-size: 20px; margin-bottom: 5px; }
+.exp-meta { font-size: 13px; color: var(--muted); margin-bottom: 15px; }
+.exp-price { font-size: 22px; font-weight: 800; color: var(--white); margin-top: auto; margin-bottom: 15px; }
+.exp-price span { font-size: 13px; font-weight: normal; color: var(--muted); }
+
+.card-actions { display: flex; gap: 10px; }
+.btn-book {
+    flex: 1; padding: 12px; background: linear-gradient(135deg, var(--icy), var(--icy-2)); color: #000;
+    border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s;
+}
+.btn-book:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4); }
+.btn-show-map-card {
+    flex: 1; padding: 12px; background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s;
+}
+.btn-show-map-card:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+/* ============ NEW: INFO, RULES & GALLERY SECTION ============ */
+.info-gallery-section {
+    padding-bottom: 80px;
+}
+
+.section-title-sm {
+    font-size: 24px;
+    color: var(--icy);
+    margin-bottom: 20px;
+}
+
+/* Info Grid (Rules & Tips) */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.info-card {
+    padding: 30px;
+}
+
+.styled-list {
+    list-style: none;
+}
+
+.styled-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.styled-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--icy);
+    font-weight: bold;
+}
+
+/* Reviews */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.review-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stars {
+    color: #f59e0b;
+    font-size: 18px;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+}
+
+.review-card p {
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 15px;
+    font-size: 15px;
+    flex-grow: 1;
+}
+
+.reviewer {
+    font-size: 13px;
+    color: var(--icy);
+    font-weight: bold;
+}
+
+/* Image Gallery */
+.premium-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 15px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.gallery-img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.2);
+    border-color: var(--icy);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+}
+
+/* Specific layout for larger images */
+.gallery-img.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* ============ MODALS & DRAWER ============ */
+.modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+    z-index: 10000; display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: all 0.3s;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-box { background: var(--glass); border: 1px solid var(--icy); border-radius: var(--radius); padding: 40px; text-align: center; max-width: 400px; width: 90%; position: relative; }
+.close-btn { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 14px; }
+.close-btn:hover { background: #ef4444; }
+
+.map-modal-box { max-width: 900px; width: 90%; padding: 20px; }
+.map-large { width: 100%; height: 600px; border-radius: 10px; }
+
+.success-icon { width: 70px; height: 70px; background: rgba(16, 185, 129, 0.2); color: #10b981; border-radius: 50%; font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid #10b981; }
+.modal-box h2 { color: #10b981; margin-bottom: 10px; }
+.receipt { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; margin: 20px 0; text-align: left; border: 1px solid var(--glass-border); }
+.receipt p { margin-bottom: 10px; color: var(--muted); }
+.receipt strong { color: var(--white); }
+.btn-primary { padding: 12px 24px; background: linear-gradient(135deg, var(--icy), var(--icy-2)); color: #000; border: none; border-radius: 100px; font-weight: bold; cursor: pointer; }
+
+/* ============ BOOKING DRAWER ============ */
+.drawer-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+    z-index: 9999; display: flex; justify-content: flex-end;
+    opacity: 0; visibility: hidden; transition: all 0.3s;
+}
+.drawer-overlay.active { opacity: 1; visibility: visible; }
+.booking-drawer {
+    width: 100%; max-width: 450px; background: rgba(10, 18, 30, 0.98);
+    height: 100%; border-left: 1px solid var(--glass-border);
+    display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.4s ease;
+    position: relative;
+}
+.drawer-overlay.active .booking-drawer { transform: translateX(0); }
+.drawer-close { top: 20px; right: 20px; z-index: 10; }
+.drawer-header { padding: 30px; border-bottom: 1px solid var(--glass-border); }
+.drawer-header h2 { font-size: 22px; color: var(--icy); margin-bottom: 5px; }
+.drawer-header p { font-size: 18px; font-weight: 700; }
+.drawer-body { padding: 30px; overflow-y: auto; flex-grow: 1; }
+
+.visual-select-group { margin-bottom: 30px; }
+.visual-select-group h4 { font-size: 15px; margin-bottom: 12px; color: var(--white); }
+.date-tiles { display: flex; gap: 10px; flex-wrap: wrap; }
+.date-tile { padding: 10px 16px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--white); border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 14px; }
+.date-tile.active, .date-tile:hover { background: var(--icy); color: #000; border-color: var(--icy); font-weight: bold; }
+.counter-wrap { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.05); width: fit-content; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--glass-border); }
+.counter-wrap button { background: none; border: none; color: var(--icy); font-size: 20px; cursor: pointer; }
+.counter-wrap span { font-size: 18px; font-weight: bold; width: 30px; text-align: center; }
+.addon-tiles { display: flex; flex-direction: column; gap: 10px; }
+.addon-tile { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); cursor: pointer; font-size: 14px; }
+.addon-tile input { accent-color: var(--icy); width: 18px; height: 18px; }
+
+.drawer-footer { padding: 20px 30px; background: rgba(0,0,0,0.5); border-top: 1px solid var(--glass-border); }
+.live-price { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 16px; }
+.live-price strong { font-size: 22px; color: var(--icy); }
+.btn-confirm { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--icy), var(--icy-2)); color: #000; border: none; border-radius: 100px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+.btn-confirm:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1000px) {
+    .booking-layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; top: 0; }
+    .map-box { height: 250px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .premium-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-img.large { grid-column: span 1; grid-row: span 1; }
+}
+@media (max-width: 800px) {
+    .nav-desktop { display: none; }
+    .nav-toggle { display: flex; }
+}
+  </style>
+    <!-- ============ BACKGROUND VIDEO ============ -->
+    <video class="bg-video" src="ali video.mp4" autoplay muted loop playsinline disablePictureInPicture></video>
+    <div class="bg-overlay"></div>
+
+    <!-- ============ HEADER ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+            <a href="index.html" class="brand" aria-label="Alpine Ascents Home">
+                <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+                    <path d="M4 34 L16 12 L22 22 L27 14 L36 34 Z" fill="currentColor"/>
+                </svg>
+                <span class="brand-word">ALPINE ASCENTS</span>
+            </a>
+
+            <nav class="nav-desktop" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="history.html" class="nav-link">History</a>
+                <a href="booking.html" class="nav-link">Expeditions</a>
+                <a href="galery.html" class="nav-link">Gallery</a>
+                <a href="booking.html" class="nav-link active">Booking</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="booking.html" class="btn-plan">PLAN YOUR EXPEDITION</a>
+            </nav>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============ MAIN LAYOUT (Booking.com style) ============ -->
+    <main class="booking-layout container">
+        
+        <!-- LEFT SIDEBAR (MAP & FILTERS) -->
+        <aside class="sidebar">
+            <!-- Google Map Container -->
+            <div class="map-card glass-panel">
+                <div id="googleMap" class="map-box">
+                    <!-- Fallback message if API key fails -->
+                    <div id="mapFallback" class="map-fallback">
+                        <h3>Map Configuration Required</h3>
+                        <p>Please add a valid Google Maps API key in the code to view the interactive map.</p>
+                    </div>
+                </div>
+                <button class="btn-show-map" id="expandMapBtn">Show Larger Map ↗</button>
+            </div>
+
+            <!-- Quick Filters -->
+            <div class="filter-card glass-panel">
+                <h3>Filter by Region</h3>
+                <label><input type="checkbox" class="filter-cb" value="Zermatt" checked> Zermatt / Matterhorn</label>
+                <label><input type="checkbox" class="filter-cb" value="Grindelwald" checked> Grindelwald / Eiger</label>
+                <label><input type="checkbox" class="filter-cb" value="Interlaken" checked> Interlaken / Jungfrau</label>
+                <label><input type="checkbox" class="filter-cb" value="Lauterbrunnen" checked> Lauterbrunnen</label>
+                <label><input type="checkbox" class="filter-cb" value="Saas-Fee" checked> Saas-Fee</label>
+            </div>
+        </aside>
+
+        <!-- RIGHT CONTENT (EXPEDITIONS) -->
+        <div class="content-area">
+            
+            <div class="page-header reveal">
+                <h1 class="page-title">Swiss Alpine Expeditions</h1>
+                <p class="page-subtitle">Find and book your perfect mountain adventure.</p>
+            </div>
+
+            <!-- Sort Bar -->
+            <div class="sort-bar glass-panel">
+                <span class="results-count" id="resultsCount">Showing 6 expeditions</span>
+                <select id="sortSelect" class="sort-select">
+                    <option value="recommended">Recommended</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+            </div>
+
+            <!-- Expeditions Grid -->
+            <div class="expedition-grid" id="expGrid">
+                <!-- Populated by JS -->
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ============ NEW SECTION: RULES, TIPS, REVIEWS & GALLERY ============ -->
+    <section class="info-gallery-section container reveal">
+        
+        <!-- 1. Alpine Tips & Rules -->
+        <div class="info-grid">
+            <div class="glass-panel info-card">
+                <h2 class="section-title-sm">🏔️ Mountain Rules</h2>
+                <ul class="styled-list">
+                    <li>Always stay on marked trails to protect fragile alpine flora.</li>
+                    <li>Carry out everything you carry in (Leave No Trace).</li>
+                    <li>Respect local wildlife. Do not feed animals.</li>
+                    <li>Weather changes rapidly. Always follow your guide's instructions.</li>
+                    <li>Keep a minimum distance of 5 meters from glaciers.</li>
+                </ul>
+            </div>
+            
+            <div class="glass-panel info-card">
+                <h2 class="section-title-sm">💡 Pro Tips for Climbers</h2>
+                <ul class="styled-list">
+                    <li><strong>Acclimatize:</strong> Spend a day in the village before ascending.</li>
+                    <li><strong>Hydrate:</strong> Drink twice as much water as you do at sea level.</li>
+                    <li><strong>Layer Up:</strong> Wear moisture-wicking layers. Avoid cotton.</li>
+                    <li><strong>Start Early:</strong> Begin ascents at 4 AM to avoid afternoon storms.</li>
+                    <li><strong>Pack Light:</strong> Only carry what is absolutely necessary.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. Reviews / Testimonials -->
+        <div class="reviews-section">
+            <h2 class="section-title-sm" style="text-align: center; margin: 50px 0 30px;">⭐ What Our Climbers Say</h2>
+            <div class="review-grid">
+                <div class="review-card glass-panel">
+                    <div class="stars">★★★★★</div>
+                    <p>"The Matterhorn expedition was life-changing. Our guide was incredibly professional and the views were unreal."</p>
+                    <span class="reviewer">- Sarah M., UK</span>
+                </div>
+                <div class="review-card glass-panel">
+                    <div class="stars">★★★★★</div>
+                    <p>"Perfectly organized from start to finish. The gear checklist was a lifesaver! Highly recommend Alpine Ascents."</p>
+                    <span class="reviewer">- David K., USA</span>
+                </div>
+                <div class="review-card glass-panel">
+                    <div class="stars">★★★★☆</div>
+                    <p>"Challenging but rewarding. The Swiss Alps are beautiful. The accommodation upgrade was totally worth it."</p>
+                    <span class="reviewer">- Elena R., Germany</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. High-Quality Image Gallery (8+ Images) -->
+        <div class="gallery-section">
+            <h2 class="section-title-sm" style="text-align: center; margin: 60px 0 30px;">📸 Captured Moments</h2>
+            <div class="premium-gallery-grid">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Mountain Peak" class="gallery-img large">
+                <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=600&q=80" alt="Climber" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Snow Mountain" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=600&q=80" alt="Alpine Lake" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Valley View" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80" alt="Hiking Group" class="gallery-img large">
+                <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=600&q=80" alt="Rock Climbing" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1610296669228-602fa827fc1f?w=600&q=80" alt="Glacier" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1517825738774-7de9363ef735?w=600&q=80" alt="Sunrise Alpine" class="gallery-img">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ============ EXPANDED MAP MODAL ============ -->
+    <div class="modal-overlay" id="mapModal">
+        <div class="modal-box map-modal-box">
+            <button class="close-btn" id="closeMapModal">✕</button>
+            <div id="googleMapLarge" class="map-large"></div>
+        </div>
+    </div>
+
+    <!-- ============ BOOKING DRAWER ============ -->
+    <div class="drawer-overlay" id="drawerOverlay">
+        <div class="booking-drawer" id="bookingDrawer">
+            <button class="close-btn drawer-close" id="closeDrawer">✕</button>
+            
+            <div class="drawer-header">
+                <h2 id="drawerTitle">Expedition Booking</h2>
+                <p id="drawerPrice">$0</p>
+            </div>
+
+            <div class="drawer-body">
+                <!-- Date Selection -->
+                <div class="visual-select-group">
+                    <h4>Select Date</h4>
+                    <div class="date-tiles" id="dateTiles">
+                        <button class="date-tile active">Aug 15</button>
+                        <button class="date-tile">Aug 18</button>
+                        <button class="date-tile">Aug 22</button>
+                        <button class="date-tile">Sep 05</button>
+                    </div>
+                </div>
+
+                <!-- Guests -->
+                <div class="visual-select-group">
+                    <h4>Participants</h4>
+                    <div class="counter-wrap">
+                        <button id="minusGuest">-</button>
+                        <span id="guestCount">1</span>
+                        <button id="plusGuest">+</button>
+                    </div>
+                </div>
+
+                <!-- Add-ons -->
+                <div class="visual-select-group">
+                    <h4>Optional Extras</h4>
+                    <div class="addon-tiles">
+                        <label class="addon-tile"><input type="checkbox" value="150"> Hotel Upgrade (+$150)</label>
+                        <label class="addon-tile"><input type="checkbox" value="50"> Gear Rental (+$50)</label>
+                        <label class="addon-tile"><input type="checkbox" value="200"> Private Guide (+$200)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="drawer-footer">
+                <div class="live-price">
+                    <span>Total:</span>
+                    <strong id="drawerTotal">$0</strong>
+                </div>
+                <button class="btn-confirm" id="confirmBooking">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ SUCCESS MODAL ============ -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-box">
+            <div class="success-icon">✓</div>
+            <h2>Booking Request Sent!</h2>
+            <p>Your demo booking has been processed.</p>
+            <div class="receipt">
+                <p>Ref: <strong id="refNo">-</strong></p>
+                <p>Expedition: <strong id="confExp">-</strong></p>
+                <p>Total Est: <strong id="confTotal">-</strong></p>
+            </div>
+            <button class="btn-primary" onclick="window.location.reload()">Close</button>
+        </div>
+    </div>
+
+    <script src="booking.js"></script>
+    <script>
+        /* ============ DATA ============ */
+const expeditions = [
+    { id: 1, name: 'Matterhorn Summit Push', loc: 'Zermatt', duration: '5 Days', diff: 'Advanced', price: 3500, img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80', lat: 46.0207, lng: 7.7491 },
+    { id: 2, name: 'Eiger Trail Hike', loc: 'Grindelwald', duration: '2 Days', diff: 'Intermediate', price: 450, img: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=600&q=80', lat: 46.6244, lng: 8.0414 },
+    { id: 3, name: 'Jungfrau Glacier Trek', loc: 'Interlaken', duration: '3 Days', diff: 'Moderate', price: 1200, img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80', lat: 46.6863, lng: 7.8632 },
+    { id: 4, name: 'Valley Photography Tour', loc: 'Lauterbrunnen', duration: '1 Day', diff: 'Beginner', price: 200, img: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=600&q=80', lat: 46.5934, lng: 7.9083 },
+    { id: 5, name: 'Saas-Fee Alpine Circuit', loc: 'Saas-Fee', duration: '4 Days', diff: 'Intermediate', price: 850, img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80', lat: 46.1090, lng: 7.9291 }
+];
+
+let selectedExp = null;
+let guests = 1;
+let basePrice = 0;
+
+/* ============ RENDER CARDS ============ */
+function renderExpeditions(data) {
+    const grid = document.getElementById('expGrid');
+    grid.innerHTML = data.map(exp => `
+        <div class="exp-card">
+            <img src="${exp.img}" alt="${exp.name}">
+            <div class="exp-details">
+                <span class="exp-badge">${exp.diff}</span>
+                <h3>${exp.name}</h3>
+                <div class="exp-meta">📍 ${exp.loc} · ⏱ ${exp.duration}</div>
+                <div class="exp-price">$${exp.price.toLocaleString()} <span>/ person</span></div>
+                <div class="card-actions">
+                    <button class="btn-book" onclick="openBooking(${exp.id})">Book</button>
+                    <button class="btn-show-map-card" onclick="showOnMap(${exp.id})">Show on Map</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    document.getElementById('resultsCount').textContent = `Showing ${data.length} expeditions`;
+}
+
+/* ============ BOOKING DRAWER LOGIC ============ */
+function openBooking(id) {
+    selectedExp = expeditions.find(e => e.id === id);
+    basePrice = selectedExp.price;
+    guests = 1;
+    
+    document.getElementById('drawerTitle').textContent = selectedExp.name;
+    document.getElementById('drawerPrice').textContent = `$${selectedExp.price.toLocaleString()} / person`;
+    document.getElementById('guestCount').textContent = guests;
+    
+    document.querySelectorAll('.addon-tile input').forEach(cb => cb.checked = false);
+    document.querySelectorAll('.date-tile').forEach((d, i) => d.classList.toggle('active', i === 0));
+    
+    calculateTotal();
+    document.getElementById('drawerOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+}
+
+document.getElementById('closeDrawer').addEventListener('click', () => {
+    document.getElementById('drawerOverlay').classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+document.querySelectorAll('.date-tile').forEach(tile => {
+    tile.addEventListener('click', () => {
+        document.querySelectorAll('.date-tile').forEach(t => t.classList.remove('active'));
+        tile.classList.add('active');
+    });
+});
+
+document.getElementById('plusGuest').addEventListener('click', () => {
+    if(guests < 10) { guests++; document.getElementById('guestCount').textContent = guests; calculateTotal(); }
+});
+document.getElementById('minusGuest').addEventListener('click', () => {
+    if(guests > 1) { guests--; document.getElementById('guestCount').textContent = guests; calculateTotal(); }
+});
+
+document.querySelectorAll('.addon-tile input').forEach(cb => {
+    cb.addEventListener('change', calculateTotal);
+});
+
+function calculateTotal() {
+    let addonsTotal = 0;
+    document.querySelectorAll('.addon-tile input:checked').forEach(cb => {
+        addonsTotal += parseInt(cb.value);
+    });
+    const total = (basePrice * guests) + addonsTotal;
+    document.getElementById('drawerTotal').textContent = `$${total.toLocaleString()}`;
+}
+
+document.getElementById('confirmBooking').addEventListener('click', () => {
+    const btn = document.getElementById('confirmBooking');
+    btn.textContent = 'Processing...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        document.getElementById('drawerOverlay').classList.remove('active');
+        document.getElementById('successModal').classList.add('active');
+        document.body.style.overflow = 'auto';
+
+        document.getElementById('refNo').textContent = 'AA-' + Math.floor(100000 + Math.random() * 900000);
+        document.getElementById('confExp').textContent = selectedExp.name;
+        document.getElementById('confTotal').textContent = document.getElementById('drawerTotal').textContent;
+        
+        btn.textContent = 'Confirm Booking';
+        btn.disabled = false;
+    }, 1500);
+});
+
+/* ============ FILTER & SORT ============ */
+document.querySelectorAll('.filter-cb').forEach(cb => {
+    cb.addEventListener('change', filterResults);
+});
+
+function filterResults() {
+    const activeFilters = Array.from(document.querySelectorAll('.filter-cb:checked')).map(cb => cb.value);
+    const filtered = expeditions.filter(exp => activeFilters.includes(exp.loc));
+    renderExpeditions(filtered);
+}
+
+document.getElementById('sortSelect').addEventListener('change', (e) => {
+    const val = e.target.value;
+    let sorted = [...expeditions];
+    if (val === 'price-low') sorted.sort((a, b) => a.price - b.price);
+    if (val === 'price-high') sorted.sort((a, b) => b.price - a.price);
+    renderExpeditions(sorted);
+});
+
+/* ============ GOOGLE MAPS INTEGRATION ============ */
+let map;
+let mapLarge;
+let markers = {};
+
+function initMap() {
+    const defaultLoc = { lat: 46.8182, lng: 8.2275 }; 
+    
+    const mapOptions = {
+        center: defaultLoc,
+        zoom: 7,
+        mapTypeId: 'roadmap',
+        disableDefaultUI: true, 
+        zoomControl: true,
+        streetViewControl: false,
+        mapTypeControl: false,
+        fullscreenControl: false
+    };
+
+    map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+    document.getElementById('mapFallback').style.display = 'none'; 
+
+    mapLarge = new google.maps.Map(document.getElementById('googleMapLarge'), mapOptions);
+
+    const icon = {
+        url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png", 
+        scaledSize: new google.maps.Size(40, 40)
+    };
+
+    expeditions.forEach(exp => {
+        const marker = new google.maps.Marker({
+            position: { lat: exp.lat, lng: exp.lng },
+            map: map,
+            title: exp.loc,
+            icon: icon
+        });
+
+        const markerLarge = new google.maps.Marker({
+            position: { lat: exp.lat, lng: exp.lng },
+            map: mapLarge,
+            title: exp.loc,
+            icon: icon
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: `<div style="color:#000; padding:5px;">
+                        <strong>${exp.loc}</strong><br>
+                        ${exp.name}<br>
+                        <button onclick="openBooking(${exp.id})" style="margin-top:5px; padding:5px 10px; background:#38bdf8; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Book Now</button>
+                      </div>`
+        });
+
+        const infoWindowLarge = new google.maps.InfoWindow({
+            content: `<div style="color:#000; padding:5px;">
+                        <strong>${exp.loc}</strong><br>
+                        ${exp.name}
+                      </div>`
+        });
+
+        marker.addListener('click', () => infoWindow.open(map, marker));
+        markerLarge.addListener('click', () => infoWindowLarge.open(mapLarge, markerLarge));
+
+        markers[exp.id] = { small: marker, large: markerLarge, info: infoWindow, infoLarge: infoWindowLarge };
+    });
+}
+
+window.gm_authFailure = function() {
+    document.getElementById('googleMap').style.display = 'none';
+    document.getElementById('mapFallback').style.display = 'flex';
+};
+
+document.getElementById('expandMapBtn').addEventListener('click', () => {
+    document.getElementById('mapModal').classList.add('active');
+    setTimeout(() => { google.maps.event.trigger(mapLarge, 'resize'); }, 200);
+});
+document.getElementById('closeMapModal').addEventListener('click', () => {
+    document.getElementById('mapModal').classList.remove('active');
+});
+
+function showOnMap(id) {
+    const exp = expeditions.find(e => e.id === id);
+    if(!exp || !map) return;
+
+    const loc = { lat: exp.lat, lng: exp.lng };
+    map.panTo(loc);
+    map.setZoom(11);
+    
+    markers[id].info.open(map, markers[id].small);
+    
+    if(window.innerWidth < 1000) {
+        document.querySelector('.sidebar').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', () => {
+    renderExpeditions(expeditions);
+});
+    </script>
+    <script src="music.js"></script>
+     <script>
+        /* =====================================================
+   SUMMITORA — GLOBAL BACKGROUND MUSIC SYSTEM
+   Saare pages mein automatically chalega
+   ===================================================== */
+
+(function() {
+    'use strict';
+
+    // ====== CONFIGURATION ======
+    const CONFIG = {
+        musicFile: 'epic_musictracks-mountain-path-125573.mp3', // 🎵 Apna music file yahan
+        defaultVolume: 0.15,  // 15% volume (halka)
+        storagePrefix: 'summitOra_music_',
+        buttonPosition: { bottom: '24px', right: '24px' }
+    };
+
+    // ====== STORAGE ======
+    const Store = {
+        set(k, v) {
+            try { localStorage.setItem(CONFIG.storagePrefix + k, JSON.stringify(v)); } catch(e) {}
+        },
+        get(k, d = null) {
+            try {
+                const i = localStorage.getItem(CONFIG.storagePrefix + k);
+                return i ? JSON.parse(i) : d;
+            } catch(e) { return d; }
+        }
+    };
+
+    // ====== MUSIC MANAGER ======
+    const MusicManager = {
+        audio: null,
+        button: null,
+        initialized: false,
+
+        init() {
+            if (this.initialized) return;
+            if (document.getElementById('summitora-music-btn')) return;
+
+            // Create audio element
+            this.audio = document.createElement('audio');
+            this.audio.id = 'summitora-bg-music';
+            this.audio.loop = true;
+            this.audio.preload = 'auto';
+            this.audio.volume = parseFloat(Store.get('volume', CONFIG.defaultVolume));
+
+            const source = document.createElement('source');
+            source.src = CONFIG.musicFile;
+            source.type = 'audio/mpeg';
+            this.audio.appendChild(source);
+            document.body.appendChild(this.audio);
+
+            // Restore saved state
+            const savedTime = Store.get('time', 0);
+            const musicOff = Store.get('off', false);
+
+            if (savedTime > 0) {
+                this.audio.addEventListener('loadedmetadata', () => {
+                    if (savedTime < this.audio.duration) {
+                        this.audio.currentTime = savedTime;
+                    }
+                }, { once: true });
+            }
+
+            // Create button
+            this.createButton();
+
+            // Try autoplay
+            if (!musicOff) {
+                this.attemptAutoplay();
+            }
+
+            // First click fallback (browser autoplay block)
+            if (musicOff) {
+                this.button.classList.remove('playing');
+            }
+
+            // Save time periodically
+            this.audio.addEventListener('timeupdate', () => {
+                Store.set('time', this.audio.currentTime);
+                Store.set('volume', this.audio.volume);
+            });
+
+            // Save on leave
+            window.addEventListener('beforeunload', () => {
+                Store.set('time', this.audio.currentTime);
+            });
+
+            // Bind button
+            this.button.addEventListener('click', () => this.toggle());
+
+            // Keyboard M
+            document.addEventListener('keydown', (e) => {
+                if ((e.key === 'm' || e.key === 'M') && !e.target.matches('input, textarea, select')) {
+                    this.toggle();
+                }
+            });
+
+            // Volume slider on long-press
+            this.button.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                this.showVolumeControl();
+            });
+
+            this.initialized = true;
+            console.log('%c🎵 SUMMITORA Music Ready', 'color:#77C9F2;font-weight:bold;');
+        },
+
+        createButton() {
+            const btn = document.createElement('button');
+            btn.id = 'summitora-music-btn';
+            btn.setAttribute('aria-label', 'Toggle music');
+            btn.title = 'Music On/Off (M key) | Right-click for volume';
+            btn.style.cssText = `
+                position: fixed;
+                bottom: ${CONFIG.buttonPosition.bottom};
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99998;
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                border: 2px solid #77C9F2;
+                background: rgba(7, 21, 33, 0.88);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                color: #77C9F2;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2);
+                transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+                user-select: none;
+                -webkit-user-select: none;
+            `;
+            btn.innerHTML = '🔇';
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'scale(1.1)';
+                btn.style.boxShadow = '0 12px 32px rgba(0,0,0,0.6), 0 0 30px rgba(119,201,242,0.5)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+                btn.style.boxShadow = '0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2)';
+            });
+
+            // Pulse animation style
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes summitoraPulse {
+                    0% { box-shadow: 0 0 0 0 rgba(119,201,242,0.6), 0 8px 24px rgba(0,0,0,0.5); }
+                    70% { box-shadow: 0 0 0 16px rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                    100% { box-shadow: 0 0 0 0 rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                }
+                #summitora-music-btn.playing {
+                    animation: summitoraPulse 2.2s infinite;
+                    background: rgba(119,201,242,0.15);
+                }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(btn);
+            this.button = btn;
+        },
+
+        attemptAutoplay() {
+            const playPromise = this.audio.play();
+            if (playPromise) {
+                playPromise
+                    .then(() => {
+                        this.button.innerHTML = '🎵';
+                        this.button.classList.add('playing');
+                        console.log('🎵 Music autoplay started');
+                    })
+                    .catch(() => {
+                        // Autoplay blocked - wait for user click
+                        console.log('🎵 Autoplay blocked, waiting for user click');
+                        const startOnClick = () => {
+                            if (this.audio.paused && !Store.get('off', false)) {
+                                this.audio.play().then(() => {
+                                    this.button.innerHTML = '🎵';
+                                    this.button.classList.add('playing');
+                                }).catch(() => {});
+                            }
+                            document.removeEventListener('click', startOnClick);
+                        };
+                        document.addEventListener('click', startOnClick, { once: true });
+                    });
+            }
+        },
+
+        toggle() {
+            if (!this.audio) return;
+            if (this.audio.paused) {
+                this.audio.play().then(() => {
+                    this.button.innerHTML = '🎵';
+                    this.button.classList.add('playing');
+                    Store.set('off', false);
+                }).catch(err => console.warn('Play failed:', err));
+            } else {
+                this.audio.pause();
+                this.button.innerHTML = '🔇';
+                this.button.classList.remove('playing');
+                Store.set('off', true);
+            }
+        },
+
+        showVolumeControl() {
+            const existing = document.getElementById('summitora-volume-popup');
+            if (existing) { existing.remove(); return; }
+
+            const popup = document.createElement('div');
+            popup.id = 'summitora-volume-popup';
+            const btnRect = this.button.getBoundingClientRect();
+            popup.style.cssText = `
+                position: fixed;
+                bottom: ${window.innerHeight - btnRect.top + 10}px;
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99999;
+                background: rgba(7, 21, 33, 0.95);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(119,201,242,0.3);
+                border-radius: 12px;
+                padding: 16px 20px;
+                color: #fff;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.85rem;
+                width: 200px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            `;
+            popup.innerHTML = `
+                <div style="margin-bottom:10px;color:#77C9F2;font-weight:700;">🔊 Volume</div>
+                <input type="range" id="summitora-vol-slider" min="0" max="100" value="${Math.round(this.audio.volume * 100)}"
+                    style="width:100%;accent-color:#77C9F2;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.7rem;color:rgba(255,255,255,0.6);">
+                    <span>0%</span>
+                    <span id="summitora-vol-value">${Math.round(this.audio.volume * 100)}%</span>
+                    <span>100%</span>
+                </div>
+            `;
+            document.body.appendChild(popup);
+
+            const slider = popup.querySelector('#summitora-vol-slider');
+            const valueEl = popup.querySelector('#summitora-vol-value');
+            slider.addEventListener('input', () => {
+                const vol = slider.value / 100;
+                this.audio.volume = vol;
+                valueEl.textContent = slider.value + '%';
+                Store.set('volume', vol);
+            });
+
+            // Close on outside click
+            setTimeout(() => {
+                const closeHandler = (e) => {
+                    if (!popup.contains(e.target) && e.target !== this.button) {
+                        popup.remove();
+                        document.removeEventListener('click', closeHandler);
+                    }
+                };
+                document.addEventListener('click', closeHandler);
+            }, 100);
+        }
+    };
+
+    // ====== INIT ON DOM READY ======
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => MusicManager.init());
+    } else {
+        MusicManager.init();
+    }
+
+    // Global access
+    window.SUMMITORA_MUSIC = MusicManager;
+})();
+    </script>
+    <script src="music.js"></script>
+</body>
+</html>
