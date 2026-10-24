@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History of Mountaineering | ExploreX — Beyond Limits</title>
+<meta name="description" content="From ancient mountain journeys to the Himalayas: the history of mountaineering, told by ExploreX.">
+<link rel="stylesheet" href="history.css">
+<style>
+   :root{
+  --blue:#163A59;--glacier:#7CC8ED;--snow:#F7FAFC;--navy:#0B1825;--ice:#E5EDF2;--char:#263442;
+  --serif:Georgia,"Times New Roman",serif;--sans:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --hh:76px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh) + 10px)}
+body{font-family:var(--sans);color:var(--char);background:var(--snow);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1180px,92%);margin:auto}
+
+/* header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--hh);display:flex;align-items:center;justify-content:space-between;padding:0 4%;background:linear-gradient(rgba(11,24,37,.55),rgba(11,24,37,.25));border-bottom:1px solid rgba(247,250,252,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--snow)}
+.logo span{display:flex;flex-direction:column;font:700 1.35rem/1 var(--serif);letter-spacing:.5px}
+.logo b{color:var(--glacier)}
+.logo small{font:500 .6rem/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--glacier);margin-top:4px}
+.main-nav{display:flex;align-items:center;gap:6px}
+.main-nav a{color:var(--ice);text-decoration:none;font-size:.92rem;padding:8px 14px;border-radius:4px;position:relative;transition:color .25s}
+.main-nav a:not(.btn)::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:2px;background:var(--glacier);transform:scaleX(0);transition:transform .3s}
+.main-nav a:hover{color:var(--glacier)}
+.main-nav a:hover::after,.main-nav a.active::after{transform:scaleX(1)}
+.main-nav a.active{color:var(--glacier);font-weight:600}
+.nav-cta{margin-left:10px}
+.nav-toggle{display:none}
+.burger{display:none;cursor:pointer;width:42px;height:42px;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:24px;height:2px;background:var(--snow);position:relative;transition:.3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:3px;font-weight:600;font-size:.95rem;text-decoration:none;letter-spacing:.03em;transition:.3s;border:2px solid var(--glacier)}
+.btn-solid{background:var(--glacier);color:var(--navy)}
+.btn-solid:hover{background:var(--snow);border-color:var(--snow);transform:translateY(-2px)}
+.btn-ghost{color:var(--snow);background:transparent}
+.btn-ghost:hover{background:var(--glacier);color:var(--navy);transform:translateY(-2px)}
+.main-nav .nav-cta{padding:10px 20px;color:var(--navy)}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--navy);color:var(--snow)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,37,.55),rgba(11,24,37,0) 70%)}
+.hero-inner{position:relative;z-index:2;width:min(1180px,92%);margin:auto;padding:calc(var(--hh) + 40px) 0 80px}
+.crumbs{display:flex;gap:10px;font-size:.85rem;margin-bottom:28px;color:var(--ice)}
+.crumbs a{text-decoration:none;color:var(--glacier)}
+.eyebrow{font-size:.78rem;letter-spacing:.32em;font-weight:700;color:var(--glacier);margin-bottom:14px;text-transform:uppercase;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:38px;height:2px;background:currentColor}
+.eyebrow.dark{color:var(--blue)}
+.hero h1{font:700 clamp(2.2rem,5.2vw,4.4rem)/1.08 var(--serif);max-width:15ch;margin-bottom:22px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.lead{max-width:56ch;font-size:1.12rem;margin-bottom:34px;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.scroll-cue{position:absolute;z-index:2;bottom:22px;left:50%;width:22px;height:36px;border:2px solid var(--snow);border-radius:14px;opacity:.8}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;background:var(--snow);border-radius:3px;animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
+
+/* sections */
+.section{padding:clamp(64px,9vw,120px) 0}
+.light{background:var(--snow)}.ice{background:var(--ice)}.dark{background:var(--navy);color:var(--ice)}
+h2{font:700 clamp(1.8rem,3.6vw,2.9rem)/1.15 var(--serif);color:var(--blue);margin-bottom:22px}
+.dark h2{color:var(--snow)}
+h3{font:700 1.2rem/1.3 var(--serif);color:var(--blue);margin-bottom:8px}
+.dark h3{color:var(--glacier)}
+.sec-head{margin-bottom:48px;max-width:760px}
+.sec-head.center{text-align:center;margin-inline:auto}
+.sec-head.center .eyebrow{justify-content:center}
+.text p{margin-bottom:16px}
+.dropcap::first-letter{float:left;font:700 4rem/.8 var(--serif);color:var(--blue);padding:8px 12px 0 0}
+.note{margin-top:36px;text-align:center;font-style:italic;max-width:70ch;margin-inline:auto}
+.note a{color:var(--glacier);text-underline-offset:3px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px);align-items:center}
+.split.reverse .text{order:2}
+.photo{position:relative;overflow:hidden;border-radius:4px;background:linear-gradient(135deg,var(--blue),var(--char));min-height:280px;box-shadow:0 18px 40px rgba(11,24,37,.18)}
+.photo::before{content:"";position:absolute;inset:14px;border:1px solid rgba(247,250,252,.55);z-index:2;pointer-events:none}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.photo:hover img{transform:scale(1.05)}
+.photo.tall{aspect-ratio:4/5}.photo.wide{aspect-ratio:16/10}
+.photo figcaption{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:30px 24px 18px;font-size:.82rem;color:var(--snow);background:linear-gradient(transparent,rgba(11,24,37,.75))}
+
+/* ticks */
+.ticks{list-style:none}
+.ticks li{position:relative;padding:10px 0 10px 32px;border-bottom:1px solid rgba(124,200,237,.2)}
+.ticks li::before{content:"";position:absolute;left:4px;top:19px;width:10px;height:10px;border:2px solid var(--glacier);transform:rotate(45deg)}
+.ticks.light li{border-color:rgba(22,58,89,.15)}
+.ticks b{color:var(--glacier)}
+
+/* timeline */
+.timeline{list-style:none;position:relative;padding:10px 0}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--glacier),var(--blue));transform:translateX(-50%)}
+.timeline li{position:relative;width:50%;padding:0 54px 44px 0;text-align:right}
+.timeline li:nth-child(even){margin-left:50%;padding:0 0 44px 54px;text-align:left}
+.timeline li::after{content:"";position:absolute;top:22px;right:-9px;width:18px;height:18px;border-radius:50%;background:var(--snow);border:4px solid var(--blue);box-shadow:0 0 0 5px rgba(124,200,237,.35)}
+.timeline li:nth-child(even)::after{right:auto;left:-9px}
+.year{display:block;font:700 clamp(2.4rem,5vw,3.8rem)/1 var(--serif);color:var(--glacier);-webkit-text-stroke:1px var(--blue);margin-bottom:8px}
+.card{background:var(--snow);border:1px solid rgba(22,58,89,.15);border-top:3px solid var(--blue);padding:22px 24px;border-radius:3px;transition:.3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(22,58,89,.15)}
+
+/* himalaya */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:44px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.cols article{padding-top:18px;border-top:2px solid var(--glacier)}
+
+/* gear */
+.gear-grid{display:grid;grid-template-columns:5fr 7fr;gap:40px;align-items:start}
+.gear-grid .photo{aspect-ratio:3/4;position:sticky;top:calc(var(--hh) + 20px)}
+.gear-list{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gear-list div{background:var(--snow);padding:22px;border-left:4px solid var(--glacier);transition:.3s}
+.gear-list div:hover{border-left-color:var(--blue);transform:translateX(4px)}
+
+/* techniques */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(124,200,237,.25);border:1px solid rgba(124,200,237,.25)}
+.tech-grid article{background:var(--navy);padding:32px 28px;transition:background .3s}
+.tech-grid article:hover{background:var(--blue)}
+.tech-grid span{font:700 2.4rem/1 var(--serif);color:var(--glacier);opacity:.5;display:block;margin-bottom:10px}
+.dark .note{color:var(--ice)}
+
+/* women */
+.women{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.women article{background:var(--ice);padding:0 0 26px;border-radius:4px;overflow:hidden;transition:.3s}
+.women article:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(22,58,89,.18)}
+.women figure{aspect-ratio:4/3;background:linear-gradient(135deg,var(--blue),var(--char));margin-bottom:20px}
+.women img{width:100%;height:100%;object-fit:cover}
+.women h3,.women p{padding:0 24px}
+.tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:8px}
+
+/* destinations */
+.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dest{position:relative;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(135deg,var(--blue),var(--char));border-radius:4px}
+.dest img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.dest:hover img{transform:scale(1.07)}
+.dest figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 22px;color:var(--snow);background:linear-gradient(transparent,rgba(11,24,37,.88))}
+.dest h3{color:var(--glacier);margin-bottom:4px}
+.dest p{font-size:.88rem;line-height:1.5}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.facts article{border:1px solid rgba(124,200,237,.3);padding:28px 22px;text-align:center;transition:.3s}
+.facts article:hover{border-color:var(--glacier);background:rgba(124,200,237,.07)}
+.facts b{display:block;font:700 2.4rem/1.1 var(--serif);color:var(--glacier)}
+.kind{display:inline-block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin:8px 0 12px;padding:3px 10px;border:1px solid var(--glacier);border-radius:20px;color:var(--snow)}
+
+/* lessons */
+blockquote{margin-top:26px;padding:22px 26px;border-left:4px solid var(--glacier);background:var(--ice);font:italic 1.35rem/1.5 var(--serif);color:var(--blue)}
+
+/* cta */
+.cta{position:relative;padding:clamp(90px,14vw,170px) 4%;text-align:center;color:var(--snow);background:var(--blue) url("images/cta.jpg") center/cover no-repeat}
+.cta::before{content:"";position:absolute;inset:0;background:rgba(11,24,37,.45)}
+.cta-inner{position:relative;max-width:820px;margin:auto}
+.cta h2{color:var(--snow)}
+.cta p{font-size:1.1rem;margin-bottom:32px}
+.btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+
+/* footer */
+.site-footer{background:var(--navy);color:var(--ice);padding-top:64px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px}
+.foot-grid p{margin-top:16px;font-size:.92rem;max-width:36ch}
+.foot-grid h4{color:var(--glacier);font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:16px}
+.foot-grid nav a{display:block;text-decoration:none;padding:4px 0;font-size:.92rem;transition:.25s}
+.foot-grid nav a:hover{color:var(--glacier);padding-left:6px}
+.social{display:flex;gap:10px}
+.social a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--glacier);border-radius:50%;text-decoration:none;font-weight:700;font-size:.8rem;text-transform:uppercase;transition:.3s}
+.social a:hover{background:var(--glacier);color:var(--navy)}
+.copy{text-align:center;padding:20px;border-top:1px solid rgba(124,200,237,.2);font-size:.85rem}
+
+/* responsive */
+@media(max-width:1000px){
+  .burger{display:flex}
+  .main-nav{position:absolute;top:var(--hh);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--navy);padding:0 4%;max-height:0;overflow:hidden;transition:max-height .4s}
+  .nav-toggle:checked ~ .main-nav{max-height:480px;padding:12px 4% 24px}
+  .main-nav a{padding:13px 8px;border-bottom:1px solid rgba(124,200,237,.15)}
+  .main-nav a:not(.btn)::after{display:none}
+  .nav-cta{margin:14px 0 0;justify-content:center}
+  .nav-toggle:checked ~ .burger span{background:transparent}
+  .nav-toggle:checked ~ .burger span::before{top:0;transform:rotate(45deg)}
+  .nav-toggle:checked ~ .burger span::after{top:0;transform:rotate(-45deg)}
+  .split,.gear-grid,.grid-2{grid-template-columns:1fr}
+  .split.reverse .text{order:0}
+  .gear-grid .photo{position:relative;top:0;aspect-ratio:16/10}
+  .dest-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .timeline::before{left:12px}
+  .timeline li,.timeline li:nth-child(even){width:100%;margin-left:0;padding:0 0 36px 44px;text-align:left}
+  .timeline li::after,.timeline li:nth-child(even)::after{left:3px;right:auto}
+  .gear-list,.dest-grid,.foot-grid{grid-template-columns:1fr}
+  .photo.tall{aspect-ratio:4/3}
+  .hero::after{background:rgba(11,24,37,.4)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="index.html" aria-label="ExploreX home">
+    <svg viewBox="0 0 48 32" width="38" height="26" aria-hidden="true"><path d="M0 32 18 6l8 12 6-8 16 22z" fill="#7CC8ED"/><path d="m18 6 5 8-5 4-5-4z" fill="#F7FAFC"/></svg>
+    <span>Alphine Ascents<b></b><small>Beyond Limits</small></span>
+  </a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="burger" aria-label="Toggle menu"><span></span></label>
+  <nav class="main-nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="history.html" class="active" aria-current="page">History</a>
+    <a href="booking.html">Expeditions</a>
+    <a href="galery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+     <a href="plan.html">Booking</a>
+    <a href="booking.html" class="btn btn-solid nav-cta">Plan Your Expedition</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="images/hero-poster.jpg" aria-hidden="true">
+    <source src="Climber_ascends_snowy_mountain_r…_20261015003415.mp4" type="video/mp4">
+  </video>
+  <div class="hero-inner">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span aria-current="page">History</span></nav>
+    <p class="eyebrow">THE LEGACY OF EXPLORATION</p>
+    <h1>THE HISTORY OF MOUNTAINEERING</h1>
+    <p class="lead">From ancient mountain journeys to the world's most ambitious climbing expeditions, discover the history of human curiosity, courage, preparation, and exploration.</p>
+    <a href="#timeline" class="btn btn-solid">Explore the Timeline <span aria-hidden="true">↓</span></a>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
+
+<!-- ORIGINS -->
+<section class="section light" id="origins">
+  <div class="wrap split">
+    <div class="text">
+      <p class="eyebrow dark">Chapter One</p>
+      <h2>Where the Journey Began</h2>
+      <p class="dropcap">People have crossed and climbed mountains for thousands of years. Pilgrims sought sacred summits, herders and traders followed high passes, hunters and surveyors pushed into the heights, and naturalists climbed to study glaciers, plants and weather.</p>
+      <p>Ancient mountain travel was mostly a means to an end. <strong>Modern mountaineering</strong> is different: the climb itself, with its planning, skill and risk, becomes the purpose. That shift happened gradually, mainly in the Alps during the 18th and 19th centuries, as scientific curiosity and a growing taste for adventure came together.</p>
+      <p>There is no single date on which recreational climbing began. Earlier ascents, such as Mont Aiguille in 1492, show that people climbed for their own reasons long before clubs and guidebooks existed.</p>
+    </div>
+    <figure class="photo tall"><img src="images/origins.jpg" alt="Historic view of an alpine glacier valley with early mountain travelers" loading="lazy"><figcaption>Alpine valleys shaped centuries of mountain travel.</figcaption></figure>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section ice" id="timeline">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Timeline</p><h2>Milestones That Changed Mountaineering</h2></header>
+    <ol class="timeline">
+      <li><span class="year">1786</span><div class="card"><h3>First Recorded Ascent of Mont Blanc</h3><p>Michel-Gabriel Paccard and Jacques Balmat reached the summit of Mont Blanc, a key milestone in the rise of modern European mountaineering.</p></div></li>
+      <li><span class="year">1854</span><div class="card"><h3>Wetterhorn Ascent</h3><p>Alfred Wills' ascent of the Wetterhorn helped popularize climbing in Britain and is linked with the start of the Victorian mountaineering era.</p></div></li>
+      <li><span class="year">1857</span><div class="card"><h3>The Alpine Club</h3><p>Founded in London, the Alpine Club is widely regarded as the world's first mountaineering club, helping establish climbing as an organized activity.</p></div></li>
+      <li><span class="year">1865</span><div class="card"><h3>The Matterhorn</h3><p>Edward Whymper's party reached the summit. Four members died on the descent, a tragedy that became a defining moment in climbing history.</p></div></li>
+      <li><span class="year">1953</span><div class="card"><h3>Mount Everest</h3><p>Edmund Hillary and Tenzing Norgay made the first confirmed ascent of Everest, as part of a large British expedition.</p></div></li>
+      <li><span class="year">1978</span><div class="card"><h3>Everest Without Supplemental Oxygen</h3><p>Reinhold Messner and Peter Habeler made the first confirmed ascent of Everest without supplemental oxygen.</p></div></li>
+      <li><span class="year">1980</span><div class="card"><h3>Winter Everest Ascent</h3><p>Leszek Cichy and Krzysztof Wielicki completed the first successful winter ascent of Everest.</p></div></li>
+      <li><span class="year">Today</span><div class="card"><h3>The Modern Era</h3><p>Better forecasting, equipment, communications, expedition medicine and environmental awareness continue to shape how people climb.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- GOLDEN AGE -->
+<section class="section dark" id="alpinism">
+  <div class="wrap split reverse">
+    <figure class="photo"><img src="images/alpinism.jpg" alt="Snow-covered Alpine peaks at dawn" loading="lazy"><figcaption>The Alps drew climbers from across Europe.</figcaption></figure>
+    <div class="text">
+      <p class="eyebrow">1850s – 1860s</p>
+      <h2>The Golden Age of Alpinism</h2>
+      <p>The mid-19th century is generally called the Golden Age of Alpinism. In little over a decade, climbers made first ascents of many of the Alps' great summits, including the Wetterhorn, the Eiger's neighbours and the Matterhorn.</p>
+      <ul class="ticks">
+        <li><b>Organized climbing:</b> guided parties and planned routes replaced improvised attempts.</li>
+        <li><b>Clubs:</b> the Alpine Club (1857) was followed by clubs across Europe.</li>
+        <li><b>Literature:</b> climbing books and journals spread the appeal of the mountains.</li>
+        <li><b>Local guides:</b> Alpine guides were central to many first ascents.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HIMALAYAS -->
+<section class="section light" id="himalaya">
+  <div class="wrap">
+    <header class="sec-head"><p class="eyebrow dark">Chapter Three</p><h2>Beyond the Alps: The Himalayas and Karakoram</h2></header>
+    <div class="grid-2">
+      <figure class="photo wide"><img src="images/himalaya.jpg" alt="Mount Everest and surrounding Himalayan peaks" loading="lazy"><figcaption>The Himalayas, home to the world's highest summits.</figcaption></figure>
+      <figure class="photo wide"><img src="images/karakoram.jpg" alt="Jagged granite peaks of the Karakoram range" loading="lazy"><figcaption>The Karakoram, known for steep, remote peaks and long glaciers.</figcaption></figure>
+    </div>
+    <div class="cols">
+      <article><h3>Early Exploration</h3><p>Surveys and exploratory journeys in the 19th and early 20th centuries mapped the great ranges long before serious climbing attempts.</p></article>
+      <article><h3>Everest in the 20th Century</h3><p>Reconnaissance and attempts through the 1920s–1950s built the knowledge that made the 1953 success possible. Hillary and Tenzing's ascent was a team achievement, supported by many climbers and Sherpa colleagues.</p></article>
+      <article><h3>Local Knowledge &amp; High-Altitude Porters</h3><p>Sherpa, Balti, Hunza and other mountain communities carried loads, fixed routes and shared deep knowledge of terrain and weather. Their skill and risk were fundamental to Himalayan mountaineering, and many were climbers in their own right.</p></article>
+      <article><h3>The Karakoram</h3><p>Home to K2 (first climbed in 1954 by an Italian expedition) and other 8,000-metre peaks, the Karakoram is known for harsh weather, technical terrain and remote approaches.</p></article>
+      <article><h3>Modern Expedition Planning</h3><p>Logistics, acclimatization schedules, weather windows and medical planning now shape high-altitude expeditions.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- GEAR -->
+<section class="section ice" id="gear">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Equipment</p><h2>From Traditional Gear to Modern Technology</h2></header>
+    <div class="gear-grid">
+      <figure class="photo"><img src="images/gear.jpg" alt="Vintage ice axe, rope and leather boots" loading="lazy"><figcaption>Early kit: wool, leather, hemp rope and long wooden-shafted axes.</figcaption></figure>
+      <div class="gear-list">
+        <div><h3>Early Boots &amp; Clothing</h3><p>Nailed leather boots, wool and canvas gave limited warmth and weather protection.</p></div>
+        <div><h3>Ropes, Pitons &amp; Carabiners</h3><p>Natural-fibre ropes gave way to nylon, while pitons and carabiners made protected climbing possible.</p></div>
+        <div><h3>Ice Axes &amp; Crampons</h3><p>Axes and crampons evolved steadily, enabling steeper snow and ice terrain.</p></div>
+        <div><h3>Helmets &amp; Technical Protection</h3><p>Helmets, harnesses and removable protection improved safety on rock and ice.</p></div>
+        <div><h3>Tents &amp; Expedition Clothing</h3><p>Lightweight fabrics, insulation and sturdy tents made higher camps more survivable.</p></div>
+        <div><h3>GPS, Satellite &amp; Forecasting</h3><p>Navigation devices, satellite communication and detailed forecasts support decisions on the mountain.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNIQUES -->
+<section class="section dark" id="techniques">
+  <div class="wrap">
+    <header class="sec-head"><p class="eyebrow">Skills</p><h2>The Evolution of Climbing Techniques</h2></header>
+    <div class="tech-grid">
+      <article><span>01</span><h3>Alpine Routes</h3><p>Traditional routes combining glacier travel, snow slopes and rock ridges.</p></article>
+      <article><span>02</span><h3>Rock Climbing</h3><p>Technical protection and movement skills developed into a discipline of its own.</p></article>
+      <article><span>03</span><h3>Ice &amp; Mixed</h3><p>Better tools and technique opened frozen waterfalls and mixed rock-and-ice faces.</p></article>
+      <article><span>04</span><h3>Expedition Strategy</h3><p>Staged camps, load carrying and careful timing for high-altitude objectives.</p></article>
+      <article><span>05</span><h3>Altitude Medicine</h3><p>Gradual acclimatization and medical knowledge help reduce altitude-related risk.</p></article>
+      <article><span>06</span><h3>Safety &amp; Stewardship</h3><p>Risk planning and "leave no trace" practices are now central to responsible climbing.</p></article>
+    </div>
+    <p class="note">Techniques vary with terrain, weather, route difficulty and the experience of the team.</p>
+  </div>
+</section>
+
+<!-- WOMEN -->
+<section class="section light" id="women">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Pioneers</p><h2>Women Who Expanded the World of Climbing</h2></header>
+    <div class="women">
+      <article><figure><img src="images/lucy-walker.jpg" alt="Historic portrait style illustration of Lucy Walker" loading="lazy"></figure><h3>Lucy Walker</h3><p class="tag">Victorian pioneer</p><p>A leading woman climber of the 1860s–1870s, Walker made many Alpine ascents and in 1871 became the first woman to climb the Matterhorn.</p></article>
+      <article><figure><img src="images/junko-tabei.jpg" alt="Junko Tabei in the mountains" loading="lazy"></figure><h3>Junko Tabei</h3><p class="tag">Everest, 1975</p><p>In 1975 Tabei of Japan became the first woman to reach the summit of Mount Everest, and later completed the Seven Summits.</p></article>
+      <article><figure><img src="images/wanda-rutkiewicz.jpg" alt="Wanda Rutkiewicz in the mountains" loading="lazy"></figure><h3>Wanda Rutkiewicz</h3><p class="tag">Himalayan leader</p><p>Rutkiewicz of Poland was the first European woman to climb Everest (1978) and the first woman to summit K2 (1986).</p></article>
+    </div>
+    <p class="note">Women have shaped exploration, technical climbing, high-altitude expeditions and mountain culture throughout this history.</p>
+  </div>
+</section>
+
+<!-- MODERN -->
+<section class="section ice" id="modern">
+  <div class="wrap split">
+    <div class="text">
+      <p class="eyebrow dark">Today</p>
+      <h2>A New Chapter in Mountain Exploration</h2>
+      <p>Lessons from the past have shaped safer, more informed mountaineering. Every advance below traces back to a problem earlier climbers faced.</p>
+      <ul class="ticks light">
+        <li>Technical clothing and improved equipment</li>
+        <li>More reliable weather forecasting</li>
+        <li>Digital navigation and satellite communication</li>
+        <li>Expedition medicine and acclimatization knowledge</li>
+        <li>Professional guiding standards</li>
+        <li>Environmental conservation</li>
+        <li>Responsible tourism and respect for local communities</li>
+      </ul>
+    </div>
+    <figure class="photo tall"><img src="images/modern.jpg" alt="Modern climbers with technical gear on a snowy ridge" loading="lazy"><figcaption>Modern kit and planning, built on generations of experience.</figcaption></figure>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="section light" id="destinations">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow dark">Gallery</p><h2>Historic Mountain Destinations</h2></header>
+    <div class="dest-grid">
+      <figure class="dest"><img src="images/mont-blanc.jpg" alt="Mont Blanc massif" loading="lazy"><figcaption><h3>Mont Blanc</h3><p>France / Italy. Western Europe's highest summit and the site of the first recorded ascent in 1786.</p></figcaption></figure>
+      <figure class="dest"><img src="images/matterhorn.jpg" alt="The Matterhorn pyramid peak" loading="lazy"><figcaption><h3>The Matterhorn</h3><p>Switzerland / Italy. First climbed in 1865; its ascent marked the end of the Golden Age.</p></figcaption></figure>
+      <figure class="dest"><img src="images/everest.jpg" alt="Mount Everest at sunrise" loading="lazy"><figcaption><h3>Mount Everest</h3><p>Nepal / China. Earth's highest mountain above sea level, first confirmed climbed in 1953.</p></figcaption></figure>
+      <figure class="dest"><img src="images/k2.jpg" alt="K2 rising above the Baltoro Glacier" loading="lazy"><figcaption><h3>K2</h3><p>Pakistan / China. The world's second-highest peak, first climbed in 1954 and known for its difficulty.</p></figcaption></figure>
+      <figure class="dest"><img src="images/himalayas.jpg" alt="Panorama of the Himalayan range" loading="lazy"><figcaption><h3>The Himalayas</h3><p>A vast range across several countries containing most of the world's 8,000-metre peaks.</p></figcaption></figure>
+      <figure class="dest"><img src="images/karakoram-range.jpg" alt="Karakoram range peaks and glacier" loading="lazy"><figcaption><h3>The Karakoram</h3><p>Home to K2 and some of the longest glaciers outside the polar regions.</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="section dark" id="facts">
+  <div class="wrap">
+    <header class="sec-head center"><p class="eyebrow">Verified</p><h2>Historical Facts and Records</h2></header>
+    <div class="facts">
+      <article><b>1953</b><span class="kind">Climbing record</span><p>First confirmed ascent of Everest, 29 May.</p></article>
+      <article><b>1978</b><span class="kind">Climbing record</span><p>First confirmed ascent of Everest without supplemental oxygen.</p></article>
+      <article><b>1857</b><span class="kind">Historical milestone</span><p>The Alpine Club was founded in London.</p></article>
+      <article><b>1980</b><span class="kind">Climbing record</span><p>First winter ascent of Everest, on 17 February.</p></article>
+      <article><b>8,849 m</b><span class="kind">Geographical fact</span><p>Everest's officially recognized height after the 2020 Nepal–China survey.</p></article>
+    </div>
+    <p class="note">Further reading: <a href="https://www.alpine-club.org.uk" target="_blank" rel="noopener">The Alpine Club</a> · <a href="https://www.britannica.com/topic/mountaineering" target="_blank" rel="noopener">Encyclopaedia Britannica</a> · <a href="https://www.nationalgeographic.com" target="_blank" rel="noopener">National Geographic</a></p>
+  </div>
+</section>
+
+<!-- LESSONS -->
+<section class="section light lessons" id="lessons">
+  <div class="wrap split reverse">
+    <figure class="photo"><img src="images/lessons.jpg" alt="Calm mountain landscape at golden hour" loading="lazy"></figure>
+    <div class="text">
+      <p class="eyebrow dark">Reflection</p>
+      <h2>The Past Teaches Us How to Climb Tomorrow</h2>
+      <p>Mountaineering history shows that summits are reached through <strong>preparation</strong>, <strong>teamwork</strong>, and <strong>humility</strong>. Accidents like the Matterhorn tragedy remind us to respect risk, never to chase it. Protecting fragile environments and honoring the communities who live in the mountains are part of that responsibility.</p>
+      <blockquote>The mountain does not ask to be conquered. It asks to be understood.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2>The Next Chapter of Exploration Is Yours to Discover.</h2>
+    <p>Learn from the pioneers, understand the mountains, and prepare responsibly for your own journey into the alpine world.</p>
+    <div class="btns">
+      <a href="index.html" class="btn btn-ghost">Explore Our World</a>
+      <a href="booking.html" class="btn btn-solid">Plan Your Expedition</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="logo" href="index.html"><svg viewBox="0 0 48 32" width="38" height="26" aria-hidden="true"><path d="M0 32 18 6l8 12 6-8 16 22z" fill="#7CC8ED"/><path d="m18 6 5 8-5 4-5-4z" fill="#F7FAFC"/></svg><span>Explore<b>X</b><small>Beyond Limits</small></span></a>
+      <p>Mountain exploration built on knowledge, preparation and respect for the mountains and their people.</p>
+    </div>
+    <nav aria-label="Footer"><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="booking.html">Expeditions</a><a href="galery.html">Gallery</a><a href="contact.html">Contact</a></nav>
+    <nav aria-label="Learn"><h4>Learn</h4><a href="#lessons">Mountain Safety</a><a href="#techniques">Climbing Education</a><a href="#facts">Facts &amp; Records</a></nav>
+    <div><h4>Follow</h4><div class="social"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="YouTube">yt</a><a href="#" aria-label="X">x</a></div></div>
+  </div>
+  <p class="copy">© 2026 ExploreX — Beyond Limits. All rights reserved.</p>
+</footer>
+<script src="music.js"></script>
+<script>
+  /* =====================================================
+   SUMMITORA — GLOBAL BACKGROUND MUSIC SYSTEM
+   Saare pages mein automatically chalega
+   ===================================================== */
+
+(function() {
+    'use strict';
+
+    // ====== CONFIGURATION ======
+    const CONFIG = {
+        musicFile: 'epic_musictracks-mountain-path-125573.mp3', // 🎵 Apna music file yahan
+        defaultVolume: 0.15,  // 15% volume (halka)
+        storagePrefix: 'summitOra_music_',
+        buttonPosition: { bottom: '24px', right: '24px' }
+    };
+
+    // ====== STORAGE ======
+    const Store = {
+        set(k, v) {
+            try { localStorage.setItem(CONFIG.storagePrefix + k, JSON.stringify(v)); } catch(e) {}
+        },
+        get(k, d = null) {
+            try {
+                const i = localStorage.getItem(CONFIG.storagePrefix + k);
+                return i ? JSON.parse(i) : d;
+            } catch(e) { return d; }
+        }
+    };
+
+    // ====== MUSIC MANAGER ======
+    const MusicManager = {
+        audio: null,
+        button: null,
+        initialized: false,
+
+        init() {
+            if (this.initialized) return;
+            if (document.getElementById('summitora-music-btn')) return;
+
+            // Create audio element
+            this.audio = document.createElement('audio');
+            this.audio.id = 'summitora-bg-music';
+            this.audio.loop = true;
+            this.audio.preload = 'auto';
+            this.audio.volume = parseFloat(Store.get('volume', CONFIG.defaultVolume));
+
+            const source = document.createElement('source');
+            source.src = CONFIG.musicFile;
+            source.type = 'audio/mpeg';
+            this.audio.appendChild(source);
+            document.body.appendChild(this.audio);
+
+            // Restore saved state
+            const savedTime = Store.get('time', 0);
+            const musicOff = Store.get('off', false);
+
+            if (savedTime > 0) {
+                this.audio.addEventListener('loadedmetadata', () => {
+                    if (savedTime < this.audio.duration) {
+                        this.audio.currentTime = savedTime;
+                    }
+                }, { once: true });
+            }
+
+            // Create button
+            this.createButton();
+
+            // Try autoplay
+            if (!musicOff) {
+                this.attemptAutoplay();
+            }
+
+            // First click fallback (browser autoplay block)
+            if (musicOff) {
+                this.button.classList.remove('playing');
+            }
+
+            // Save time periodically
+            this.audio.addEventListener('timeupdate', () => {
+                Store.set('time', this.audio.currentTime);
+                Store.set('volume', this.audio.volume);
+            });
+
+            // Save on leave
+            window.addEventListener('beforeunload', () => {
+                Store.set('time', this.audio.currentTime);
+            });
+
+            // Bind button
+            this.button.addEventListener('click', () => this.toggle());
+
+            // Keyboard M
+            document.addEventListener('keydown', (e) => {
+                if ((e.key === 'm' || e.key === 'M') && !e.target.matches('input, textarea, select')) {
+                    this.toggle();
+                }
+            });
+
+            // Volume slider on long-press
+            this.button.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                this.showVolumeControl();
+            });
+
+            this.initialized = true;
+            console.log('%c🎵 SUMMITORA Music Ready', 'color:#77C9F2;font-weight:bold;');
+        },
+
+        createButton() {
+            const btn = document.createElement('button');
+            btn.id = 'summitora-music-btn';
+            btn.setAttribute('aria-label', 'Toggle music');
+            btn.title = 'Music On/Off (M key) | Right-click for volume';
+            btn.style.cssText = `
+                position: fixed;
+                bottom: ${CONFIG.buttonPosition.bottom};
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99998;
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                border: 2px solid #77C9F2;
+                background: rgba(7, 21, 33, 0.88);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                color: #77C9F2;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2);
+                transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+                user-select: none;
+                -webkit-user-select: none;
+            `;
+            btn.innerHTML = '🔇';
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'scale(1.1)';
+                btn.style.boxShadow = '0 12px 32px rgba(0,0,0,0.6), 0 0 30px rgba(119,201,242,0.5)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+                btn.style.boxShadow = '0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2)';
+            });
+
+            // Pulse animation style
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes summitoraPulse {
+                    0% { box-shadow: 0 0 0 0 rgba(119,201,242,0.6), 0 8px 24px rgba(0,0,0,0.5); }
+                    70% { box-shadow: 0 0 0 16px rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                    100% { box-shadow: 0 0 0 0 rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                }
+                #summitora-music-btn.playing {
+                    animation: summitoraPulse 2.2s infinite;
+                    background: rgba(119,201,242,0.15);
+                }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(btn);
+            this.button = btn;
+        },
+
+        attemptAutoplay() {
+            const playPromise = this.audio.play();
+            if (playPromise) {
+                playPromise
+                    .then(() => {
+                        this.button.innerHTML = '🎵';
+                        this.button.classList.add('playing');
+                        console.log('🎵 Music autoplay started');
+                    })
+                    .catch(() => {
+                        // Autoplay blocked - wait for user click
+                        console.log('🎵 Autoplay blocked, waiting for user click');
+                        const startOnClick = () => {
+                            if (this.audio.paused && !Store.get('off', false)) {
+                                this.audio.play().then(() => {
+                                    this.button.innerHTML = '🎵';
+                                    this.button.classList.add('playing');
+                                }).catch(() => {});
+                            }
+                            document.removeEventListener('click', startOnClick);
+                        };
+                        document.addEventListener('click', startOnClick, { once: true });
+                    });
+            }
+        },
+
+        toggle() {
+            if (!this.audio) return;
+            if (this.audio.paused) {
+                this.audio.play().then(() => {
+                    this.button.innerHTML = '🎵';
+                    this.button.classList.add('playing');
+                    Store.set('off', false);
+                }).catch(err => console.warn('Play failed:', err));
+            } else {
+                this.audio.pause();
+                this.button.innerHTML = '🔇';
+                this.button.classList.remove('playing');
+                Store.set('off', true);
+            }
+        },
+
+        showVolumeControl() {
+            const existing = document.getElementById('summitora-volume-popup');
+            if (existing) { existing.remove(); return; }
+
+            const popup = document.createElement('div');
+            popup.id = 'summitora-volume-popup';
+            const btnRect = this.button.getBoundingClientRect();
+            popup.style.cssText = `
+                position: fixed;
+                bottom: ${window.innerHeight - btnRect.top + 10}px;
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99999;
+                background: rgba(7, 21, 33, 0.95);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(119,201,242,0.3);
+                border-radius: 12px;
+                padding: 16px 20px;
+                color: #fff;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.85rem;
+                width: 200px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            `;
+            popup.innerHTML = `
+                <div style="margin-bottom:10px;color:#77C9F2;font-weight:700;">🔊 Volume</div>
+                <input type="range" id="summitora-vol-slider" min="0" max="100" value="${Math.round(this.audio.volume * 100)}"
+                    style="width:100%;accent-color:#77C9F2;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.7rem;color:rgba(255,255,255,0.6);">
+                    <span>0%</span>
+                    <span id="summitora-vol-value">${Math.round(this.audio.volume * 100)}%</span>
+                    <span>100%</span>
+                </div>
+            `;
+            document.body.appendChild(popup);
+
+            const slider = popup.querySelector('#summitora-vol-slider');
+            const valueEl = popup.querySelector('#summitora-vol-value');
+            slider.addEventListener('input', () => {
+                const vol = slider.value / 100;
+                this.audio.volume = vol;
+                valueEl.textContent = slider.value + '%';
+                Store.set('volume', vol);
+            });
+
+            // Close on outside click
+            setTimeout(() => {
+                const closeHandler = (e) => {
+                    if (!popup.contains(e.target) && e.target !== this.button) {
+                        popup.remove();
+                        document.removeEventListener('click', closeHandler);
+                    }
+                };
+                document.addEventListener('click', closeHandler);
+            }, 100);
+        }
+    };
+
+    // ====== INIT ON DOM READY ======
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => MusicManager.init());
+    } else {
+        MusicManager.init();
+    }
+
+    // Global access
+    window.SUMMITORA_MUSIC = MusicManager;
+})();
+// </script>
+// <script src="music.js"></script>
+ <script>
+        /* =====================================================
+   SUMMITORA — GLOBAL BACKGROUND MUSIC SYSTEM
+   Saare pages mein automatically chalega
+   ===================================================== */
+
+(function() {
+    'use strict';
+
+    // ====== CONFIGURATION ======
+    const CONFIG = {
+        musicFile: 'epic_musictracks-mountain-path-125573.mp3', // 🎵 Apna music file yahan
+        defaultVolume: 0.15,  // 15% volume (halka)
+        storagePrefix: 'summitOra_music_',
+        buttonPosition: { bottom: '24px', right: '24px' }
+    };
+
+    // ====== STORAGE ======
+    const Store = {
+        set(k, v) {
+            try { localStorage.setItem(CONFIG.storagePrefix + k, JSON.stringify(v)); } catch(e) {}
+        },
+        get(k, d = null) {
+            try {
+                const i = localStorage.getItem(CONFIG.storagePrefix + k);
+                return i ? JSON.parse(i) : d;
+            } catch(e) { return d; }
+        }
+    };
+
+    // ====== MUSIC MANAGER ======
+    const MusicManager = {
+        audio: null,
+        button: null,
+        initialized: false,
+
+        init() {
+            if (this.initialized) return;
+            if (document.getElementById('summitora-music-btn')) return;
+
+            // Create audio element
+            this.audio = document.createElement('audio');
+            this.audio.id = 'summitora-bg-music';
+            this.audio.loop = true;
+            this.audio.preload = 'auto';
+            this.audio.volume = parseFloat(Store.get('volume', CONFIG.defaultVolume));
+
+            const source = document.createElement('source');
+            source.src = CONFIG.musicFile;
+            source.type = 'audio/mpeg';
+            this.audio.appendChild(source);
+            document.body.appendChild(this.audio);
+
+            // Restore saved state
+            const savedTime = Store.get('time', 0);
+            const musicOff = Store.get('off', false);
+
+            if (savedTime > 0) {
+                this.audio.addEventListener('loadedmetadata', () => {
+                    if (savedTime < this.audio.duration) {
+                        this.audio.currentTime = savedTime;
+                    }
+                }, { once: true });
+            }
+
+            // Create button
+            this.createButton();
+
+            // Try autoplay
+            if (!musicOff) {
+                this.attemptAutoplay();
+            }
+
+            // First click fallback (browser autoplay block)
+            if (musicOff) {
+                this.button.classList.remove('playing');
+            }
+
+            // Save time periodically
+            this.audio.addEventListener('timeupdate', () => {
+                Store.set('time', this.audio.currentTime);
+                Store.set('volume', this.audio.volume);
+            });
+
+            // Save on leave
+            window.addEventListener('beforeunload', () => {
+                Store.set('time', this.audio.currentTime);
+            });
+
+            // Bind button
+            this.button.addEventListener('click', () => this.toggle());
+
+            // Keyboard M
+            document.addEventListener('keydown', (e) => {
+                if ((e.key === 'm' || e.key === 'M') && !e.target.matches('input, textarea, select')) {
+                    this.toggle();
+                }
+            });
+
+            // Volume slider on long-press
+            this.button.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                this.showVolumeControl();
+            });
+
+            this.initialized = true;
+            console.log('%c🎵 SUMMITORA Music Ready', 'color:#77C9F2;font-weight:bold;');
+        },
+
+        createButton() {
+            const btn = document.createElement('button');
+            btn.id = 'summitora-music-btn';
+            btn.setAttribute('aria-label', 'Toggle music');
+            btn.title = 'Music On/Off (M key) | Right-click for volume';
+            btn.style.cssText = `
+                position: fixed;
+                bottom: ${CONFIG.buttonPosition.bottom};
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99998;
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                border: 2px solid #77C9F2;
+                background: rgba(7, 21, 33, 0.88);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                color: #77C9F2;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2);
+                transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+                user-select: none;
+                -webkit-user-select: none;
+            `;
+            btn.innerHTML = '🔇';
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'scale(1.1)';
+                btn.style.boxShadow = '0 12px 32px rgba(0,0,0,0.6), 0 0 30px rgba(119,201,242,0.5)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+                btn.style.boxShadow = '0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(119,201,242,0.2)';
+            });
+
+            // Pulse animation style
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes summitoraPulse {
+                    0% { box-shadow: 0 0 0 0 rgba(119,201,242,0.6), 0 8px 24px rgba(0,0,0,0.5); }
+                    70% { box-shadow: 0 0 0 16px rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                    100% { box-shadow: 0 0 0 0 rgba(119,201,242,0), 0 8px 24px rgba(0,0,0,0.5); }
+                }
+                #summitora-music-btn.playing {
+                    animation: summitoraPulse 2.2s infinite;
+                    background: rgba(119,201,242,0.15);
+                }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(btn);
+            this.button = btn;
+        },
+
+        attemptAutoplay() {
+            const playPromise = this.audio.play();
+            if (playPromise) {
+                playPromise
+                    .then(() => {
+                        this.button.innerHTML = '🎵';
+                        this.button.classList.add('playing');
+                        console.log('🎵 Music autoplay started');
+                    })
+                    .catch(() => {
+                        // Autoplay blocked - wait for user click
+                        console.log('🎵 Autoplay blocked, waiting for user click');
+                        const startOnClick = () => {
+                            if (this.audio.paused && !Store.get('off', false)) {
+                                this.audio.play().then(() => {
+                                    this.button.innerHTML = '🎵';
+                                    this.button.classList.add('playing');
+                                }).catch(() => {});
+                            }
+                            document.removeEventListener('click', startOnClick);
+                        };
+                        document.addEventListener('click', startOnClick, { once: true });
+                    });
+            }
+        },
+
+        toggle() {
+            if (!this.audio) return;
+            if (this.audio.paused) {
+                this.audio.play().then(() => {
+                    this.button.innerHTML = '🎵';
+                    this.button.classList.add('playing');
+                    Store.set('off', false);
+                }).catch(err => console.warn('Play failed:', err));
+            } else {
+                this.audio.pause();
+                this.button.innerHTML = '🔇';
+                this.button.classList.remove('playing');
+                Store.set('off', true);
+            }
+        },
+
+        showVolumeControl() {
+            const existing = document.getElementById('summitora-volume-popup');
+            if (existing) { existing.remove(); return; }
+
+            const popup = document.createElement('div');
+            popup.id = 'summitora-volume-popup';
+            const btnRect = this.button.getBoundingClientRect();
+            popup.style.cssText = `
+                position: fixed;
+                bottom: ${window.innerHeight - btnRect.top + 10}px;
+                right: ${CONFIG.buttonPosition.right};
+                z-index: 99999;
+                background: rgba(7, 21, 33, 0.95);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(119,201,242,0.3);
+                border-radius: 12px;
+                padding: 16px 20px;
+                color: #fff;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.85rem;
+                width: 200px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            `;
+            popup.innerHTML = `
+                <div style="margin-bottom:10px;color:#77C9F2;font-weight:700;">🔊 Volume</div>
+                <input type="range" id="summitora-vol-slider" min="0" max="100" value="${Math.round(this.audio.volume * 100)}"
+                    style="width:100%;accent-color:#77C9F2;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.7rem;color:rgba(255,255,255,0.6);">
+                    <span>0%</span>
+                    <span id="summitora-vol-value">${Math.round(this.audio.volume * 100)}%</span>
+                    <span>100%</span>
+                </div>
+            `;
+            document.body.appendChild(popup);
+
+            const slider = popup.querySelector('#summitora-vol-slider');
+            const valueEl = popup.querySelector('#summitora-vol-value');
+            slider.addEventListener('input', () => {
+                const vol = slider.value / 100;
+                this.audio.volume = vol;
+                valueEl.textContent = slider.value + '%';
+                Store.set('volume', vol);
+            });
+
+            // Close on outside click
+            setTimeout(() => {
+                const closeHandler = (e) => {
+                    if (!popup.contains(e.target) && e.target !== this.button) {
+                        popup.remove();
+                        document.removeEventListener('click', closeHandler);
+                    }
+                };
+                document.addEventListener('click', closeHandler);
+            }, 100);
+        }
+    };
+
+    // ====== INIT ON DOM READY ======
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => MusicManager.init());
+    } else {
+        MusicManager.init();
+    }
+
+    // Global access
+    window.SUMMITORA_MUSIC = MusicManager;
+})();
+    </script>
+    <script src="music.js"></script>
+// </body>
+</html>
