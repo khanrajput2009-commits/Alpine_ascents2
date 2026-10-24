@@ -2,6 +2,8 @@
 
 Welcome to the **Alpine Ascents** project repository! This is a web project dedicated to mountain climbing, adventure planning, and exploration.
 
+🌐 **Live Demo:** [Alpine Ascents Website](https://khanrajput2009-commits.github.io/Alpine_ascents2/)
+
 ---
 
 ## 🏔️ About the Project
@@ -14,13 +16,13 @@ Alpine Ascents is designed to provide information about mountain climbing, histo
 
 The repository includes the following main files:
 
-* **`index.html`** - The main homepage of the website.
-* **`index.css`** - Stylesheet containing layout and styling for the project.
-* **`index.js`** - JavaScript file handling interactive web features.
-* **`history.html`** - Page dedicated to the history of mountain climbing and ascents.
-* **`plan.html`** - Trip planning and guide page for climbing expeditions.
+* **`index.html`** - Main homepage of the website.
+* **`index.css`** - Stylesheet for layout and design.
+* **`index.js`** - JavaScript file handling interactive functionality.
+* **`history.html`** - Page dedicated to mountain climbing history.
+* **`plan.html`** - Expedition planning and guide page.
 * **`link.png`** - Image asset used within the project.
-* **`webside video one.mp4`** - Introductory or background video for the site.
+* **`webside video one.mp4`** - Video asset for the site.
 
 ---
 
@@ -28,4 +30,4 @@ The repository includes the following main files:
 
 1. Clone or download this repository to your local machine:
    ```bash
-   git clone [https://github.com/khanrajput2009-commits/Alpine_ascents.git](https://github.com/khanrajput2009-commits/Alpine_ascents.git)
+   git clone [https://github.com/khanrajput2009-commits/Alpine_ascents2.git](https://github.com/khanrajput2009-commits/Alpine_ascents2.git)
